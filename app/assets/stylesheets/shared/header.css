@@ -1,0 +1,14 @@
+.header {
+  padding: 10px 0 10px 20px;
+  background-color: black;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header a{
+  color: #ffffff;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 65px;
+  text-decoration: none;
+}
