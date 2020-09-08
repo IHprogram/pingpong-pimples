@@ -1,12 +1,13 @@
 .header {
-  padding: 10px 0 10px 20px;
+  padding-left: 20px;
   background-color: black;
   height: 100px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
-.header a{
+.header-logo {
   color: #ffffff;
   font-family: 'Alegreya Sans SC', sans-serif;
   font-size: 65px;
