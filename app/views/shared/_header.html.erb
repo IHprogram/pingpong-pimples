@@ -1,5 +1,14 @@
 <div class="header">
+  <div class="header-logo">
   <%= link_to root_path do %>
-    <h1>Ping Pong Pimples</h1>
+    <h1>Ping Pong Pimples <i class="fas fa-table-tennis"></i></h1>
+  <% end %>
+  </div>
+
+  <%= form_with(url: "#", local: true, method: :get, class: "search-form") do |form| %>
+    <%= form.text_field :keyword, placeholder: "レビューを検索する", class: "search-input" %>
+    <%= button_tag type: "submit", class: "search-btn" do %>
+      <i class="fas fa-search"></i>
+    <% end %>
   <% end %>
 </div>
