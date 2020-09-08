@@ -1,21 +1,28 @@
-<div class="header">
-  <div class="header-left">
-    <%= link_to root_path, class: "header-logo" do %>
-      <h1>Ping Pong Pimples <i class="fas fa-table-tennis"></i></h1>
-    <% end %>
-  </div>
-
-  <div class="header-right">
-    <div>
-    <%= form_with(url: "#", local: true, method: :get, class: "search-form") do |form| %>
-      <%= form.text_field :keyword, placeholder: "レビューを検索する", class: "search-input" %>
-      <%= button_tag type: "submit", class: "search-btn" do %>
-        <i class="fas fa-search"></i>
+<header class="top-page-header">
+    <div class="header-left">
+      <%= link_to root_path, class: "header-logo" do %>
+        <h1>Ping Pong Pimples <i class="fas fa-table-tennis"></i></h1>
       <% end %>
-    <% end %>
     </div>
-    <%= link_to "#", class: "menu-icon" do %>
-      <i class="fas fa-bars"></i>
-    <% end %>
-  </div>
-</div>
+
+    <div class="header-right">
+      <div class="search-content">
+        <%= form_with(url: "#", local: true, method: :get, class: "search-form") do |form| %>
+          <%= form.text_field :keyword, placeholder: "レビューを検索する", class: "search-input" %>
+          <%= button_tag type: "submit", class: "search-btn" do %>
+            <i class="fas fa-search"></i>
+          <% end %>
+        <% end %>
+        <%= link_to "#", class: "menu-icon" do %>
+          <i class="fas fa-bars"></i>
+        <% end %>
+      </div>
+      <div class="nav">
+        <ul class="nav-lists">
+          <li><%= link_to 'ログイン', "#", class: "login" %></li>
+          <li><%= link_to '新規登録', "#", class: "sign-up" %></li>
+        </ul>
+      </div>
+    </div>
+  
+</header>
