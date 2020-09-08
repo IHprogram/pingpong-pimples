@@ -5,10 +5,17 @@
     <% end %>
   </div>
 
-  <%= form_with(url: "#", local: true, method: :get, class: "search-form") do |form| %>
-    <%= form.text_field :keyword, placeholder: "レビューを検索する", class: "search-input" %>
-    <%= button_tag type: "submit", class: "search-btn" do %>
-      <i class="fas fa-search"></i>
+  <div class="header-right">
+    <div>
+    <%= form_with(url: "#", local: true, method: :get, class: "search-form") do |form| %>
+      <%= form.text_field :keyword, placeholder: "レビューを検索する", class: "search-input" %>
+      <%= button_tag type: "submit", class: "search-btn" do %>
+        <i class="fas fa-search"></i>
+      <% end %>
     <% end %>
-  <% end %>
+    </div>
+    <%= link_to "#", class: "menu-icon" do %>
+      <i class="fas fa-bars"></i>
+    <% end %>
+  </div>
 </div>
