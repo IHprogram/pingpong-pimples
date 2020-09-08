@@ -9,6 +9,13 @@ Ping Pong Pimples
 - 投稿されたレビューを閲覧できる
 - レビューに対していいねやコメントをできる
 
+# 使用技術・言語
+- フロントエンド(HTML, CSS, Javascript)
+- バックエンド(Ruby on Rails)
+- テスト(RSpec, FactoryBot, Capybara)
+- データベース(MySQL)
+- 開発環境(MacOS,Visual Studio Code,Git,GitHub)
+
 # 制作背景
 
   「卓球をしている人々の表ソフトラバー、粒高ラバー選びに関する悩み」を解決したいと考えたためです。  
@@ -25,7 +32,6 @@ Ping Pong Pimples
 
 - ログイン機能
 - レビュー投稿機能
-- レビュー詳細表示機能
 - ユーザーのプロフィール編集機能
 - レビュー検索機能
 - レビュー一覧表示機能
