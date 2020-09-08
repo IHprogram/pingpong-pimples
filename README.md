@@ -1,6 +1,9 @@
 # アプリケーション名
 Ping Pong Pimples
 
+# URL
+https://pingpong-pimples.herokuapp.com/
+
 # 概要
 
 　卓球の表ソフトラバー・粒高ラバーについてレビューをすることができるアプリです。  
