@@ -1,0 +1,8 @@
+.second-header {
+  background-color: black;
+  text-align: center;
+  width: 100vw;
+  height: 120px;
+  display: table-cell;
+  vertical-align: middle;
+}
