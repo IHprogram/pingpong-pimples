@@ -10,6 +10,6 @@ class Spin < ActiveHash::Base
     { id: 8, name: '7' },
     { id: 9, name: '8' },
     { id: 10, name: '9' },
-    { id: 11, name: '10' },
+    { id: 11, name: '10' }
   ]
 end

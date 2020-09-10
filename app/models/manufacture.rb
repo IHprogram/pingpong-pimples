@@ -20,6 +20,6 @@ class Manufacture < ActiveHash::Base
     { id: 18, name: 'ダーカー' },
     { id: 19, name: 'Dr.ノイバウア' },
     { id: 20, name: 'アバロックス' },
-    { id: 21, name: 'その他' },
+    { id: 21, name: 'その他' }
   ]
 end

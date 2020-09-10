@@ -12,7 +12,7 @@ class Review < ApplicationRecord
   belongs_to_active_hash :level
   belongs_to_active_hash :evaluation
 
-  HALF_WIDTH_NUMBER_REGEX = /\A[0-9]+\z/
+  HALF_WIDTH_NUMBER_REGEX = /\A[0-9]+\z/.freeze
 
   with_options presence: true do
     validates :image
