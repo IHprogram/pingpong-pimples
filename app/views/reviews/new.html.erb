@@ -90,8 +90,10 @@
       <%# /商品の詳細 %>
 
       <div class="review-btn-contents">
-        <%= f.submit "レビューを投稿する" ,class: "review-button" %>
-        <%=link_to 'もどる', root_path, class: "back-button" %>
+        <div class="review-btn-wrap">
+          <%= f.submit "レビューを投稿する" ,class: "review-button" %>
+        </div>
+          <%=link_to 'もどる', root_path, class: "back-button" %>
       </div>
     <% end %>
   </div>
