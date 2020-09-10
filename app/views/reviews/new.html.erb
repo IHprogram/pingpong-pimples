@@ -1,0 +1,81 @@
+<%= render "shared/second-header" %>
+
+<div class="items-sell-main">
+    <h2 class="items-sell-title">商品の情報を入力</h2>
+    <%= form_with model: @review, local: true do |f| %>
+
+    <%= render 'shared/error_messages', model: f.object %>
+
+    <%# 出品画像 %>
+    <div class="img-upload">
+      <div class="weight-bold-text">
+        商品画像
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"review-image" %>
+      </div>
+    </div>
+    <%# /出品画像 %>
+
+    <%# 商品名 %>
+    <div class="new-product">
+      <div class="weight-bold-text">
+        商品名
+      </div>
+      <%= f.text_area :name, class:"product-text", id:"product-name", placeholder:"商品名" %>
+    </div>
+    <%# /商品名 %>
+
+    <%# 商品の詳細 %>
+    <div class="product-detail">
+        <div class="weight-bold-text">
+          メーカー
+        </div>
+        <%= f.collection_select(:manufacture_id, Manufacture.all, :id, :name, {}, {class:"select-box", id:"manufacture-id"}) %>
+        <div class="weight-bold-text">
+          ラバーの種類
+        </div>
+        <%= f.collection_select(:type_id, Type.all, :id, :name, {}, {class:"select-box", id:"type-id"}) %>
+        <div class="weight-bold-text">
+          ラバーの硬度（半角数字で入力してください）
+        </div>
+        <%= f.text_field :hardness, class:"hardness-input", id:"product-hardness", placeholder:"半角数字で入力してください" %>
+        <div class="weight-bold-text">
+          回転量（10点満点中）
+        </div>
+        <%= f.collection_select(:spin_id, Spin.all, :id, :name, {}, {class:"select-box", id:"spin-id"}) %>
+        <div class="weight-bold-text">
+          スピード（10点満点中）
+        </div>
+        <%= f.collection_select(:speed_id, Speed.all, :id, :name, {}, {class:"select-box", id:"speed-id"}) %>
+        <div class="weight-bold-text">
+          商品の価格（半角数字で入力してください）
+        </div>
+        <%= f.text_field :price, class:"price-input", id:"product-price", placeholder:"半角数字で入力してください" %>
+        <div class="weight-bold-text">
+          おすすめのレベル層
+        </div>
+        <%= f.collection_select(:level_id, Level.all, :id, :name, {}, {class:"select-box", id:"level-id"}) %>
+        <div class="weight-bold-text">
+          総合評価（10点満点中）
+        </div>
+        <%= f.collection_select(:evaluation_id, Evaluation.all, :id, :name, {}, {class:"select-box", id:"evaluation-id"}) %>
+        <div class="weight-bold-text">
+          その他特筆すべきこと
+        </div>
+        <%= f.text_area :content, class:"pruduct-text", id:"product-info", placeholder:"その他特筆すべきこと（必須 1,000文字まで)" ,rows:"7" ,maxlength:"1000" %>
+    </div>
+    <%# /商品の詳細 %>
+
+    <div class="review-btn-contents">
+      <%= f.submit "レビューを投稿する" ,class: "review-button" %>
+      <%=link_to 'もどる', root_path, class: "back-button" %>
+    </div>
+  </div>
+  <% end %>
+
+<%= render "shared/footer" %>
