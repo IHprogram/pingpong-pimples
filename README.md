@@ -66,7 +66,7 @@ https://pingpong-pimples.herokuapp.com/
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
 | name                | string     | null: false                    |
-| manufacturer_id     | integer    | null: false                    |
+| manufacture_id     | integer    | null: false                    |
 | type_id             | integer    | null: false                    |
 | hardness            | integer    | null: false                    |
 | spin_id             | integer    | null: false                    |
