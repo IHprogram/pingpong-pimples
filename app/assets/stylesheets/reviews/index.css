@@ -1,11 +1,13 @@
 .main {
   width: 100%;
   background-color: #dbdada;
+  min-width: 800px;
 }
 
 .main-wrapper {
-  margin: 0 300px;
+  margin: 0 200px;
   background-color: #ffffff;
+  min-width: 600px;
 }
 
 .top-img {
