@@ -62,12 +62,45 @@
       <% else %>      
         <%# レビューがない場合のダミー %>
           <li class='list'>
-            <%= link_to '#' do %>
-            <%= image_tag "#", class: "item-img" %>
+            <%= link_to '#',class:"review-show-link" do %>
             <div class='review-info'>
-              <h3 class='product-name'>
-                レビュー名が表示されます
-              </h3>
+              <div class='review-img-content'>
+                <%= image_tag "sample.png", class: "review-img" %>
+              </div>
+              <div class="top-review-detail">
+                <div class="top-review-group">
+                  <span class="top-review-name">
+                    商品名：
+                  </span>
+                  <h3 class="top-review-value">
+                    <%= "ここに商品名が表示されます" %>
+                  </h3>
+                </div>
+                <div class="top-review-group">
+                  <span class="top-review-name">
+                    ユーザー：
+                  </span>
+                  <h3 class="top-review-value">
+                    <%= "ここにニックネームが表示されます" %>
+                  </h3>
+                </div>
+                <div class="top-review-group">
+                  <span class="top-review-name">
+                    メーカー：
+                  </span>
+                  <h3 class="top-review-value">
+                    <%= "ここにメーカー名が表示されます" %>
+                  </h3>
+                </div>
+                <div class="top-review-group">
+                  <span class="top-review-name">
+                    総合評価（10点満点）：
+                  </span>
+                  <h3 class="top-review-value">
+                    <%= "ここに総合評価の点数が表示されます" %>
+                  </h3>
+                </div>
+              </div>
             </div>
             <% end %>
           </li>
