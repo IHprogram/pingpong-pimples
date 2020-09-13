@@ -1,5 +1,54 @@
 <%= render "shared/second-header" %>
 
+<table class="detail-table">
+  <tbody>
+    <tr>
+      <th class="detail-product">商品名</th>
+      <td class="detail-value"><%= @review.name %></td>
+    </tr>
+    <tr>
+      <th class="detail-product">ユーザー名</th>
+      <td class="detail-value"><%= @review.user.nickname %></td>
+    </tr>
+    <tr>
+      <th class="detail-product">メーカー</th>
+      <td class="detail-value"><%= @review.manufacture.name %></td>
+    </tr>
+    <tr>
+      <th class="detail-product">ラバーの種類</th>
+      <td class="detail-value"><%= @review.type.name %></td>
+    </tr>
+    <tr>
+      <th class="detail-product">ラバーの硬度</th>
+      <td class="detail-value"><%= @review.hardness %><span>度</span></td>
+    </tr>
+    <tr>
+      <th class="detail-product">回転量</th>
+      <td class="detail-value"><%= @review.spin.name %><span>点</span></td>
+    </tr>
+    <tr>
+      <th class="detail-product">スピード</th>
+      <td class="detail-value"><%= @review.speed.name %><span>点</span></td>
+    </tr>
+    <tr>
+      <th class="detail-product">商品の価格</th>
+      <td class="detail-value"><%= @review.price %><span>円</span></td>
+    </tr>
+    <tr>
+      <th class="detail-product">おすすめのレベル層</th>
+      <td class="detail-value"><%= @review.level.name %></td>
+    </tr>
+    <tr>
+      <th class="detail-product">総合評価</th>
+      <td class="detail-value"><%= @review.evaluation.name %><span>点</span></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<%= link_to '編集する', edit_review_path %>>
+<%= link_to '削除する', review_path(@review.id), method: :delete %>>
 
 
 <%= render "shared/footer" %>
