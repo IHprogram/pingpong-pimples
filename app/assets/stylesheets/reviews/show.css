@@ -1,5 +1,9 @@
-.review-show {
-  margin-bottom: 100px;
+
+.review-show-wrapper {
+  width: 70%;
+  margin: 50px auto;
+  padding: 30px;
+  border: 2px solid gray;
 }
 
 .review-header {
@@ -8,6 +12,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.review-show-image {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto 50px;
+}
+
+.show-img {
+  width: 500px;
+  height: 500px;
 }
 
 .detail-table {
@@ -76,4 +91,3 @@
   text-decoration: none;
   color: #ffffff;
 }
-
