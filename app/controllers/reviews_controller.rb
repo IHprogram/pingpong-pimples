@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
+  before_action :move_to_index, except: [:index, :show]
   before_action :set_review, only: [:show]
+
   def index
     @reviews = Review.all.order('created_at DESC')
   end
@@ -27,6 +29,10 @@ class ReviewsController < ApplicationController
   end
 
   private
+
+  def move_to_index
+    redirect_to action: :index unless user_signed_in?
+  end
 
   def review_params
     params.require(:review).permit(:name, :manufacture_id, :type_id, :hardness, :spin_id, :speed_id, :price, :level_id, :evaluation_id, :content, :image).merge(user_id: current_user.id)
