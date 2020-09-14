@@ -11,8 +11,11 @@
 .header-logo {
   color: #ffffff;
   font-family: 'Alegreya Sans SC', sans-serif;
-  font-size: 65px;
   text-decoration: none;
+}
+
+.header-logo h1 {
+font-size: 65px;
 }
 
 .search-content {
