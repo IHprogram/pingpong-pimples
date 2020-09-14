@@ -1,0 +1,71 @@
+.review-header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail-table {
+  margin: 0 auto 30px;
+  width: 70%;
+}
+
+.detail-product {
+  width: 20%;
+  background-color: #eee;
+  border: 1px solid #dedede;
+  font-size: 14px;
+  text-align: center;
+}
+
+.detail-value {
+  width: 80%;
+  padding: 20px;
+  border: 1px solid #dedede;
+  font-size: 14px;
+}
+
+.detail-content-title {
+  background-color: #eee;
+  border: 1px solid #dedede;
+  font-size: 14px;
+}
+
+.product-content {
+  width: 70%;
+  margin: 0 auto;
+  border: 1px solid #dedede;
+}
+
+.review-buttons {
+  height: 200px;
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.edit-btn-wrapper {
+  background-color: black;
+  padding: 15px;
+  border-radius: 30px;
+}
+
+.edit-btn {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.delete-btn-wrapper {
+  background-color: rgb(160, 13, 13);
+  padding: 15px;
+  border-radius: 30px;
+}
+
+.delete-btn {
+  text-decoration: none;
+  color: #ffffff;
+}
+
