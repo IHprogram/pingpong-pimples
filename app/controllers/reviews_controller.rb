@@ -34,6 +34,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    render :show unless @review.destroy
   end
 
   private
