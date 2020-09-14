@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-  before_action :set_review, only: [:show, :edit, :update]
+  before_action :set_review, only: [:show, :edit, :update, :destroy]
 
   def index
     @reviews = Review.all.order('created_at DESC')
