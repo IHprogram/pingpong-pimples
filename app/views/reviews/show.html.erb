@@ -1,14 +1,22 @@
 <%= render "shared/second-header" %>
 
+<div class="review-header">
+  <div class="review-title-wrapper">
+    <h2 class="review-title">
+      レビュー内容
+    </h2>
+  </div>
+</div>
+
 <table class="detail-table">
   <tbody>
     <tr>
-      <th class="detail-product">商品名</th>
-      <td class="detail-value"><%= @review.name %></td>
-    </tr>
-    <tr>
       <th class="detail-product">ユーザー名</th>
       <td class="detail-value"><%= @review.user.nickname %></td>
+    </tr>
+    <tr>
+      <th class="detail-product">商品名</th>
+      <td class="detail-value"><%= @review.name %></td>
     </tr>
     <tr>
       <th class="detail-product">メーカー</th>
@@ -45,10 +53,30 @@
   </tbody>
 </table>
 
+<div class="product-content">
+  <h3 class="detail-content-title">
+    その他特筆すること
+  </h3>
+  <div class="detail-content">
+    <%= @review.content %>
+  </div>
+</div>
 
-
-<%= link_to '編集する', edit_review_path %>>
-<%= link_to '削除する', review_path(@review.id), method: :delete %>>
-
+<div class="review-buttons">
+  <div class="edit-btn-wrapper">
+    <%= link_to edit_review_path, class:"edit-btn" do %>
+      <h3>
+        <i class="fas fa-pen-nib"></i> 編集する
+      </h3>
+    <% end %>
+  </div>
+  <div class="delete-btn-wrapper">
+    <%= link_to review_path(@review.id), method: :delete, class:"delete-btn" do %>
+      <h3>
+        <i class="fas fa-exclamation-triangle"></i> 削除する
+      </h3>
+    <% end %>
+  </div>
+</div>
 
 <%= render "shared/footer" %>
