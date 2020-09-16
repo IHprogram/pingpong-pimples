@@ -1,9 +1,15 @@
+.review-show {
+  background-color: #f8f8f8;
+  padding: 50px 0;
+}
 
 .review-show-wrapper {
   width: 70%;
-  margin: 50px auto;
-  padding: 30px;
+  margin: 0 auto 50px;
+  padding: 10px 30px;
   border: 2px solid gray;
+  background-color: #ffffff;
+  min-width: 800px;
 }
 
 .review-header {
@@ -90,4 +96,34 @@
 .delete-btn {
   text-decoration: none;
   color: #ffffff;
+}
+
+.comments {
+  width: 50%;
+  margin: 50px auto 0;
+  background-color: #ffffff;
+}
+
+.comment-form {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.comment-input {
+  width: 100%;
+  resize: none;
+}
+
+.comment-btn-wrapper {
+  width: 100%;
+  text-align: end;
+  margin: 10px 0;
+}
+
+.amount-of-comments {
+  display: flex;
+  justify-content: start;
+  padding: 20px 0;
+  font-size: 20px;
+  font-weight: bold;
 }
