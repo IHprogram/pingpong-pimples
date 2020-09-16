@@ -102,6 +102,7 @@
   width: 50%;
   margin: 50px auto 0;
   background-color: #ffffff;
+  padding-bottom: 20px;
 }
 
 .comment-form {
@@ -126,6 +127,10 @@
   padding: 15px 30px;
   border: none;
   border-radius: 30px;
+}
+
+.comments-show {
+  margin: 0 20px;
 }
 
 .amount-of-comments {
