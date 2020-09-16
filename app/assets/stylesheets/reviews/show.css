@@ -127,6 +127,7 @@
   padding: 15px 30px;
   border: none;
   border-radius: 30px;
+  cursor: pointer;
 }
 
 .comments-show {
