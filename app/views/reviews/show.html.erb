@@ -113,10 +113,12 @@
       </div>
       <% if @comments %>
         <% @comments.each do |comment| %>
-          <p>
-            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
-            <%= comment.content %>
-          </p>
+          <div class="comment-content-wrapper">
+            <p class="comment-content">
+              <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}", class:"comment-user" %>：</strong>
+              <%= comment.content %>
+            </p>
+          </div>
         <% end %>
       <% end %>
     </div>
