@@ -120,6 +120,14 @@
   margin: 10px 0;
 }
 
+.comment-btn {
+  background-color: black;
+  color: #ffffff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 30px;
+}
+
 .amount-of-comments {
   display: flex;
   justify-content: start;
