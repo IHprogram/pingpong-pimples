@@ -1,11 +1,27 @@
 <%= render "shared/header" %>
 
 <div class="main">
+
+  <div class="search-form">
+    <div class="search-content">
+      <%= search_form_for @search, url: reviews_search_path, class: "search-form" do |form| %>
+        <%= form.collection_select :manufacture_id_eq, @reviews, :manufacture_id, :manufacture_id,  include_blank: 'メーカー' %>
+        
+        <%= form.search_field :name_cont, placeholder: "レビューを検索する", class: "search-input" %>
+        <%= button_tag type: "submit", class: "search-btn" do %>
+          <i class="fas fa-search"></i>
+        <% end %>
+      <% end %>
+      <%= link_to "#", class: "menu-icon" do %>
+        <i class="fas fa-bars"></i>
+      <% end %>
+    </div>
+  </div>
+
   <div class="main-wrapper">
     <div class="top-page-img">
       <%= image_tag "top.png", class:"top-img" %>
     </div>
-
     <ul class='review-lists'>
       <div class="review-lists-title">
         <h2 class="new-review-title">最新レビュー一覧</h2>
