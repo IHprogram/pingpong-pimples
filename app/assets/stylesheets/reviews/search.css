@@ -1,0 +1,14 @@
+.result-title-wrapper {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.result-title {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.top-page-back {
+  height: 100px;
+  width: 100%;
+}

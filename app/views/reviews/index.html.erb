@@ -1,64 +1,66 @@
 <%= render "shared/header" %>
 
 <div class="main">
-  <div class="main-wrapper">
+
+  <%= render "shared/search_form" %>
+
+  <div class="right-wrapper">
     <div class="top-page-img">
       <%= image_tag "top.png", class:"top-img" %>
     </div>
-
     <ul class='review-lists'>
       <div class="review-lists-title">
         <h2 class="new-review-title">最新レビュー一覧</h2>
       </div>
       <% if @reviews.length > 0 %>
           <% @reviews.each do |review| %>
-              <li class='list'>
-                <%= link_to review_path(review.id), class:"review-show-link" do %>
-                  <div class='review-info'>
-                    <div class='review-img-content'>
-                      <%= image_tag review.image, class: "review-img" %>
+            <li class='list'>
+              <%= link_to review_path(review.id), class:"review-show-link" do %>
+                <div class='review-info'>
+                  <div class='review-img-content'>
+                    <%= image_tag review.image, class: "review-img" %>
+                  </div>
+                  <div class="top-review-detail">
+                    <div class="top-review-group">
+                      <span class="top-review-name">
+                        商品名：
+                      </span>
+                      <h3 class="top-review-value">
+                        <%= review.name %>
+                      </h3>
                     </div>
-                    <div class="top-review-detail">
-                      <div class="top-review-group">
-                        <span class="top-review-name">
-                          商品名：
-                        </span>
-                        <h3 class="top-review-value">
-                          <%= review.name %>
-                        </h3>
-                      </div>
-                      <div class="top-review-group">
-                        <span class="top-review-name">
-                          ユーザー：
-                        </span>
-                        <h3 class="top-review-value">
-                          <%= review.user.nickname %>
-                        </h3>
-                      </div>
-                      <div class="top-review-group">
-                        <span class="top-review-name">
-                          メーカー：
-                        </span>
-                        <h3 class="top-review-value">
-                          <%= review.manufacture.name %>
-                        </h3>
-                      </div>
-                      <div class="top-review-group">
-                        <span class="top-review-name">
-                          総合評価：
-                        </span>
-                        <h3 class="top-review-value">
-                          <%= review.evaluation.name %>
-                        </h3>
-                        <span class="top-review-name">
-                          点
-                        </span>
-                      </div>
+                    <div class="top-review-group">
+                      <span class="top-review-name">
+                        ユーザー：
+                      </span>
+                      <h3 class="top-review-value">
+                        <%= review.user.nickname %>
+                      </h3>
+                    </div>
+                    <div class="top-review-group">
+                      <span class="top-review-name">
+                        メーカー：
+                      </span>
+                      <h3 class="top-review-value">
+                        <%= review.manufacture.name %>
+                      </h3>
+                    </div>
+                    <div class="top-review-group">
+                      <span class="top-review-name">
+                        総合評価：
+                      </span>
+                      <h3 class="top-review-value">
+                        <%= review.evaluation.name %>
+                      </h3>
+                      <span class="top-review-name">
+                        点
+                      </span>
                     </div>
                   </div>
-                <% end %>
-              </li>
-            <% end %>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
       <% else %>      
         <%# レビューがない場合のダミー %>
           <li class='list'>
