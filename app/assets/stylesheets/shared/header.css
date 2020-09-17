@@ -21,3 +21,38 @@ font-size: 65px;
 .search-content {
   display: flex;
 }
+
+.nav-lists{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+  font-size: 25px;
+}
+
+.login {
+  text-decoration: none;
+  margin-right: 3vw;
+  color: #ffffff;
+}
+
+.sign-up {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.user-nickname {
+  text-decoration: none;
+  margin-right: 3vw;
+  color: #ffffff;
+}
+
+.logout {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.review-btn {
+  text-decoration: none;
+  margin-right: 3vw;
+  color: #ffffff;
+}
