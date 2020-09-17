@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
 
   def index
     @reviews = Review.all.order('created_at DESC')
+    set_review_column
   end
 
   def new
@@ -41,7 +42,7 @@ class ReviewsController < ApplicationController
   end
 
   def search
-    @results = @search.result.includes(:manufacture, :type, :speed, :spin, :level, :evaluation)
+    @results = @search.result
   end
 
   private
@@ -60,5 +61,11 @@ class ReviewsController < ApplicationController
 
   def search_review
     @search = Review.ransack(params[:q])
+  end
+
+  def set_review_column
+    @review_manufacture = Review.select("manufacture_id").distinct
+    @review_type = Review.select("type_id").distinct
+    @review_level = Review.select("level_id").distinct
   end
 end
