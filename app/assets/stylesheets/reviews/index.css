@@ -2,12 +2,13 @@
   width: 100%;
   background-color: #dbdada;
   min-width: 800px;
+  display: flex;
 }
 
 .main-wrapper {
-  margin: 0 200px;
+  margin: 0 ;
   background-color: #ffffff;
-  min-width: 600px;
+  min-width: 500px;
 }
 
 .top-img {
@@ -58,4 +59,66 @@
   color: black;
   font-size: 20px;
   font-weight: bold;
+}
+
+/* ここからは検索フォーム */
+
+.search-form {
+  padding-right: 20px;
+  display: flex;
+  align-items: center;
+  width: 50vw;
+}
+
+.search-form>.search-input {
+  height: 50px;
+  width: 100%;
+  padding-left: 10px;
+}
+
+.search-form>.search-btn {
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+}
+
+.menu-icon {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 30px;
+}
+
+.nav-lists{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+  font-size: 25px;
+}
+
+.login {
+  text-decoration: none;
+  margin-right: 3vw;
+  color: #ffffff;
+}
+
+.sign-up {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.user-nickname {
+  text-decoration: none;
+  margin-right: 3vw;
+  color: #ffffff;
+}
+
+.logout {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.review-btn {
+  text-decoration: none;
+  margin-right: 3vw;
+  color: #ffffff;
 }
