@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :search_review, only: [:index, :search]
 
   def index
     @reviews = Review.all.order('created_at DESC')
@@ -39,6 +40,10 @@ class ReviewsController < ApplicationController
     render :show unless @review.destroy
   end
 
+  def search
+    @results = @search.result.includes(:manufacture, :type, :speed, :spin, :level, :evaluation)
+  end
+
   private
 
   def move_to_index
@@ -51,5 +56,9 @@ class ReviewsController < ApplicationController
 
   def set_review
     @review = Review.find(params[:id])
+  end
+
+  def search_review
+    @search = Review.ransack(params[:q])
   end
 end
