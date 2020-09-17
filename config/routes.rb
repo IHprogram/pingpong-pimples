@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :reviews do
     resources :comments, only: :create
   end
+  get 'reviews/search'
 end
