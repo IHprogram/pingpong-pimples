@@ -1,0 +1,6 @@
+#image-list>div>img {
+  height: 300px;
+  width: 300px;
+  object-fit: contain;
+  margin: 30px;
+}
