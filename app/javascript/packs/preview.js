@@ -7,6 +7,7 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
       const blob = window.URL.createObjectURL(file);
 
       const imageElement = document.createElement('div');
+      const blobImage = document.createElement('img')
     });
   });
 }
