@@ -1,7 +1,9 @@
 <%= render "shared/second-header" %>
 
 <div class="mypage">
-  <h2><%= @nickname %>さんの投稿一覧</h2>
+  <div class="username-wrapper">
+    <h2 class="user-name"><%= @nickname %>さんの投稿一覧</h2>
+  </div>
   <% if @reviews.length > 0 %>
     <% @reviews.each do |review| %>
       <li class='list'>
