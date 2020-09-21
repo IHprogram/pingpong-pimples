@@ -29,8 +29,6 @@ font-size: 30px;
 
 .nav-lists{
   display: flex;
-  justify-content: flex-end;
-  margin-top: 15px;
   font-size: 20px;
 }
 
