@@ -1,0 +1,9 @@
+.username-wrapper {
+  text-align: center;
+  margin: 50px auto;
+}
+
+.user-name {
+  font-size: 30px;
+  font-weight: bold;
+}

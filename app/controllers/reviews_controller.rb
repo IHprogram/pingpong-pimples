@@ -64,8 +64,8 @@ class ReviewsController < ApplicationController
   end
 
   def set_review_column
-    @review_manufacture = Review.select("manufacture_id").distinct
-    @review_type = Review.select("type_id").distinct
-    @review_level = Review.select("level_id").distinct
+    @review_manufacture = Review.select('manufacture_id').distinct
+    @review_type = Review.select('type_id').distinct
+    @review_level = Review.select('level_id').distinct
   end
 end

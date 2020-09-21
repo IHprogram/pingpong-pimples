@@ -115,7 +115,7 @@
         <% @comments.each do |comment| %>
           <div class="comment-content-wrapper">
             <p class="comment-content">
-              <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}", class:"comment-user" %>：</strong>
+              <strong><%= link_to comment.user.nickname, user_path(comment.user.id), class:"comment-user" %>：</strong>
               <%= comment.content %>
             </p>
           </div>
