@@ -8,6 +8,15 @@
   align-items: center;
 }
 
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo-wrapper {
+  margin-left: 30px;
+}
+
 .header-logo {
   color: #ffffff;
   font-family: 'Alegreya Sans SC', sans-serif;
