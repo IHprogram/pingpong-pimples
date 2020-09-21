@@ -1,11 +1,20 @@
 .top-page-header {
-  padding: 40px;
+  padding: 20px;
   background-color: black;
   width: 100vw;
-  height: 150px;
+  height: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo-wrapper {
+  margin-left: 30px;
 }
 
 .header-logo {
@@ -15,14 +24,12 @@
 }
 
 .header-logo h1 {
-font-size: 65px;
+font-size: 30px;
 }
 
 .nav-lists{
   display: flex;
-  justify-content: flex-end;
-  margin-top: 15px;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .login {
