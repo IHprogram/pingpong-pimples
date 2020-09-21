@@ -9,12 +9,8 @@
   margin: 0 50px 0 25px;
   background-color: #ffffff;
   min-width: 500px;
-}
-
-.top-img {
   width: 100%;
 }
-
 
 .review-lists-title {
   text-align: center;
@@ -120,6 +116,3 @@
   height: 50px;
   font-size: 30px;
 }
-
-
-
