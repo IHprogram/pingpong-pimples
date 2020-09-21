@@ -3,13 +3,15 @@
   background-color: #dbdada;
   min-width: 800px;
   display: flex;
+  padding: 50px 0;
 }
 
 .right-wrapper {
   margin: 0 50px 0 25px;
   background-color: #ffffff;
-  min-width: 500px;
+  min-width: 300px;
   width: 100%;
+  height: 100%;
 }
 
 .review-lists-title {
@@ -17,15 +19,23 @@
   margin: 30px 0;
 }
 
+.review-lists {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .new-review-title {
   font-size: 25px;
 }
 
 .list {
-  border-bottom: 1px solid rgb(187, 187, 187);
-  padding: 20px;
   list-style: none;
-
+  width: calc((100% - 150px) / 3);
+  width: 280px;
+  height: 280px;
+  margin-bottom: 25px;
 }
 
 .review-show-link {
@@ -33,35 +43,42 @@
 }
 
 .review-info {
-  width: 80%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
+  position: relative;
 }
 
-.review-img {
-  width: 200px;
-  height: 200px;
+.review-img-content>img {
+  object-fit: cover;
+  width: 280px;
+  height: 280px;
 }
 
 .top-review-detail {
-  margin-left: 50px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  width: 100%;
+  padding: 10px;
 }
 
 .top-review-group {
   display: flex;
-  margin: 20px 0;
+  margin: 5px 0;
 }
 
 .top-review-name {
-  color: black;
-  font-size: 20px;
+  color: #ffffff;
+  font-size: 12px;
 }
 
 .top-review-value {
-  color: black;
-  font-size: 20px;
+  color: #ffffff;
+  font-size: 12px;
   font-weight: bold;
 }
 
@@ -78,7 +95,7 @@
   background-color: #FFFFFF;
   width: 100%;
   height: 70%;
-  min-width: 300px;
+  min-width: 280px;
   padding: 20px 0;
 }
 
