@@ -13,7 +13,6 @@
     </div>
 
     <div class="header-right">
-      <div class="nav">
         <ul class="nav-lists">
           <% if user_signed_in? %>
             <li><%= link_to '投稿する', new_review_path, class:"review-btn" %></li>
@@ -24,7 +23,6 @@
             <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
           <% end %>
         </ul>
-      </div>
     </div>
   
 </header>
