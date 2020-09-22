@@ -68,6 +68,10 @@
       </div>
     </div>
 
+    <%# いいね機能 %>
+    <%= render "likes/like" %>
+    <%# いいね機能/%>
+
     <% if user_signed_in? && current_user.id == @review.user_id %>
       <div class="review-buttons">
         <%= link_to edit_review_path, class:"edit-btn" do %>
