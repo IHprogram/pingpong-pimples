@@ -1,0 +1,5 @@
+<% if Like.find_by(user_id: current_user.id, review_id: @review.id) %>
+  <%= link_to "いいね！済み", "/likes/#{@review.id}/destroy", method: :post %>
+<% else %>
+  <%= link_to "いいね！", "/likes/#{@review.id}/create", method: :post %>
+<% end %>
