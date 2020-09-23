@@ -12,6 +12,7 @@ class CreateReviews < ActiveRecord::Migration[6.0]
       t.integer     :evaluation_id,   null: false
       t.text        :content,         null: false
       t.references  :user,            null: false, foreign_key: true
+      t.boolean     :liked
       t.integer     :likes_count
       t.timestamps
     end

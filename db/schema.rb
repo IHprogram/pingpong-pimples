@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2020_09_21_235705) do
     t.integer "evaluation_id", null: false
     t.text "content", null: false
     t.bigint "user_id", null: false
+    t.boolean "liked"
     t.integer "likes_count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
