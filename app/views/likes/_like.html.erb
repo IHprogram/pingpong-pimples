@@ -1,36 +1,8 @@
-<% if user_signed_in? %>
-  <% if Like.find_by(user_id: current_user.id, review_id: @review.id) %>
-    <div class="like-btn-content">
-      <%= link_to "/likes/#{@review.id}/destroy", method: :post, class:"like-btn" do %>
-        <p class="like-btn-text">
-          <i class="fas fa-thumbs-up like-click"></i> いいね！
-        </p>
-      <% end %>
-      <span class="like-count">
-        <%= @like_count.length %>
-      </span>
-    </div>
-  <% else %>
-    <div class="like-btn-content">
-      <%= link_to "/likes/#{@review.id}/create", method: :post, class:"like-btn" do %>
-        <p class="like-btn-text">
-          <i class="far fa-thumbs-up like-notclick"></i> いいね！
-        </p>
-      <% end %>
-      <span class="like-count">
-        <%= @like_count.length %>
-      </span>
-    </div>
-  <% end %>
-<% else %>
-  <div class="like-btn-content">
-    <%= link_to new_user_session_path,class:"like-btn" do %>
-      <p class="like-btn-text">
-        <i class="far fa-thumbs-up like-notclick"></i> いいね！
-      </p>
-    <% end %>
-    <span class="like-count">
-      <%= @like_count.length %>
-    </span>
-  </div>
-<% end %>
+<div class="like-btn-content">
+  <p class="like-btn" id="like-btn">
+    <i class="fas fa-thumbs-up like-notclick" id="like-icon" ></i> いいね！
+  </p>
+  <span class="like-count">
+    <%= @like_count.length %>
+  </span>
+</div>
