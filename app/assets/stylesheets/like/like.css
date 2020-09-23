@@ -1,20 +1,13 @@
-.like-btn {
-  text-decoration: none;
-}
-
 .like-btn-content {
   width: 70%;
   margin: 0 auto;
   display: flex;
   justify-content: flex-end;
-}
-
-.like-btn-content>a {
   color: black;
 }
 
-.like-click {
-  color: #dc143c;
+.like-btn {
+  cursor: pointer;
 }
 
 .like-count {
