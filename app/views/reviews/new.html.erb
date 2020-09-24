@@ -47,6 +47,12 @@
         </div>
         <div class="detail-group">
           <div class="weight-bold-text">
+            打球感
+          </div>
+          <%= f.collection_select(:hardness_id, Hardness.all, :id, :name, {}, {class:"select-box", id:"hardness-id"}) %>
+        </div>
+        <div class="detail-group">
+          <div class="weight-bold-text">
             スピン（10点満点中）
           </div>
           <%= f.collection_select(:spin_id, Spin.all, :id, :name, {}, {class:"select-box", id:"spin-id"}) %>
