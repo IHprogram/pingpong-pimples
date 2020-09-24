@@ -23,6 +23,7 @@ class Review < ApplicationRecord
     validates :spin_id,        numericality: { other_than: 1, message: 'Select' }
     validates :speed_id,       numericality: { other_than: 1, message: 'Select' }
     validates :control_id,     numericality: { other_than: 1, message: 'Select' }
+    validates :hardness_id,    numericality: { other_than: 1, message: 'Select' }
     validates :price,          format: { with: HALF_WIDTH_NUMBER_REGEX, message: 'Half-width number' }
     validates :evaluation_id,  numericality: { other_than: 1, message: 'Select' }
     validates :content
