@@ -47,13 +47,13 @@
         </div>
         <div class="detail-group">
           <div class="weight-bold-text">
-            ラバーの硬度（半角数字で入力してください）
+            打球感
           </div>
-          <%= f.text_field :hardness, class:"hardness-input", id:"product-hardness", placeholder:"半角数字で入力してください" %>
+          <%= f.collection_select(:hardness_id, Hardness.all, :id, :name, {}, {class:"select-box", id:"hardness-id"}) %>
         </div>
         <div class="detail-group">
           <div class="weight-bold-text">
-            回転量（10点満点中）
+            スピン（10点満点中）
           </div>
           <%= f.collection_select(:spin_id, Spin.all, :id, :name, {}, {class:"select-box", id:"spin-id"}) %>
         </div>
@@ -65,15 +65,15 @@
         </div>
         <div class="detail-group">
           <div class="weight-bold-text">
-            商品の価格（半角数字で入力してください）
+            コントロール（10点満点中）
           </div>
-          <%= f.text_field :price, class:"price-input", id:"product-price", placeholder:"半角数字で入力してください" %>
+          <%= f.collection_select(:control_id, Control.all, :id, :name, {}, {class:"select-box", id:"control-id"}) %>
         </div>
         <div class="detail-group">
           <div class="weight-bold-text">
-            おすすめのレベル層
+            商品の価格（半角数字で入力してください）
           </div>
-          <%= f.collection_select(:level_id, Level.all, :id, :name, {}, {class:"select-box", id:"level-id"}) %>
+          <%= f.text_field :price, class:"price-input", id:"product-price", placeholder:"半角数字で入力してください" %>
         </div>
         <div class="detail-group">
           <div class="weight-bold-text">
@@ -92,7 +92,7 @@
 
       <div class="review-btn-contents">
         <div class="review-btn-wrap">
-          <%= f.submit "レビューを投稿する" ,class: "review-button" %>
+          <%= f.submit "レビューを編集する" ,class: "review-button" %>
         </div>
         <div class="back-btn-wrap">
           <%=link_to 'もどる', review_path(@review.id), class: "back-button" %>
