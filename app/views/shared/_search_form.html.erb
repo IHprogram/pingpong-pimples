@@ -19,11 +19,25 @@
                 </div>
                 <div class="search-select">
                   <%= form.radio_button :type_id_eq, '2' %>
-                  表ソフト
+                  裏ソフト
                 </div>
                 <div class="search-select">
                   <%= form.radio_button :type_id_eq, '3' %>
-                  粒高ソフト
+                  表ソフト
+                </div>
+                <div class="search-select">
+                  <%= form.radio_button :type_id_eq, '4' %>
+                  粒高
+                </div><div class="search-select">
+                  <%= form.radio_button :type_id_eq, '5' %>
+                  アンチ
+                </div><div class="search-select">
+                  <%= form.radio_button :type_id_eq, '6' %>
+                  一枚
+                </div>
+                <div class="search-select">
+                  <%= form.radio_button :type_id_eq, '7' %>
+                  ラージ用
                 </div>
               </div>
             </div>
@@ -161,42 +175,6 @@
             </div>
           </div>
           <%# /価格 %>
-
-          <%# レベル層 %>
-            <div class="search-group">
-              <%= form.label :level_id_eq, 'レベル層' %>
-              <div class="search-select-wrapper">
-                <div class="search-select">
-                  <%= form.radio_button :level_id_eq, '' %>
-                  指定なし
-                </div>
-                <div class="search-select">
-                  <%= form.radio_button :level_id_eq, '2' %>
-                  初心者向け
-                </div>
-                <div class="search-select">
-                  <%= form.radio_button :level_id_eq, '3' %>
-                  初級者向け
-                </div>
-                <div class="search-select">
-                  <%= form.radio_button :level_id_eq, '4' %>
-                  市大会上位選手向け
-                </div>
-                <div class="search-select">
-                  <%= form.radio_button :level_id_eq, '5' %>
-                  県大会上位選手向け
-                </div>
-                <div class="search-select">
-                  <%= form.radio_button :level_id_eq, '6' %>
-                  全国大会出場者向け
-                </div>
-                <div class="search-select">
-                  <%= form.radio_button :level_id_eq, '7' %>
-                  全国大会上位選手向け
-                </div>
-              </div>
-            </div>
-          <%# /レベル層 %>
           
           <%= button_tag type: "submit", class: "search-btn" do %>
             <i class="fas fa-search"></i>

@@ -56,16 +56,15 @@ ActiveRecord::Schema.define(version: 2020_09_21_235705) do
     t.string "name", null: false
     t.integer "manufacture_id", null: false
     t.integer "type_id", null: false
-    t.integer "hardness", null: false
     t.integer "spin_id", null: false
     t.integer "speed_id", null: false
     t.integer "price", null: false
-    t.integer "level_id", null: false
     t.integer "evaluation_id", null: false
     t.text "content", null: false
     t.bigint "user_id", null: false
-    t.boolean "liked"
     t.integer "likes_count"
+    t.integer "control_id", null: false
+    t.integer "hardness_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_reviews_on_user_id"

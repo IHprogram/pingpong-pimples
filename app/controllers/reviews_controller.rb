@@ -53,7 +53,7 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:name, :manufacture_id, :type_id, :hardness, :spin_id, :speed_id, :price, :level_id, :evaluation_id, :content, :image).merge(user_id: current_user.id)
+    params.require(:review).permit(:name, :manufacture_id, :type_id, :spin_id, :speed_id, :control_id, :hardness_id, :price, :evaluation_id, :content, :image).merge(user_id: current_user.id)
   end
 
   def set_review
@@ -67,6 +67,5 @@ class ReviewsController < ApplicationController
   def set_review_column
     @review_manufacture = Review.select('manufacture_id').distinct
     @review_type = Review.select('type_id').distinct
-    @review_level = Review.select('level_id').distinct
   end
 end

@@ -2,13 +2,6 @@
 
 <div class="review-show">
   <div class="review-show-wrapper">
-    <div class="review-header">
-      <div class="review-title-wrapper">
-        <h2 class="review-title">
-          レビュー内容
-        </h2>
-      </div>
-    </div>
 
     <div class="review-show-image">
         <%= image_tag @review.image, class:"show-img" %>
@@ -33,8 +26,8 @@
           <td class="detail-value"><%= @review.type.name %></td>
         </tr>
         <tr>
-          <th class="detail-product">ラバーの硬度</th>
-          <td class="detail-value"><%= @review.hardness %><span>度</span></td>
+          <th class="detail-product">打球感</th>
+          <td class="detail-value"><%= @review.hardness.name %><span>度</span></td>
         </tr>
         <tr>
           <th class="detail-product">回転量</th>
@@ -45,12 +38,12 @@
           <td class="detail-value"><%= @review.speed.name %><span>点</span></td>
         </tr>
         <tr>
-          <th class="detail-product">商品の価格</th>
-          <td class="detail-value"><%= @review.price %><span>円</span></td>
+          <th class="detail-product">コントロール</th>
+          <td class="detail-value"><%= @review.control.name %><span>点</span></td>
         </tr>
         <tr>
-          <th class="detail-product">おすすめのレベル層</th>
-          <td class="detail-value"><%= @review.level.name %></td>
+          <th class="detail-product">商品の価格</th>
+          <td class="detail-value"><%= @review.price %><span>円</span></td>
         </tr>
         <tr>
           <th class="detail-product">総合評価</th>
