@@ -10,6 +10,7 @@ class Review < ApplicationRecord
   belongs_to_active_hash :spin
   belongs_to_active_hash :speed
   belongs_to_active_hash :control
+  belongs_to_active_hash :hardness
   belongs_to_active_hash :evaluation
 
   HALF_WIDTH_NUMBER_REGEX = /\A[0-9]+\z/.freeze
