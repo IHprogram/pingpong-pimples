@@ -24,6 +24,7 @@ class ReviewsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @review.comments.includes(:user)
+    @like_count = Like.where("review_id = #{@review.id}")
   end
 
   def edit

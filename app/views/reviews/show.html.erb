@@ -68,22 +68,26 @@
       </div>
     </div>
 
+    <%# いいね機能 %>
+    <%= render "likes/like" %>
+    <%# いいね機能/%>
+
     <% if user_signed_in? && current_user.id == @review.user_id %>
       <div class="review-buttons">
-        <div class="edit-btn-wrapper">
-          <%= link_to edit_review_path, class:"edit-btn" do %>
+        <%= link_to edit_review_path, class:"edit-btn" do %>
+          <div class="edit-btn-wrapper">
             <h3>
               <i class="fas fa-pen-nib"></i> 編集する
             </h3>
-          <% end %>
-        </div>
-        <div class="delete-btn-wrapper">
-          <%= link_to review_path(@review.id), method: :delete, class:"delete-btn" do %>
+          </div>
+        <% end %>
+        <%= link_to review_path(@review.id), method: :delete, class:"delete-btn" do %>
+          <div class="delete-btn-wrapper">
             <h3>
               <i class="fas fa-exclamation-triangle"></i> 削除する
             </h3>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>

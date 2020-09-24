@@ -1,6 +1,6 @@
 class Review < ApplicationRecord
   has_many :comments
-  has_many :likes
+  has_many :likes, dependent: :destroy
   belongs_to :user
   has_one_attached :image
 
@@ -26,5 +26,9 @@ class Review < ApplicationRecord
     validates :level_id,       numericality: { other_than: 1, message: 'Select' }
     validates :evaluation_id,  numericality: { other_than: 1, message: 'Select' }
     validates :content
+  end
+
+  def like_user(user_id)
+    likes.find_by(user_id: user_id)
   end
 end

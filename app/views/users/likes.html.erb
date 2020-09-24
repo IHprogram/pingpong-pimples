@@ -1,0 +1,57 @@
+<%= render "shared/header" %>
+
+  <h1>いいねした投稿一覧</h1>
+
+  <% if @likes.length == 0 %>
+    <p>いいねしたレビューはありません</p>
+  <% else %>
+    <% @likes.each do |like| %>
+      <li class='list'>
+        <%= link_to review_path(like.review.id), class:"review-show-link" do %>
+          <div class='review-info'>
+            <div class='review-img-content'>
+              <%= image_tag like.review.image, class: "review-img" %>
+            </div>
+            <div class="top-review-detail">
+              <div class="top-review-group">
+                <span class="top-review-name">
+                  商品名：
+                </span>
+                <h3 class="top-review-value">
+                  <%= like.review.name %>
+                </h3>
+              </div>
+              <div class="top-review-group">
+                <span class="top-review-name">
+                  ユーザー：
+                </span>
+                <h3 class="top-review-value">
+                  <%= like.user.nickname %>
+                </h3>
+              </div>
+              <div class="top-review-group">
+                <span class="top-review-name">
+                  メーカー：
+                </span>
+                <h3 class="top-review-value">
+                  <%= like.review.manufacture.name %>
+                </h3>
+              </div>
+              <div class="top-review-group">
+                <span class="top-review-name">
+                  総合評価：
+                </span>
+                <h3 class="top-review-value">
+                  <%= like.review.evaluation.name %>
+                </h3>
+                <span class="top-review-name">
+                  点
+                </span>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </li>
+    <% end %>      
+  <% end %>
+<%= render "shared/footer" %>
