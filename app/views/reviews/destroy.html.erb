@@ -1,10 +1,14 @@
 <%= render "shared/header" %>
 
-<%= "削除が完了しました" %>
-<%= link_to root_path, class:"top-page-btn" do %>
-  <h3>
-    トップページに戻る
-  </h3>
-<% end %>
+<div class="delition-completed-wrapper">
+  <div class="delition-completed">
+    <h2>削除が完了しました</h2>
+    <%= link_to root_path, class:"toppage-btn-wrapper" do %>
+      <div class="toppage-btn">
+        <p>トップページに戻る</p>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 <%= render "shared/footer" %>
