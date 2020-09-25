@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :comments
   has_many :likes, dependent: :destroy
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_one  :profile
 
   validates :nickname, presence: true, uniqueness: true
