@@ -2,14 +2,12 @@
 
 <div class="mypage-main">
   <div class="mypage-content">
-    <%# <div class="mypage-header"> %>
-      <div class="username-wrapper">
-        <h2 class="user-name"><%= @nickname %>さんのレビュー一覧</h2>
-      </div>
-      <div class="like-link-wrapper">
-        <%= link_to 'いいね一覧', "/users/#{@user.id}/likes", class:"like-link-btn"  %>
-      </div>
-    <%# </div> %>
+    <div class="username-wrapper">
+      <h2 class="user-name"><%= @nickname %>さんのレビュー一覧</h2>
+    </div>
+    <div class="like-link-wrapper">
+      <%= link_to 'いいね一覧', "/users/#{@user.id}/likes", class:"like-link-btn"  %>
+    </div>
     <ul class='review-lists'>
       <% if @reviews.length > 0 %>
         <% @reviews.each do |review| %>
