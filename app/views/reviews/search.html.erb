@@ -1,68 +1,75 @@
 <%= render "shared/header" %>
 
-<div class="result-title-wrapper">
-  <h1 class="result-title">
-    検索結果
-  </h1>
-</div>
-<% if @results.length != 0 %>
-  <% @results.each do |result| %>
-    <td>
-    <br>
-    <li class='list'>
-      <%= link_to review_path(result.id), class:"review-show-link" do %>
-        <div class='review-info'>
-          <div class='review-img-content'>
-            <%= image_tag result.image, class: "review-img" %>
-          </div>
-          <div class="top-review-detail">
-            <div class="top-review-group">
-              <span class="top-review-name">
-                商品名：
-              </span>
-              <h3 class="top-review-value">
-                <%= result.name %>
-              </h3>
-            </div>
-            <div class="top-review-group">
-              <span class="top-review-name">
-                ユーザー：
-              </span>
-              <h3 class="top-review-value">
-                <%= result.user.nickname %>
-              </h3>
-            </div>
-            <div class="top-review-group">
-              <span class="top-review-name">
-                メーカー：
-              </span>
-              <h3 class="top-review-value">
-                <%= result.manufacture.name %>
-              </h3>
-            </div>
-            <div class="top-review-group">
-              <span class="top-review-name">
-                総合評価：
-              </span>
-              <h3 class="top-review-value">
-                <%= result.evaluation.name %>
-              </h3>
-              <span class="top-review-name">
-                点
-              </span>
-            </div>
-          </div>
-        </div>
+<div class="result-main">
+  <div class="result-content">
+    <div class="result-title-wrapper">
+      <h1 class="result-title">
+        検索結果
+      </h1>
+    </div>
+    <ul class='review-lists'>
+      <% if @results.length != 0 %>
+        <% @results.each do |result| %>
+          <td>
+          <br>
+          <li class='list'>
+            <%= link_to review_path(result.id), class:"review-show-link" do %>
+              <div class='review-info'>
+                <div class='review-img-content'>
+                  <%= image_tag result.image, class: "review-img" %>
+                </div>
+                <div class="top-review-detail">
+                  <div class="top-review-group">
+                    <span class="top-review-name">
+                      商品名：
+                    </span>
+                    <h3 class="top-review-value">
+                      <%= result.name %>
+                    </h3>
+                  </div>
+                  <div class="top-review-group">
+                    <span class="top-review-name">
+                      ユーザー：
+                    </span>
+                    <h3 class="top-review-value">
+                      <%= result.user.nickname %>
+                    </h3>
+                  </div>
+                  <div class="top-review-group">
+                    <span class="top-review-name">
+                      メーカー：
+                    </span>
+                    <h3 class="top-review-value">
+                      <%= result.manufacture.name %>
+                    </h3>
+                  </div>
+                  <div class="top-review-group">
+                    <span class="top-review-name">
+                      総合評価：
+                    </span>
+                    <h3 class="top-review-value">
+                      <%= result.evaluation.name %>
+                    </h3>
+                    <span class="top-review-name">
+                      点
+                    </span>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      <% else %>
+        該当するレビューはありません。
       <% end %>
-    </li>
-  <% end %>
-<% else %>
-  該当するレビューはありません。
-<% end %>
+    </ul>
 
-<div class="top-page-back">
-  <div class="back-btn-wrap">
-    <%=link_to 'トップページにもどる', root_path, class: "back-button" %>
+    <div class="top-page-back">
+      <div class="back-btn-wrap">
+        <%=link_to 'トップページにもどる', root_path, class: "back-button" %>
+      </div>
+    </div>
   </div>
 </div>
+
 <%= render "shared/footer" %>

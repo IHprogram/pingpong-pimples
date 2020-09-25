@@ -1,5 +1,4 @@
 class LikesController < ApplicationController
-
   def create
     @like = current_user.likes.build(review_id: params[:review_id])
     @like.save
