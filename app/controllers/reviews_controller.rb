@@ -72,8 +72,6 @@ class ReviewsController < ApplicationController
 
   def exist_review?
     #  データベースに存在しないIDがURLに入力された場合、トップページに遷移する。
-    unless Review.find_by(id: params[:id])
-      redirect_to root_path
-    end
+    redirect_to root_path unless Review.find_by(id: params[:id])
   end
 end
