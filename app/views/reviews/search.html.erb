@@ -10,8 +10,6 @@
     <ul class='review-lists'>
       <% if @results.length != 0 %>
         <% @results.each do |result| %>
-          <td>
-          <br>
           <li class='list'>
             <%= link_to review_path(result.id), class:"review-show-link" do %>
               <div class='review-info'>
