@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :exist_review?, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, except: [:index, :show]
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :search_review, only: [:index, :search]
@@ -67,5 +68,12 @@ class ReviewsController < ApplicationController
   def set_review_column
     @review_manufacture = Review.select('manufacture_id').distinct
     @review_type = Review.select('type_id').distinct
+  end
+
+  def exist_review?
+    #  データベースに存在しないIDがURLに入力された場合、トップページに遷移する。
+    unless Review.find_by(id: params[:id])
+      redirect_to root_path
+    end
   end
 end
