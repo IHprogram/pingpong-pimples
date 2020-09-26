@@ -1,11 +1,12 @@
 <%= render "shared/header" %>
 
 <div class="result-main">
-  <div class="result-content">
+
+  <%= render "shared/search_form" %>
+
+  <div class="right-wrapper">
     <div class="result-title-wrapper">
-      <h1 class="result-title">
-        検索結果
-      </h1>
+      <h1 class="result-title">検索結果</h1>
     </div>
     <ul class='review-lists'>
       <% if @results.length != 0 %>
