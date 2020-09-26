@@ -62,7 +62,9 @@
     </div>
 
     <%# いいね機能 %>
-    <%= render "likes/like" %>
+      <div class="like-button-box">
+        <%= render partial: "likes/like", locals: {review: @review} %>
+      </div>
     <%# いいね機能/%>
 
     <% if user_signed_in? && current_user.id == @review.user_id %>
