@@ -6,8 +6,10 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
-    resources :likes, only:[:create, :destroy]
   end
+  post 'likes/create', to: 'likes#create'
+  delete 'likes/destroy', to: 'likes#destroy'
+
   get "users/:id/likes" => "users#likes" # いいね一覧表示のためのルーティング
   resources :users, only: :show
 end
