@@ -1,7 +1,3 @@
-.like-btn {
-  text-decoration: none;
-}
-
 .like-btn-content {
   width: 70%;
   margin: 0 auto;
@@ -9,8 +5,9 @@
   justify-content: flex-end;
 }
 
-.like-btn-content>a {
-  color: #000000;;
+.like-btn {
+  text-decoration: none;
+  color: #000000;
 }
 
 .like-click {

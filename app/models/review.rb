@@ -2,6 +2,7 @@ class Review < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   belongs_to :user
+  has_many :users, through: :likes
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
