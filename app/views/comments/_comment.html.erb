@@ -3,5 +3,7 @@
     <strong><%= link_to comment.user.nickname, user_path(comment.user.id), class:"comment-user" %>：</strong>
     <%= comment.content %>
   </p>
-  <%= link_to "削除", comment_path(comment), method: :delete, data: { confirm: "コメントを完全に削除してもよろしいですか？" }, remote: true %>
+  <% if user_signed_in? && current_user.id == @review.user_id %>
+    <%= link_to "削除", comment_path(comment), method: :delete, data: { confirm: "コメントを完全に削除してもよろしいですか？" }, remote: true %>
+  <% end %>
 </div>
