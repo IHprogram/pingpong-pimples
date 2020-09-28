@@ -1,0 +1,4 @@
+$(function(){
+  $('#users-comments').prepend("<%= j(render 'comment', { comment: @comment }) %>");
+  $('#comment_content').val('');
+});
