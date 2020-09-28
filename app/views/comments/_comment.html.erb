@@ -1,34 +1,7 @@
-<div class="comment-form">
-  <% if current_user %>
-    <%= form_with(model: [@review, @comment], local: true) do |form| %>
-      <div class="comment-input-wrapper">
-        <%= form.text_area :content, placeholder: "コメントを入力してください", rows: "3", class:"comment-input" %>
-      </div>
-      <div class="comment-btn-wrapper">
-        <%= form.submit "コメント", class:"comment-btn" %>
-      </div>
-    <% end %>
-  <% else %>
-    <strong><p>コメントの投稿には新規登録/ログインが必要です</p></strong>
-  <% end %>
-</div>
-<div class="comments-show">
-  <div class="amount-of-comments">
-    <div class="commments-number">
-      <%= @comments.length %>
-    </div>
-    <div class="comments-text">
-      <h4>件のコメント</h4>
-    </div>
-  </div>
-  <% if @comments %>
-    <% @comments.each do |comment| %>
-      <div class="comment-content-wrapper">
-        <p class="comment-content">
-          <strong><%= link_to comment.user.nickname, user_path(comment.user.id), class:"comment-user" %>：</strong>
-          <%= comment.content %>
-        </p>
-      </div>
-    <% end %>
-  <% end %>
+<div class="comment-content-wrapper" id="comment-<%= comment.id %>">
+  <p class="comment-content" id="comment-content-id">
+    <strong><%= link_to comment.user.nickname, user_path(comment.user.id), class:"comment-user" %>：</strong>
+    <%= comment.content %>
+  </p>
+  <%= link_to "削除", comment_path(comment), method: :delete, data: { confirm: "コメントを完全に削除してもよろしいですか？" }, remote: true %>
 </div>
