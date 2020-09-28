@@ -108,21 +108,19 @@
     <%# コメント入力フォーム %>
 
     <%# コメント表示欄 %>
-    <div id="comment-show-box">
-      <div class="comments-show-wrapper">
-        <div class="amount-of-comments">
-          <div class="commments-number">
-            <%= @comments.length %>
-          </div>
-          <div class="comments-text">
-            <h4>件のコメント</h4>
-          </div>
+    <div class="comments-show-wrapper">
+      <div class="amount-of-comments">
+        <div class="commments-number">
+          <%= @comments.length %>
         </div>
-        <div id="users-comments">
-          <% if @comments %>
-            <%= render @comments %>
-          <% end %>
+        <div class="comments-text">
+          <h4>件のコメント</h4>
         </div>
+      </div>
+      <div id="users-comments">
+        <% if @comments %>
+          <%= render @comments %>
+        <% end %>
       </div>
     </div>
     <%# コメント表示欄 %>
