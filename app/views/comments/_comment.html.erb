@@ -1,9 +1,17 @@
 <div class="comment-content-wrapper" id="comment-<%= comment.id %>">
-  <p class="comment-content">
-    <strong><%= link_to comment.user.nickname, user_path(comment.user.id), class:"comment-user" %>：</strong>
-    <%= comment.content %>
-  </p>
-  <% if user_signed_in? && (current_user.id == comment.user_id) %>
-    <%= link_to "削除", comment_path(comment), method: :delete, data: { confirm: "コメントを完全に削除してもよろしいですか？" }, remote: true %>
-  <% end %>
+  <div class="comment-text-wrapper">
+    <p class="comment-text">
+      <strong><%= link_to comment.user.nickname, user_path(comment.user.id), class:"comment-user" %>：</strong>
+      <%= comment.content %>
+    </p>
+  </div>
+  <div class="comment-delete-wrapper">
+    <% if user_signed_in? && (current_user.id == comment.user_id) %>
+      <%= link_to comment_path(comment), method: :delete, data: { confirm: "コメントを完全に削除してもよろしいですか？" }, remote: true, class:"comment-delete-btn" do %>
+        <p>
+          <i class="fas fa-trash"></i> 削除
+          </p>
+      <% end %>
+    <% end %>
+  </div>
 </div>
