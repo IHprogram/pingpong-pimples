@@ -1,5 +1,5 @@
 .comments {
-  width: 50%;
+  width: 60%;
   margin: 50px auto 0;
   background-color: #ffffff;
   padding-bottom: 20px;
@@ -50,4 +50,31 @@
   text-decoration: none;
   color: #00BFFF;
   cursor: pointer;
+}
+
+.comment-content-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-text-wrapper {
+  width: 80%;
+}
+
+.comment-text {
+  word-wrap: break-word;
+}
+
+.comment-delete-wrapper {
+  width: 70px;
+  height: 30px;
+  background-color: #dc143c;
+  border-radius: 30px;
+  padding: 5px;
+  text-align: center;
+}
+
+.comment-delete-btn {
+  text-decoration: none;
+  color: #ffffff;
 }

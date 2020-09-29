@@ -5,13 +5,13 @@
       <%= comment.content %>
     </p>
   </div>
-  <div class="comment-delete-wrapper">
-    <% if user_signed_in? && (current_user.id == comment.user_id) %>
+  <% if user_signed_in? && (current_user.id == comment.user_id) %>
+    <div class="comment-delete-wrapper">
       <%= link_to comment_path(comment), method: :delete, data: { confirm: "コメントを完全に削除してもよろしいですか？" }, remote: true, class:"comment-delete-btn" do %>
         <p>
           <i class="fas fa-trash"></i> 削除
           </p>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
