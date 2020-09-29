@@ -89,7 +89,6 @@
 
   <%# コメント機能 %>
   <div class="comments">
-
     <%# コメント入力フォーム %>
     <div class="comment-form">
       <% if current_user %>
@@ -110,8 +109,8 @@
     <%# コメント表示欄 %>
     <div class="comments-show-wrapper">
       <div class="amount-of-comments">
-        <div class="commments-number">
-          <%= @comments.length %>
+        <div class="comments-number">
+          <%= render partial: 'comments/comments_count', locals: { comments_count: @comments_count } %>
         </div>
         <div class="comments-text">
           <h4>件のコメント</h4>
