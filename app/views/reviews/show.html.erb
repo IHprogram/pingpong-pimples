@@ -76,7 +76,7 @@
             </h3>
           </div>
         <% end %>
-        <%= link_to review_path(@review.id), method: :delete, class:"delete-btn" do %>
+        <%= link_to review_path(@review.id), method: :delete, class:"delete-btn", data: { confirm: "レビューを完全に削除してもよろしいですか？" } do %>
           <div class="delete-btn-wrapper">
             <h3>
               <i class="fas fa-exclamation-triangle"></i> 削除する
@@ -86,10 +86,13 @@
       </div>
     <% end %>
   </div>
+
+  <%# コメント機能 %>
   <div class="comments">
+    <%# コメント入力フォーム %>
     <div class="comment-form">
       <% if current_user %>
-        <%= form_with(model: [@review, @comment], local: true) do |form| %>
+        <%= form_with(model: [@review, @comment], remote: true) do |form| %>
           <div class="comment-input-wrapper">
             <%= form.text_area :content, placeholder: "コメントを入力してください", rows: "3", class:"comment-input" %>
           </div>
@@ -101,27 +104,27 @@
         <strong><p>コメントの投稿には新規登録/ログインが必要です</p></strong>
       <% end %>
     </div>
-    <div class="comments-show">
+    <%# コメント入力フォーム %>
+
+    <%# コメント表示欄 %>
+    <div class="comments-show-wrapper">
       <div class="amount-of-comments">
-        <div class="commments-number">
-          <%= @comments.length %>
+        <div class="comments-number">
+          <%= render partial: 'comments/comments_count', locals: { comments_count: @comments_count } %>
         </div>
         <div class="comments-text">
           <h4>件のコメント</h4>
         </div>
       </div>
-      <% if @comments %>
-        <% @comments.each do |comment| %>
-          <div class="comment-content-wrapper">
-            <p class="comment-content">
-              <strong><%= link_to comment.user.nickname, user_path(comment.user.id), class:"comment-user" %>：</strong>
-              <%= comment.content %>
-            </p>
-          </div>
+      <div id="users-comments">
+        <% if @comments %>
+          <%= render @comments %>
         <% end %>
-      <% end %>
+      </div>
     </div>
+    <%# コメント表示欄 %>
   </div>
+  <%# コメント機能 %>
 </div>
 
 <%= render "shared/footer" %>

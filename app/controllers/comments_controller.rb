@@ -1,7 +1,16 @@
 class CommentsController < ApplicationController
+
   def create
-    @comment = Comment.create(comment_params)
-    redirect_to "/reviews/#{@comment.review.id}"
+    @comment = current_user.comments.build(comment_params)
+    @comment.save
+    @review = Review.find(params[:review_id])
+    @comments_count = @review.comments_count
+  end
+
+  def destroy
+    @comment = Comment.find_by(id: params[:id])
+    @comment.destroy
+    @comments_count = Comment.where("review_id = #{@comment.review_id}").length
   end
 
   private

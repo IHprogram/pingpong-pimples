@@ -24,8 +24,9 @@ class ReviewsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @review.comments.includes(:user)
+    @comments = @review.comments.includes(:user).order('created_at DESC')
     @like_count = Like.where("review_id = #{@review.id}")
+    @comments_count = Comment.where("review_id = #{@review.id}").length
   end
 
   def edit

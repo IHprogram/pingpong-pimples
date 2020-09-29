@@ -1,0 +1,17 @@
+<div class="comment-content-wrapper" id="comment-<%= comment.id %>">
+  <div class="comment-text-wrapper">
+    <p class="comment-text">
+      <strong><%= link_to comment.user.nickname, user_path(comment.user.id), class:"comment-user" %>：</strong>
+      <%= comment.content %>
+    </p>
+  </div>
+  <% if user_signed_in? && (current_user.id == comment.user_id) %>
+    <div class="comment-delete-wrapper">
+      <%= link_to comment_path(comment), method: :delete, data: { confirm: "コメントを完全に削除してもよろしいですか？" }, remote: true, class:"comment-delete-btn" do %>
+        <p>
+          <i class="fas fa-trash"></i> 削除
+          </p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
