@@ -1,4 +1,5 @@
 $(function(){
   $('#users-comments').prepend("<%= j(render 'comment', { comment: @comment }) %>");
   $('#comment_content').val('');
+  $('.comments-number').html("<%= escape_javascript(render 'comments/comments_count', review: @review) %>");
 });
