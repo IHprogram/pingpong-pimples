@@ -1,1 +1,4 @@
-$('#comment-<%= @comment.id %>').remove();
+$(function(){
+  $('#comment-<%= @comment.id %>').remove();
+    $('.comments-number').html("<%= escape_javascript(render 'comments/comments_count', {comments: @comments}) %>");
+});
