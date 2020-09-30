@@ -70,3 +70,6 @@ gem 'ransack'
 gem 'pry-rails'
 
 gem 'jquery-rails'
+
+gem 'carrierwave'
+gem 'mini_magick'
