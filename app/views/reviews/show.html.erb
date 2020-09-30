@@ -52,6 +52,12 @@
       </tbody>
     </table>
 
+    <div class="review-video">
+      <%= link_to @review.video_url.to_s do %>
+        <%= video_tag(@review.video.to_s) %>
+      <% end %>
+    </div>
+
     <div class="product-content">
       <h3 class="detail-content-title">
         その他特筆すること
