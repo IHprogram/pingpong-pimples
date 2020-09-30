@@ -30,6 +30,8 @@ class Review < ApplicationRecord
     validates :content
   end
 
+  mount_uploader :video, VideoUploader
+
   def like_user(user_id)
     likes.find_by(user_id: user_id)
   end
