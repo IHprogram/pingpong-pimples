@@ -90,6 +90,13 @@
       </div>
       <%# /商品のレビュー %>
 
+      <%# 動画投稿 %>
+        <div class="video-field">
+          <%= f.label :video %>
+          <%= f.file_field :video, :accept => 'video/*' %>
+        </div>
+      <%# 動画投稿 %>
+
       <div class="review-btn-contents">
         <div class="review-btn-wrap">
           <%= f.submit "レビューを編集する" ,class: "review-button" %>
