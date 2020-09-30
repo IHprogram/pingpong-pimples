@@ -52,10 +52,15 @@
       </tbody>
     </table>
 
-    <div class="review-video">
-      <%= link_to @review.video_url.to_s do %>
-        <%= video_tag(@review.video.to_s) %>
-      <% end %>
+    <div class="review-video-wrapper">
+      <h2>
+        Video
+      </h2>
+      <div class="review-video">
+        <%= link_to @review.video_url.to_s do %>
+          <%= video_tag(@review.video.to_s) %>
+        <% end %>
+      </div>
     </div>
 
     <div class="product-content">
