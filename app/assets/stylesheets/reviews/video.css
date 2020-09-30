@@ -1,0 +1,10 @@
+.review-video-wrapper {
+  width: 80%;
+  text-align: center;
+  margin: 50px auto;
+}
+
+.review-video>a>video {
+  width: 500px;
+  margin:30px 0;
+}
