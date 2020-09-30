@@ -61,6 +61,17 @@
       </div>
     </div>
 
+    <%# 動画表示欄 %>
+    <% if @review.video.attached? %>
+      <div class="video-wrapper">
+        <h3 class="video-title">動画</h3>
+        <div class="show-video">
+          <video src="<%= rails_blob_path(@review.video) %>" type="video/mp4" controls ></video>
+        </div>
+      </div>
+    <% end %>
+    <%# 動画表示欄 %>
+
     <%# いいね機能 %>
       <div class="like-button-box">
         <%= render partial: "likes/like", locals: {review: @review} %>
