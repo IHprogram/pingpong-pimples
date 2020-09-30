@@ -25,7 +25,7 @@
       <%# 商品名 %>
       <div class="new-product">
         <div class="weight-bold-text">
-          商品名
+          商品名（必須）
         </div>
         <%= f.text_area :name, class:"product-text", id:"product-name", placeholder:"商品名" %>
       </div>
@@ -35,60 +35,72 @@
       <div class="product-detail">
         <div class="detail-group">
           <div class="weight-bold-text">
-            メーカー
+            メーカー（必須）
           </div>
           <%= f.collection_select(:manufacture_id, Manufacture.all, :id, :name, {}, {class:"select-box", id:"manufacture-id"}) %>
         </div>
         <div class="detail-group">
           <div class="weight-bold-text">
-            ラバーの種類
+            ラバーの種類（必須）
           </div>
           <%= f.collection_select(:type_id, Type.all, :id, :name, {}, {class:"select-box", id:"type-id"}) %>
         </div>
         <div class="detail-group">
           <div class="weight-bold-text">
-            打球感
+            打球感（必須）
           </div>
           <%= f.collection_select(:hardness_id, Hardness.all, :id, :name, {}, {class:"select-box", id:"hardness-id"}) %>
         </div>
         <div class="detail-group">
           <div class="weight-bold-text">
-            スピン（10点満点中）
+            スピン（必須・10点満点中）
           </div>
           <%= f.collection_select(:spin_id, Spin.all, :id, :name, {}, {class:"select-box", id:"spin-id"}) %>
         </div>
         <div class="detail-group">
           <div class="weight-bold-text">
-            スピード（10点満点中）
+            スピード（必須・10点満点中）
           </div>
           <%= f.collection_select(:speed_id, Speed.all, :id, :name, {}, {class:"select-box", id:"speed-id"}) %>
         </div>
         <div class="detail-group">
           <div class="weight-bold-text">
-            コントロール（10点満点中）
+            コントロール（必須・10点満点中）
           </div>
           <%= f.collection_select(:control_id, Control.all, :id, :name, {}, {class:"select-box", id:"control-id"}) %>
         </div>
         <div class="detail-group">
           <div class="weight-bold-text">
-            商品の価格（半角数字で入力してください）
+            商品の価格（必須・半角数字で入力してください）
           </div>
           <%= f.text_field :price, class:"price-input", id:"product-price", placeholder:"半角数字で入力してください" %>
         </div>
         <div class="detail-group">
           <div class="weight-bold-text">
-            総合評価（10点満点中）
+            総合評価（必須・10点満点中）
           </div>
           <%= f.collection_select(:evaluation_id, Evaluation.all, :id, :name, {}, {class:"select-box", id:"evaluation-id"}) %>
         </div>
         <div class="detail-group">
           <div class="weight-bold-text">
-            その他特筆すべきこと
+            その他特筆すべきこと（必須）
           </div>
           <%= f.text_area :content, class:"product-text", id:"product-info", placeholder:"その他特筆すべきこと（必須 1,000文字まで)" ,rows:"7" ,maxlength:"1000" %>
         </div>
       </div>
       <%# /商品のレビュー %>
+
+      <div class="video-upload">
+        <div class="weight-bold-text">
+          動画（動画はアップロードしなくても投稿できます）
+        </div>
+        <div class="click-upload">
+          <p>
+            クリックして動画をアップロード
+          </p>
+          <%= f.file_field :video, id:"review-video" %>
+        </div>
+      </div>
 
       <div class="review-btn-contents">
         <div class="review-btn-wrap">
