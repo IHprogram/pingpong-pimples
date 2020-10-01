@@ -6,6 +6,7 @@
       <h2 class="user-name"><%= @nickname %>さんのレビュー一覧</h2>
     </div>
     <div class="like-link-wrapper">
+      <%= link_to "プロフィール編集", edit_user_registration_path(current_user.id) %>
       <%= link_to 'いいね一覧', "/users/#{@user.id}/likes", class:"like-link-btn"  %>
     </div>
     <ul class='review-lists'>
