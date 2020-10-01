@@ -4,6 +4,7 @@ class Review < ApplicationRecord
   belongs_to :user
   has_many :users, through: :likes
   has_one_attached :image
+  has_one_attached :video
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :manufacture
