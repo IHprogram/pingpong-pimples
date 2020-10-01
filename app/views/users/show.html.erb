@@ -9,6 +9,15 @@
       <%= link_to "プロフィール編集", edit_user_registration_path(current_user.id) %>
       <%= link_to 'いいね一覧', "/users/#{@user.id}/likes", class:"like-link-btn"  %>
     </div>
+
+    <div class="profile-image">
+      <% if @user.image.attached? %>
+        <%= image_tag @user.image %>
+      <% else %>
+        <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
+      <% end %>
+    </div>
+
     <ul class='review-lists'>
       <% if @reviews.length > 0 %>
         <% @reviews.each do |review| %>
