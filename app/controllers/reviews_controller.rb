@@ -5,7 +5,6 @@ class ReviewsController < ApplicationController
   before_action :search_review, only: [:index, :search]
 
   def index
-    @user = User.find(current_user.id)
     @reviews = Review.all.order('created_at DESC')
     set_review_column
   end
