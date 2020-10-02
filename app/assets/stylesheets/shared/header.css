@@ -99,3 +99,11 @@ font-size: 30px;
   border-radius: 50%;
   object-fit: cover;
 }
+
+.header-default-image>img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #ffffff;
+}
