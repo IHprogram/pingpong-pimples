@@ -2,11 +2,38 @@
 
 <div class="mypage-main">
   <div class="mypage-content">
-    <div class="username-wrapper">
-      <h2 class="user-name"><%= @nickname %>さんのレビュー一覧</h2>
+    <div class="content-header">
+      <div class="profile-image-wrapper">
+        <% if @user.image.attached? %>
+          <div class="profile-image">
+            <%= image_tag @user.image %>
+          </div>
+        <% else %>
+          <div class="default-image">
+            <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="links-wrapper">
+        <div class="profile-edit-btn-wrapper">
+          <%= link_to "プロフィール編集", edit_user_registration_path(current_user.id), class:"profile-edit-btn" %>
+        </div>
+        <div class="like-link-btn-wrapper">
+          <%= link_to 'いいね一覧', "/users/#{@user.id}/likes", class:"like-link-btn"  %>
+        </div>
+      </div>
     </div>
-    <div class="like-link-wrapper">
-      <%= link_to 'いいね一覧', "/users/#{@user.id}/likes", class:"like-link-btn"  %>
+
+    <% if @user.self_introduction %>
+      <div class="self-introduction-wrapper">
+        <p class="self-introduction">
+          <%= @user.self_introduction %>
+        </p>
+      </div>
+    <% end %>
+
+    <div class="username-wrapper">
+      <h2 class="user-name"><%= "#{@nickname}さんのレビュー一覧" %></h2>
     </div>
     <ul class='review-lists'>
       <% if @reviews.length > 0 %>
