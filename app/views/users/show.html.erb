@@ -24,6 +24,14 @@
       </div>
     </div>
 
+    <% if @user.self_introduction %>
+      <div class="self-introduction-wrapper">
+        <p class="self-introduction">
+          <%= @user.self_introduction %>
+        </p>
+      </div>
+    <% end %>
+
     <div class="username-wrapper">
       <h2 class="user-name"><%= "#{@nickname}さんのレビュー一覧" %></h2>
     </div>
