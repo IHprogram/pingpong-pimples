@@ -18,7 +18,7 @@
           <li>
             <%= link_to user_path(current_user.id), class: "user-nickname" do %>
               <div class="mypage-link">
-                <div class="">
+                <div class="header-profile-image-wrapper">
                   <% if @user.image.attached? %>
                     <div class="header-profile-image">
                       <%= image_tag @user.image %>
