@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :like_reviews, through: :likes, source: :review
   has_one_attached :image
 
-  validates :nickname, presence: true, uniqueness: true
+  validates :nickname, presence: true, uniqueness: true ,length: {maximum: 10}
   validates :self_introduction, length: {maximum: 200}
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
