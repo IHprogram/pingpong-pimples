@@ -85,6 +85,12 @@ RSpec.describe Review, type: :model do
         @review.valid?
         expect(@review.errors.full_messages).to include("Price must be greater than 0")
       end
+
+      it 'priceは0円では投稿できないこと' do
+        @review.price = 0
+        @review.valid?
+        expect(@review.errors.full_messages).to include("Price must be greater than 0")
+      end
     end
   end
 end
