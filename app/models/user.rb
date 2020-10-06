@@ -26,4 +26,12 @@ class User < ApplicationRecord
       user.password = "password12345"
     end
   end
+
+  def follow(other_user)
+    # フォローしようとしているユーザーが自分自身でなければそのユーザーをフォローできる。
+    unless self == other_user
+      self.relationships.find_or_create_by(follow_id: other_user.id)
+    end
+  end
+
 end
