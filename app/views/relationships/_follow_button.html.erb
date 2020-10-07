@@ -2,12 +2,12 @@
   <% if current_user.following?(@user) %>
     <%= form_with model: current_user.relationships.find_by(follow_id: @user.id), url: relationships_destroy_path(follow_id: @user.id), method: :delete, local: true do |f| %>
       <%= f.hidden_field :follow_id, value: @user.id %>
-      <%= f.submit 'フォロー解除！', class: 'unfollow-btn' %>
+      <%= f.submit 'フォロー中', class: 'unfollow-btn' %>
     <% end %>
   <% else %>
     <%= form_with model: current_user.relationships.build, url: relationships_create_path(follow_id: @user.id), local: true do |f| %>
       <%= f.hidden_field :follow_id, value: @user.id %>
-      <%= f.submit 'フォロー！', class: 'follow-btn' %>
+      <%= f.submit 'フォロー', class: 'follow-btn' %>
     <% end %>
   <% end %>
 <% end %>
