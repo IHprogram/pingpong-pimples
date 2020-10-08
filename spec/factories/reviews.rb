@@ -7,8 +7,8 @@ FactoryBot.define do
     spin { Spin.all.sample }
     speed { Speed.all.sample }
     control { Control.all.sample }
-    price { Faker::Number.between(from: 1000, to: 20000) }
-    evaluation { Evaluation.all.sample}
+    price { Faker::Number.between(from: 1000, to: 20_000) }
+    evaluation { Evaluation.all.sample }
     content { Faker::Lorem.sentence }
     association :user
   end
