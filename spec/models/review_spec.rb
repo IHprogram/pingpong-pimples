@@ -12,7 +12,7 @@ RSpec.describe Review, type: :model do
         expect(@review).to be_valid
       end
     end
-    
+
     context 'レビューを投稿できない場合' do
       it 'imageが空では投稿できないこと' do
         @review.image = nil
@@ -83,13 +83,13 @@ RSpec.describe Review, type: :model do
       it 'priceは全角数字では投稿できないこと' do
         @review.price = '１００００'
         @review.valid?
-        expect(@review.errors.full_messages).to include("Price must be greater than 0")
+        expect(@review.errors.full_messages).to include('Price must be greater than 0')
       end
 
       it 'priceは0円では投稿できないこと' do
         @review.price = 0
         @review.valid?
-        expect(@review.errors.full_messages).to include("Price must be greater than 0")
+        expect(@review.errors.full_messages).to include('Price must be greater than 0')
       end
     end
   end

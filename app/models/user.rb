@@ -16,33 +16,31 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :user
   has_one_attached :image
 
-  validates :nickname, presence: true, length: {maximum: 10}
-  validates :self_introduction, length: {maximum: 200}
+  validates :nickname, presence: true, length: { maximum: 10 }
+  validates :self_introduction, length: { maximum: 200 }
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   validates_format_of :password, with: PASSWORD_REGEX, message: 'Include both letters and numbers', on: :create
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
-      user.nickname = "ゲストユーザー"
-      user.password = "password12345"
+      user.nickname = 'ゲストユーザー'
+      user.password = 'password12345'
     end
   end
 
   def follow(other_user)
     # フォローしようとしているユーザーが自分自身でなければそのユーザーをフォローできる。
-    unless self == other_user
-      self.relationships.find_or_create_by(follow_id: other_user.id)
-    end
+    relationships.find_or_create_by(follow_id: other_user.id) unless self == other_user
   end
 
   def unfollow(other_user)
     # フォローしていた場合、そのフォローを解除する。
-    relationship = self.relationships.find_by(follow_id: other_user.id)
-    relationship.destroy if relationship
+    relationship = relationships.find_by(follow_id: other_user.id)
+    relationship&.destroy
   end
-  
+
   def following?(other_user)
-    self.followings.include?(other_user)
+    followings.include?(other_user)
   end
 end
