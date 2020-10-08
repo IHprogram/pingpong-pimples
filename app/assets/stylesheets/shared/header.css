@@ -27,9 +27,32 @@ font-size: 30px;
 }
 
 .menu-wrapper {
+  display: block;
+  height: 28px;
+  width: 28px;
   position: fixed;
-  top: 20px;
-  left: 20px;
+  top: 21px;
+  left: 21px;
+  cursor: pointer;
+}
+
+.menu-wrapper>div {
+  height: 1px;
+  width: 100%;
+  background-color: #ffffff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: .2s;
+}
+
+.menu-wrapper>div:nth-of-type(1) {
+  transform: translate(-50%, -10px);
+}
+
+.menu-wrapper>div:nth-of-type(3) {
+  transform: translate(-50%, 10px);
 }
 
 .nav-menu {
@@ -70,12 +93,6 @@ font-size: 30px;
 
 #logout {
   border: none;
-}
-
-#menu-btn {
-  color: #ffffff;
-  cursor: pointer;
-  font-size: 30px;
 }
 
 .header-nickname {
