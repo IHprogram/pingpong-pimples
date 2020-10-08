@@ -1,8 +1,9 @@
-window.addEventListener('load', function(){
-  const btn = document.getElementById('menu-btn');
+document.addEventListener('DOMContentLoaded', function() {
+  const menuBtn = document.getElementById('menu-btn');
   const nav = document.getElementById('nav-id');
 
-  btn.addEventListener('click', () => {
-    nav.classList.toggle('open-menu')
+  menuBtn.addEventListener('click', () => {
+    nav.classList.toggle('open-menu');
+    menuBtn.classList.toggle('active');
   });
 });
