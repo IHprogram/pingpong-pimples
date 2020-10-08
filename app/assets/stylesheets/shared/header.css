@@ -48,6 +48,7 @@ font-size: 30px;
 .nav-lists{
   width: 100%;
   font-size: 20px;
+  border: 1px solid #ffffff;
 }
 
 .nav-lists>a>li{
@@ -62,10 +63,6 @@ font-size: 30px;
 .nav-lists>a {
   text-decoration: none;
   color: #ffffff;
-}
-
-#like-link-btn {
-  border-top: 1px solid #ffffff;
 }
 
 #logout {
