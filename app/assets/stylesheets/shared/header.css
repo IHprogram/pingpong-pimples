@@ -4,7 +4,10 @@
   width: 100%;
   min-width: 768px;
   height: 70px;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 .header-logo-wrapper {
@@ -24,7 +27,7 @@ font-size: 30px;
 }
 
 .menu-wrapper {
-  position: absolute;
+  position: fixed;
   top: 20px;
   left: 20px;
 }
@@ -33,7 +36,7 @@ font-size: 30px;
   width: 0px;
   min-height: 350px;
   background-color: #000000;
-  position: absolute;
+  position: fixed;
   top: 70px;
   left: 0;
   z-index: 1;
