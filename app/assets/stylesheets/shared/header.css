@@ -30,7 +30,7 @@ font-size: 30px;
 }
 
 .nav-menu {
-  width: 300px;
+  width: 0px;
   min-height: 350px;
   background-color: #000000;
   position: absolute;
@@ -40,12 +40,17 @@ font-size: 30px;
   overflow-x: hidden;
 }
 
+.open-menu {
+  width: 300px;
+}
+
 .nav-lists{
   width: 100%;
   font-size: 20px;
 }
 
 .nav-lists>a>li{
+  min-width: 300px;
   height: 70px;
   border-bottom: 1px solid #ffffff;
   display: flex;
@@ -66,12 +71,11 @@ font-size: 30px;
   border: none;
 }
 
-.menu-icon {
+#menu-btn {
   color: #ffffff;
-  text-decoration: none;
+  cursor: pointer;
   font-size: 30px;
 }
-
 
 .header-nickname {
   margin-left: 10px;
