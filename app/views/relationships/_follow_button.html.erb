@@ -1,8 +1,8 @@
 <% unless current_user == @user %>
   <% if current_user.following?(@user) %>
-    <%= form_with model: current_user.relationships.find_by(follow_id: @user.id), url: relationships_destroy_path(follow_id: @user.id), method: :delete, local: true do |f| %>
+    <%= form_with model: @user, url: relationships_destroy_path(follow_id: @user.id), method: :delete, local: true do |f| %>
       <%= f.hidden_field :follow_id, value: @user.id %>
-      <%= f.submit 'フォロー中', class: 'unfollow-btn' %>
+      <%= f.submit 'フォロー中', class: 'unfollow-btn', data: { confirm: "フォローを解除してもよろしいですか？" } %>
     <% end %>
   <% else %>
     <%= form_with model: current_user.relationships.build, url: relationships_create_path(follow_id: @user.id), local: true do |f| %>
