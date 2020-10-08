@@ -1,46 +1,74 @@
 <header class="top-page-header">
-    <div class="header-left">
-      <div class="menu-wrapper">
-        <%= link_to "#", class: "menu-icon" do %>
-          <i class="fas fa-bars"></i>
-        <% end %>
-      </div>
-      <div class="header-logo-wrapper">
-        <%= link_to root_path, class: "header-logo" do %>
-          <h1>Ping Pong Pimples <i class="fas fa-table-tennis"></i></h1>
-        <% end %>
-      </div>
-    </div>
+  <div class="header-logo-wrapper">
+    <%= link_to root_path, class: "header-logo" do %>
+      <h1>Ping Pong Pimples <i class="fas fa-table-tennis"></i></h1>
+    <% end %>
+  </div>
+  <div class="menu-wrapper" id="menu-btn">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 
-    <div class="header-right">
-      <ul class="nav-lists">
-        <% if user_signed_in? %>
+  <nav class="nav-menu" id="nav-id">
+    <ul class="nav-lists">
+      <% if user_signed_in? %>
+        <%= link_to "#", class:"like-link-btn" do %>
           <li>
-            <%= link_to user_path(current_user.id), class: "user-nickname" do %>
-              <div class="mypage-link">
-                <div class="header-profile-image-wrapper">
-                  <% if current_user.image.attached? %>
-                    <div class="header-profile-image">
-                      <%= image_tag current_user.image %>
-                    </div>
-                  <% else %>
-                    <div class="header-default-image">
-                      <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
-                    </div>
-                  <% end %>
-                </div>
-                <p class="header-nickname"><%= current_user.nickname %></p>
-              </div>
-            <% end %>
+            いいね一覧
           </li>
-          <li><%= link_to '投稿する', new_review_path, class:"review-btn" %></li>
-          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
-        <% else %>
-          <li><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "guest-login" %></li>
-          <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
-          <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
         <% end %>
-      </ul>
-    </div>
+        <%= link_to "#", class:"reviews-btn" do %>
+          <li>
+            投稿したレビュー
+          </li>
+        <% end %>
+        <%= link_to user_path(current_user.id), class: "user-nickname" do %>
+          <li>
+            <div class="mypage-link">
+              <div class="header-profile-image-wrapper">
+                <% if current_user.image.attached? %>
+                  <div class="header-profile-image">
+                    <%= image_tag current_user.image %>
+                  </div>
+                <% else %>
+                  <div class="header-default-image">
+                    <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
+                  </div>
+                <% end %>
+              </div>
+              <p class="header-nickname"><%= current_user.nickname %></p>
+            </div>
+          </li>
+        <% end %>
+        <%= link_to new_review_path, class:"review-btn" do %>
+          <li>
+            投稿する
+          </li>
+        <% end %>
+        <%= link_to destroy_user_session_path, method: :delete, class: "logout" do %>
+          <li id="logout">
+            ログアウト
+          </li>
+        <% end %>
+      <% else %>
+        <%= link_to users_guest_sign_in_path, method: :post, class: "guest-login" do %>
+          <li>
+            ゲストログイン（閲覧用）
+          </li>
+        <% end %>
+        <%= link_to new_user_session_path, class: "login" do %>
+          <li>
+            ログイン
+          </li>
+        <% end %>
+        <%= link_to new_user_registration_path, class: "sign-up" do %>
+          <li id="sign-up">
+            新規登録
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </nav>
   
 </header>
