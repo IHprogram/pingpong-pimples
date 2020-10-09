@@ -159,7 +159,7 @@
   margin: 50px auto 0;
 }
 
-.followings-wrapper,.followers-wrapper {
+.followings-number-wrapper,.followers-number-wrapper {
   width: 90px;
   height: 90px;
   display: flex;
@@ -171,4 +171,64 @@
 .follow-number {
   font-size: 30px;
   margin-bottom: 10px;
+}
+
+.followings-wrapper,.followers-wrapper {
+  display: block;
+  width: 100%;
+  overflow-y: hidden;
+  padding: 20px 40px;
+  position: relative;
+}
+
+.followings-close-btn,.followers-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #dc143c;
+  font-size: 15px;
+  cursor: pointer;
+  border: 1px solid #dc143c;
+  padding: 10px;
+}
+
+.followers-wrapper {
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+}
+
+.follow-title {
+  margin-bottom: 20px;
+}
+
+.follow-group {
+  padding: 10px 0;
+  border-top: 1px dashed gray;
+  border-bottom: 1px dashed gray;
+}
+
+.follow-group + .follow-group {
+  border-top: none;
+}
+
+.follow-group>a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #000000;
+}
+
+.follow-profile-image>img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.follow-default-image>img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #ffffff;
 }
