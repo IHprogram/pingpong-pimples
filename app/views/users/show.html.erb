@@ -2,155 +2,57 @@
 
 <div class="mypage-main">
   <div class="mypage-content">
-    <%# <div class="content-header"> %>
-      <div class="profile-image-wrapper">
-        <div class="image-and-name">
-          <% if @user.image.attached? %>
-            <div class="profile-image">
-              <%= image_tag @user.image %>
-            </div>
-          <% else %>
-            <div class="default-image">
-              <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
-            </div>
-          <% end %>
-          <div class="username-wrapper">
-            <h2 class="user-name"><%= @nickname %></h2>
+    <div class="profile-image-wrapper">
+      <div class="image-and-name">
+        <% if @user.image.attached? %>
+          <div class="profile-image">
+            <%= image_tag @user.image %>
           </div>
+        <% else %>
+          <div class="default-image">
+            <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
+          </div>
+        <% end %>
+        <div class="username-wrapper">
+          <h2 class="user-name"><%= @nickname %></h2>
         </div>
-        <div class="follow-btn-wrapper">
-          <%= render "relationships/follow_button" %>
-        </div>
-      <%# 自己紹介文 %>
       </div>
-      <% if @user.self_introduction %>
-        <div class="self-introduction-wrapper">
-          <p class="self-introduction">
-            <%= @user.self_introduction %>
-          </p>
+      <div class="follow-btn-wrapper">
+        <%= render "relationships/follow_button" %>
+      </div>
+    </div>
+    <%# 自己紹介文 %>
+    <% if @user.self_introduction %>
+      <div class="self-introduction-wrapper">
+        <p class="self-introduction">
+          <%= @user.self_introduction %>
+        </p>
+      </div>
+    <% end %>
+    <%# 自己紹介文 %>
+
+    <div class="link-buttons">
+      <% if current_user.id == @user.id %>
+        <%= link_to edit_user_registration_path(current_user.id), class:"profile-edit-btn" do %>
+          <div class="profile-edit-btn-wrapper">
+              プロフィール編集
+          </div>
+        <% end %>
+      <% end %>
+      <%= link_to "/users/#{@user.id}/likes", class:"like-link-btn" do %>
+        <div class="like-link-btn-wrapper">
+          いいね一覧
         </div>
       <% end %>
-      <%# 自己紹介文 %>
-
-
-      <div class="link-buttons">
-        <% if current_user.id == @user.id %>
-          <%= link_to edit_user_registration_path(current_user.id), class:"profile-edit-btn" do %>
-            <div class="profile-edit-btn-wrapper">
-               プロフィール編集
-            </div>
-          <% end %>
-        <% end %>
-        <%= link_to "/users/#{@user.id}/likes", class:"like-link-btn" do %>
-          <div class="like-link-btn-wrapper">
-            いいね一覧
-          </div>
-        <% end %>
-      </div>
-    <%# </div> %>
+    </div>
 
     <div class="review-lists-wrapper">
       <div class="review-lists-title-wrapper">
         <h3 id="review-lists-title">レビュー一覧</h3>
       </div>
-      <ul class='review-lists' id="review-lists">
-        <% if @reviews.length > 0 %>
-          <% @reviews.each do |review| %>
-            <li class='list'>
-              <%= link_to review_path(review.id), class:"review-show-link" do %>
-                <div class='review-info'>
-                  <div class='review-img-content'>
-                    <%= image_tag review.image, class: "review-img" %>
-                  </div>
-                  <div class="top-review-detail">
-                    <div class="top-review-group">
-                      <span class="top-review-name">
-                        商品名：
-                      </span>
-                      <h3 class="top-review-value">
-                        <%= review.name %>
-                      </h3>
-                    </div>
-                    <div class="top-review-group">
-                      <span class="top-review-name">
-                        ユーザー：
-                      </span>
-                      <h3 class="top-review-value">
-                        <%= review.user.nickname %>
-                      </h3>
-                    </div>
-                    <div class="top-review-group">
-                      <span class="top-review-name">
-                        メーカー：
-                      </span>
-                      <h3 class="top-review-value">
-                        <%= review.manufacture.name %>
-                      </h3>
-                    </div>
-                    <div class="top-review-group">
-                      <span class="top-review-name">
-                        総合評価：
-                      </span>
-                      <h3 class="top-review-value">
-                        <%= review.evaluation.name %>
-                      </h3>
-                      <span class="top-review-name">
-                        点
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-            </li>
-          <% end %>
-        <% else %>      
-          <%# レビューがない場合のダミー %>
-            <li class="list">
-              <%= link_to '#',class:"review-show-link" do %>
-                <div class='review-info'>
-                  <div class='review-img-content'>
-                    <%= image_tag "sample.png", class: "review-img" %>
-                  </div>
-                  <div class="top-review-detail">
-                    <div class="top-review-group">
-                      <span class="top-review-name">
-                        商品名：
-                      </span>
-                      <h3 class="top-review-value">
-                        <%= "ここに商品名が表示されます" %>
-                      </h3>
-                    </div>
-                    <div class="top-review-group">
-                      <span class="top-review-name">
-                        ユーザー：
-                      </span>
-                      <h3 class="top-review-value">
-                        <%= "ここにニックネームが表示されます" %>
-                      </h3>
-                    </div>
-                    <div class="top-review-group">
-                      <span class="top-review-name">
-                        メーカー：
-                      </span>
-                      <h3 class="top-review-value">
-                        <%= "ここにメーカー名が表示されます" %>
-                      </h3>
-                    </div>
-                    <div class="top-review-group">
-                      <span class="top-review-name">
-                        総合評価（10点満点）：
-                      </span>
-                      <h3 class="top-review-value">
-                        <%= "ここに総合評価の点数が表示されます" %>
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-            </li>
-          <%# //レビューがない場合のダミー %>
-        <% end %>
-      </ul>
+
+        <%= render "shared/reviews" %>
+
     </div>
   </div>
 </div>
