@@ -43,6 +43,34 @@
       </div>
     </div>
 
+    <div class="followings-wrapper">
+      <h3>フォロー</h3>
+      <ul>
+        <% if @followings.length > 0 %>
+          <% @followings.each do |follow| %>
+            <li>
+              <div class="follow-profile-image-wrapper">
+                <%= link_to user_path(follow.follow.id) do %>
+                  <% if follow.follow.image.attached? %>
+                    <div class="follow-profile-image">
+                      <%= image_tag follow.follow.image %>
+                    </div>
+                  <% else %>
+                    <div class="follow-default-image">
+                      <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
+                    </div>
+                  <% end %>
+                  <span class="header-nickname"><%= follow.follow.nickname %></span>
+                <% end %>
+              </div>
+            </li>
+          <% end %>
+        <% else %>
+          <p>フォローしたユーザーはいません</p>
+        <% end %>
+      </ul>
+    </div>
+
     <div class="link-buttons">
       <% if current_user.id == @user.id %>
         <%= link_to edit_user_registration_path(current_user.id), class:"profile-edit-btn" do %>
