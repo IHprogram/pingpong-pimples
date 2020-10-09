@@ -48,7 +48,7 @@
       <ul>
         <% if @followings.length > 0 %>
           <% @followings.each do |follow| %>
-            <li class="follow-group">
+            <li class="follow-list">
               <%# <div class="follow-profile-image-wrapper"> %>
                 <%= link_to user_path(follow.follow.id) do %>
                   <% if follow.follow.image.attached? %>
@@ -79,7 +79,7 @@
       <ul>
         <% if @followers.length > 0 %>
           <% @followers.each do |follower| %>
-            <li class="follow-group">
+            <li class="follow-list">
               <%= link_to user_path(follower.user.id) do %>
                 <% if follower.user.image.attached? %>
                   <div class="follow-profile-image">
