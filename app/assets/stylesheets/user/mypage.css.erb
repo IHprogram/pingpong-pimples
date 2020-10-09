@@ -65,15 +65,16 @@
 }
 <%# いいね一覧リンクボタン %>
 
-.profile-image-wrapper {
+.profile-wrapper {
   height: 100%;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: #000000;
-  padding: 50px 0 30px;
+  padding: 50px 30px 30px;
   position: relative;
+}
+
+.image-and-name {
+  margin-bottom: 30px;
 }
 
 .profile-image {
@@ -99,11 +100,11 @@
 }
 
 .self-introduction-wrapper {
-  width: 100%;
+  max-width: 50%;
   text-align: center;
-  padding-bottom: 50px;
   color: #ffffff;
   background-color: #000000;
+  margin: 0 auto;
 }
 
 .review-lists-wrapper {
@@ -124,7 +125,7 @@
 <%# フォローボタン %>
 .follow-btn-wrapper {
   position: absolute;
-  bottom: 40px;
+  bottom: 45px;
   right: 40px;
 }
 
@@ -148,3 +149,26 @@
   font-weight: bold;
 }
 <%# フォローボタン %>
+
+.follow-and-follower {
+  color:#ffffff;
+  width: 50%;
+  height: 90px;
+  display: flex;
+  justify-content: space-around;
+  margin: 50px auto 0;
+}
+
+.followings-wrapper,.followers-wrapper {
+  width: 90px;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.follow-number {
+  font-size: 30px;
+  margin-bottom: 10px;
+}

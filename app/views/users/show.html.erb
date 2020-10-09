@@ -2,7 +2,7 @@
 
 <div class="mypage-main">
   <div class="mypage-content">
-    <div class="profile-image-wrapper">
+    <div class="profile-wrapper">
       <div class="image-and-name">
         <% if @user.image.attached? %>
           <div class="profile-image">
@@ -20,16 +20,28 @@
       <div class="follow-btn-wrapper">
         <%= render "relationships/follow_button" %>
       </div>
-    </div>
-    <%# 自己紹介文 %>
-    <% if @user.self_introduction %>
-      <div class="self-introduction-wrapper">
-        <p class="self-introduction">
-          <%= @user.self_introduction %>
-        </p>
+      
+      <%# 自己紹介文 %>
+      <% if @user.self_introduction %>
+        <div class="self-introduction-wrapper">
+          <p class="self-introduction">
+            <%= @user.self_introduction %>
+          </p>
+        </div>
+      <% end %>
+      <%# 自己紹介文 %>
+
+      <div class="follow-and-follower">
+        <div class="followings-wrapper">
+          <span class="follow-number"><%= @followings.length %></span>
+          <p>フォロー</p>
+        </div>
+        <div class="followers-wrapper">
+          <span class="follow-number"><%= @followers.length %></span>
+          <p>フォロワー</p>
+        </div>
       </div>
-    <% end %>
-    <%# 自己紹介文 %>
+    </div>
 
     <div class="link-buttons">
       <% if current_user.id == @user.id %>
