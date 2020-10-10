@@ -32,18 +32,18 @@
       <%# 自己紹介文 %>
 
       <div class="follow-and-follower">
-        <div class="followings-number-wrapper">
+        <div class="followings-number-wrapper" id="followings-number">
           <span class="follow-number"><%= @followings.length %></span>
           <p>フォロー</p>
         </div>
-        <div class="followers-number-wrapper">
+        <div class="followers-number-wrapper" id="followers-number">
           <span class="follow-number"><%= @followers.length %></span>
           <p>フォロワー</p>
         </div>
       </div>
     </div>
 
-    <div class="followings-wrapper">
+    <div class="followings-wrapper" id="followings-wrapper">
       <div class="follow-group">
         <h3 class="follow-title">フォロー</h3>
         <ul>
@@ -74,7 +74,7 @@
       </div>
     </div>
 
-    <div class="followers-wrapper">
+    <div class="followers-wrapper" id="followers-wrapper">
       <div class="follow-group">
         <h3 class="follow-title">フォロワー</h3>
         <ul>
