@@ -19,4 +19,10 @@ document.addEventListener('DOMContentLoaded', function() {
     followersNumber.removeAttribute('style', 'background-color: #696969;')
   });
 
+  const followings =document.getElementById('followings-wrapper');
+
+  followingsNumber.addEventListener('click', () => {
+    followings.classList.toggle('open-followings')
+  });
+
 });
