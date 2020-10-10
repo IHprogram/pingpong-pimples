@@ -32,14 +32,76 @@
       <%# 自己紹介文 %>
 
       <div class="follow-and-follower">
-        <div class="followings-wrapper">
+        <div class="followings-number-wrapper" id="followings-number">
           <span class="follow-number"><%= @followings.length %></span>
           <p>フォロー</p>
         </div>
-        <div class="followers-wrapper">
+        <div class="followers-number-wrapper" id="followers-number">
           <span class="follow-number"><%= @followers.length %></span>
           <p>フォロワー</p>
         </div>
+      </div>
+    </div>
+
+    <div class="followings-wrapper" id="followings-wrapper">
+      <div class="follow-group">
+        <h3 class="follow-title">フォロー</h3>
+        <ul>
+          <% if @followings.length > 0 %>
+            <% @followings.each do |follow| %>
+              <li class="follow-list">
+                <%= link_to user_path(follow.follow.id) do %>
+                  <% if follow.follow.image.attached? %>
+                    <div class="follow-profile-image">
+                      <%= image_tag follow.follow.image %>
+                    </div>
+                  <% else %>
+                    <div class="follow-default-image">
+                      <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
+                    </div>
+                  <% end %>
+                  <span class="header-nickname"><%= follow.follow.nickname %></span>
+                <% end %>
+              </li>
+            <% end %>
+          <% else %>
+            <p>フォローしたユーザーはいません</p>
+          <% end %>
+        </ul>
+      </div>
+      <div id="followings-close-btn">
+        <p>閉じる</p>
+      </div>
+    </div>
+
+    <div class="followers-wrapper" id="followers-wrapper">
+      <div class="follow-group">
+        <h3 class="follow-title">フォロワー</h3>
+        <ul>
+          <% if @followers.length > 0 %>
+            <% @followers.each do |follower| %>
+              <li class="follow-list">
+                <%= link_to user_path(follower.user.id) do %>
+                  <% if follower.user.image.attached? %>
+                    <div class="follow-profile-image">
+                      <%= image_tag follower.user.image %>
+                    </div>
+                  <% else %>
+                    <div class="follow-default-image">
+                      <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
+                    </div>
+                  <% end %>
+                  <span class="header-nickname"><%= follower.user.nickname %></span>
+                <% end %>
+              </li>
+            <% end %>
+          <% else %>
+            <p>フォロワーはいません</p>
+          <% end %>
+        </ul>
+      </div>
+      <div id="followers-close-btn">
+        <p>閉じる</p>
       </div>
     </div>
 
