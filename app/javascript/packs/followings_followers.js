@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
       followers.classList.toggle('open-follow')
     });
 
+    // 閉じるボタンをクリックすると、フォロー一覧、フォロワー一覧を閉じることができる。
     followingsCloseBtn.addEventListener('click', () => {
       followings.classList.toggle('open-follow')
     });
@@ -42,5 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
     followersCloseBtn.addEventListener('click', () => {
       followers.classList.toggle('open-follow')
     });
-  // フォロー数、フォロワー数をクリックすると、フォロー一覧、フォロワー一覧が表示される
+    // 閉じるボタンをクリックすると、フォロー一覧、フォロワー一覧を閉じることができる。
+  
+    // フォロー数、フォロワー数をクリックすると、フォロー一覧、フォロワー一覧が表示される
 });
