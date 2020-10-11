@@ -106,7 +106,7 @@
     </div>
 
     <div class="link-buttons">
-      <% if current_user && (current_user.id == @user.id) %>
+      <% if user_signed_in? && (current_user.id == @user.id) %>
         <%= link_to edit_user_registration_path(current_user.id), class:"profile-edit-btn" do %>
           <div class="profile-edit-btn-wrapper">
               ユーザー情報編集
