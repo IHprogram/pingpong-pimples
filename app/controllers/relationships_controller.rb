@@ -4,11 +4,13 @@ class RelationshipsController < ApplicationController
   def create
     @following = current_user.follow(@user)
     @following.save
+    @followers_number = @user.reverse_of_relationships.where(follow_id: @user.id).length
   end
 
   def destroy
     @following = current_user.unfollow(@user)
     @following.destroy
+    @followers_number = @user.reverse_of_relationships.where(follow_id: @user.id).length
   end
 
   private
