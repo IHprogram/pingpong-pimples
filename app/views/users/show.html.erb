@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="follow-btn-wrapper">
-        <%= render "relationships/follow_button" %>
+        <%= render partial:"relationships/follow_button", locals: {user: @user} %>
       </div>
       
       <%# 自己紹介文 %>
