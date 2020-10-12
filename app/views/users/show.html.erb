@@ -77,28 +77,13 @@
     <div class="followers-wrapper" id="followers-wrapper">
       <div class="follow-group">
         <h3 class="follow-title">フォロワー</h3>
-        <ul>
-          <% if @followers.length > 0 %>
+        <div id="users-followers">
+          <% if @followers %>
             <% @followers.each do |follower| %>
-              <li class="follow-list">
-                <%= link_to user_path(follower.user.id) do %>
-                  <% if follower.user.image.attached? %>
-                    <div class="follow-profile-image">
-                      <%= image_tag follower.user.image %>
-                    </div>
-                  <% else %>
-                    <div class="follow-default-image">
-                      <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
-                    </div>
-                  <% end %>
-                  <span class="header-nickname"><%= follower.user.nickname %></span>
-                <% end %>
-              </li>
+              <%= render partial: "relationships/relationship", locals: {follower: follower} %>
             <% end %>
-          <% else %>
-            <p>フォロワーはいません</p>
           <% end %>
-        </ul>
+        </div>
       </div>
       <div id="followers-close-btn">
         <p>閉じる</p>
