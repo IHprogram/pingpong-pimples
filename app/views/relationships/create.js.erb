@@ -1,4 +1,5 @@
 $(function(){
   $('.follow-btn-wrapper').html("<%= escape_javascript(render 'follow_button', user: @user) %>");
   $('#followers-number-id').html("<%= @followers_number %>");
+  $('#users-followers').prepend("<%= escape_javascript(render partial: 'relationships/relationship', locals: {follower: @follower}) %>");
 });
