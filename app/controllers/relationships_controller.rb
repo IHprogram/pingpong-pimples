@@ -5,6 +5,8 @@ class RelationshipsController < ApplicationController
     @following = current_user.follow(@user)
     @following.save
     @followers_number = @user.reverse_of_relationships.where(follow_id: @user.id).length
+    @user = User.find(params[:follow_id])
+    @follower = current_user.follow(@user)
   end
 
   def destroy
