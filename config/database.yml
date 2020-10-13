@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: pingpong_pimples_production
-  username: pingpong_pimples
-  password: <%= ENV['PINGPONG_PIMPLES_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
