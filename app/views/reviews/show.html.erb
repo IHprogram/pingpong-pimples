@@ -57,7 +57,7 @@
         その他特筆すること
       </h3>
       <div class="detail-content">
-        <%= @review.content %>
+        <%= safe_join(@review.content.split("\n"),tag(:br)) %>
       </div>
     </div>
 
