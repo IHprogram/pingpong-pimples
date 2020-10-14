@@ -62,7 +62,25 @@
 }
 
 .comment-text {
+  margin-left: 16px;
   word-wrap: break-word;
+}
+
+.comment-user {
+  display: inline-block;
+}
+
+.comment-user>a {
+  display: flex;
+  align-items: center;
+}
+
+.comment-user-image>img,.comment-default-image>img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
 }
 
 .comment-delete-wrapper {

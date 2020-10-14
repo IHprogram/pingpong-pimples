@@ -1,7 +1,21 @@
 <div class="comment-content-wrapper" id="comment-<%= comment.id %>">
   <div class="comment-text-wrapper">
+    <div class="comment-user">
+      <%= link_to user_path(comment.user.id), class:"comment-user" do %>
+        <% if comment.user.image.attached? %>
+          <div class="comment-user-image">
+            <%= image_tag comment.user.image %>
+          </div>
+        <% else %>
+          <div class="comment-default-image">
+            <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
+          </div>
+        <% end %>
+        <span><%= comment.user.nickname %></span>
+      <% end %>
+    </div>
     <p class="comment-text">
-      <%= link_to comment.user.nickname, user_path(comment.user.id), class:"comment-user" %><br>
+      <br>
       <%= safe_join(comment.content.split("\n"),tag(:br)) %>
     </p>
   </div>
