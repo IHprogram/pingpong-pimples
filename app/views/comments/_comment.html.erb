@@ -1,8 +1,8 @@
 <div class="comment-content-wrapper" id="comment-<%= comment.id %>">
   <div class="comment-text-wrapper">
     <p class="comment-text">
-      <strong><%= link_to comment.user.nickname, user_path(comment.user.id), class:"comment-user" %>：</strong>
-      <%= comment.content %>
+      <%= link_to comment.user.nickname, user_path(comment.user.id), class:"comment-user" %><br>
+      <%= safe_join(comment.content.split("\n"),tag(:br)) %>
     </p>
   </div>
   <% if user_signed_in? && (current_user.id == comment.user_id) %>
