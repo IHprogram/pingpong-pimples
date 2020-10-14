@@ -25,7 +25,7 @@
       <% if @user.self_introduction %>
         <div class="self-introduction-wrapper">
           <p class="self-introduction">
-            <%= @user.self_introduction %>
+            <%= safe_join(@user.self_introduction.split("\n"),tag(:br)) %>
           </p>
         </div>
       <% end %>
@@ -64,8 +64,6 @@
                 <% end %>
               </li>
             <% end %>
-          <% else %>
-            <p>フォローしたユーザーはいません</p>
           <% end %>
         </ul>
       </div>
@@ -78,7 +76,7 @@
       <div class="follow-group">
         <h3 class="follow-title">フォロワー</h3>
         <div id="users-followers">
-          <% if @followers %>
+          <% if @followers.length > 0 %>
             <% @followers.each do |follower| %>
               <%= render partial: "relationships/relationship", locals: {follower: follower} %>
             <% end %>
