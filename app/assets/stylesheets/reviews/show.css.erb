@@ -14,6 +14,8 @@
   min-width: 800px;
 }
 
+<%# ユーザーのニックネームと画像 %>
+
 .show-user-profile {
   margin-bottom: 20px;
 }
@@ -35,10 +37,14 @@
   margin-right: 10px;
 }
 
+<%# ここまでユーザーのニックネームと画像 %>
+
+<%# レビューの内容 %>
+
 .review-show-image {
   width: 100%;
   text-align: center;
-  margin: 0 auto;
+  margin: 0 auto 40px;
 }
 
 .show-img {
@@ -48,17 +54,35 @@
   background-color: #a9a9a9;
 }
 
-.detail-table {
-  margin: 0 auto 30px;
+.product-info,.user-evaluation {
+  margin: 0 auto 50px;
   width: 70%;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, .5);
+}
+
+.product-info-title {
+  padding: 20px;
+  border-radius: 20px 20px 0 0;
+  border-bottom: none;
+}
+
+.product-info-title>h2 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.detail-table {
+  width: 100%;
 }
 
 .detail-product {
   width: 20%;
-  background-color: #eee;
+  background-color: #a9a9a9;
   border: 1px solid #dedede;
   font-size: 14px;
   text-align: center;
+  color: #ffffff;
 }
 
 .detail-value {
@@ -79,6 +103,10 @@
   margin: 30px auto;
   border: 1px solid #dedede;
 }
+
+<%# ここまでレビューの内容 %>
+
+<%# 編集ボタンと削除ボタン %>
 
 .review-buttons {
   height: 60px;
@@ -115,6 +143,10 @@
   color: #ffffff;
 }
 
+<%# ここまで編集ボタンと削除ボタン %>
+
+<%# 動画の表示 %>
+
 .video-wrapper {
   width: 600px;
   margin: 50px auto;
@@ -133,3 +165,5 @@
 .show-video>video {
   width: 600px;
 }
+
+<%# ここまで動画の表示 %>

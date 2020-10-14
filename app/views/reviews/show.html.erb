@@ -22,50 +22,61 @@
         <%= image_tag @review.image, class:"show-img" %>
     </div>
 
-    <table class="detail-table">
-      <tbody>
-        <tr>
-          <th class="detail-product">ユーザー名</th>
-          <td class="detail-value"><%= @review.user.nickname %></td>
-        </tr>
-        <tr>
-          <th class="detail-product">商品名</th>
-          <td class="detail-value"><%= @review.name %></td>
-        </tr>
-        <tr>
-          <th class="detail-product">メーカー</th>
-          <td class="detail-value"><%= @review.manufacture.name %></td>
-        </tr>
-        <tr>
-          <th class="detail-product">ラバーの種類</th>
-          <td class="detail-value"><%= @review.type.name %></td>
-        </tr>
-        <tr>
-          <th class="detail-product">打球感</th>
-          <td class="detail-value"><%= @review.hardness.name %><span>度</span></td>
-        </tr>
-        <tr>
-          <th class="detail-product">回転量</th>
-          <td class="detail-value"><%= @review.spin.name %><span>点</span></td>
-        </tr>
-        <tr>
-          <th class="detail-product">スピード</th>
-          <td class="detail-value"><%= @review.speed.name %><span>点</span></td>
-        </tr>
-        <tr>
-          <th class="detail-product">コントロール</th>
-          <td class="detail-value"><%= @review.control.name %><span>点</span></td>
-        </tr>
-        <tr>
-          <th class="detail-product">商品の価格</th>
-          <td class="detail-value"><%= @review.price %><span>円</span></td>
-        </tr>
-        <tr>
-          <th class="detail-product">総合評価</th>
-          <td class="detail-value"><%= @review.evaluation.name %><span>点</span></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="product-info">
+      <div class="product-info-title">
+        <h2><i class="far fa-file-alt"></i> 商品情報</h2>
+      </div>
+      <table class="detail-table">
+        <tbody>
+          <tr>
+            <th class="detail-product">レビューした<br>商品名</th>
+            <td class="detail-value"><%= @review.name %></td>
+          </tr>
+          <tr>
+            <th class="detail-product">メーカー</th>
+            <td class="detail-value"><%= @review.manufacture.name %></td>
+          </tr>
+          <tr>
+            <th class="detail-product">ラバーの種類</th>
+            <td class="detail-value"><%= @review.type.name %></td>
+          </tr>
+          <tr>
+            <th class="detail-product">打球感</th>
+            <td class="detail-value"><%= @review.hardness.name %><span>度</span></td>
+          </tr>
+          <tr>
+            <th class="detail-product">商品の価格</th>
+            <td class="detail-value"><%= @review.price %><span>円</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="user-evaluation">
+      <div class="product-info-title">
+        <h2><i class="fas fa-poll"></i> 評価</h2>
+      </div>
+      <table class="detail-table">
+        <tbody>
+          <tr>
+            <th class="detail-product">スピード</th>
+            <td class="detail-value"><%= @review.speed.name %><span>点</span></td>
+          </tr>
+          <tr>
+            <th class="detail-product">スピン</th>
+            <td class="detail-value"><%= @review.spin.name %><span>点</span></td>
+          </tr>
+          <tr>
+            <th class="detail-product">コントロール</th>
+            <td class="detail-value"><%= @review.control.name %><span>点</span></td>
+          </tr>
+          <tr>
+            <th class="detail-product">総合評価</th>
+            <td class="detail-value"><%= @review.speed.name %><span>点</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
     <div class="product-content">
       <h3 class="detail-content-title">
