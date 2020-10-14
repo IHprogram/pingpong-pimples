@@ -64,8 +64,6 @@
                 <% end %>
               </li>
             <% end %>
-          <% else %>
-            <p>フォローしたユーザーはいません</p>
           <% end %>
         </ul>
       </div>
@@ -78,7 +76,7 @@
       <div class="follow-group">
         <h3 class="follow-title">フォロワー</h3>
         <div id="users-followers">
-          <% if @followers %>
+          <% if @followers.length > 0 %>
             <% @followers.each do |follower| %>
               <%= render partial: "relationships/relationship", locals: {follower: follower} %>
             <% end %>
