@@ -61,7 +61,7 @@
   box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, .5);
 }
 
-.product-info-title,.user-evaluation-title {
+.product-info-title,.user-evaluation-title,.detail-content-title {
   padding: 20px;
   border-radius: 20px 20px 0 0;
   border-bottom: none;
@@ -92,16 +92,22 @@
   font-size: 14px;
 }
 
-.detail-content-title {
-  background-color: #eee;
-  border: 1px solid #dedede;
-  font-size: 14px;
-}
-
 .product-content {
   width: 70%;
+  border-radius: 20px 20px 0 0;
   margin: 30px auto;
   border: 1px solid #dedede;
+  box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, .5);
+}
+
+.detail-content {
+  padding: 20px 0;
+  border-top: 1px solid #dedede;
+}
+
+.detail-content-title>h2 {
+  font-size: 30px;
+  font-weight: bold;
 }
 
 <%# ここまでレビューの内容 %>

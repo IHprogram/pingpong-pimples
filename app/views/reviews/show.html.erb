@@ -79,9 +79,9 @@
     </div>
 
     <div class="product-content">
-      <h3 class="detail-content-title">
-        その他コメント
-      </h3>
+      <div class="detail-content-title">
+        <h2>その他コメント</h2>
+      </div>
       <div class="detail-content">
         <%= safe_join(@review.content.split("\n"),tag(:br)) %>
       </div>
