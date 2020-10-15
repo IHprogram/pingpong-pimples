@@ -50,18 +50,20 @@
           <% if @followings.length > 0 %>
             <% @followings.each do |follow| %>
               <li class="follow-list">
-                <%= link_to user_path(follow.follow.id) do %>
-                  <% if follow.follow.image.attached? %>
-                    <div class="follow-profile-image">
-                      <%= image_tag follow.follow.image %>
-                    </div>
-                  <% else %>
-                    <div class="follow-default-image">
-                      <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
-                    </div>
+                <div class="follow-users">
+                  <%= link_to user_path(follow.follow.id) do %>
+                    <% if follow.follow.image.attached? %>
+                      <div class="follow-profile-image">
+                        <%= image_tag follow.follow.image %>
+                      </div>
+                    <% else %>
+                      <div class="follow-default-image">
+                        <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
+                      </div>
+                    <% end %>
+                    <span class="header-nickname"><%= follow.follow.nickname %></span>
                   <% end %>
-                  <span class="header-nickname"><%= follow.follow.nickname %></span>
-                <% end %>
+                </div>
               </li>
             <% end %>
           <% end %>
