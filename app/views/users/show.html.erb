@@ -94,13 +94,13 @@
       <% if user_signed_in? && (current_user.id == @user.id) %>
         <%= link_to edit_user_registration_path(current_user.id), class:"profile-edit-btn" do %>
           <div class="profile-edit-btn-wrapper">
-              ユーザー情報編集
+            <i class="fas fa-user-edit link-btns"></i> ユーザー情報編集
           </div>
         <% end %>
       <% end %>
       <%= link_to "/users/#{@user.id}/likes", class:"like-link-btn" do %>
         <div class="like-link-btn-wrapper">
-          いいね一覧
+          <i class="far fa-thumbs-up link-btns"></i>いいね一覧
         </div>
       <% end %>
     </div>
