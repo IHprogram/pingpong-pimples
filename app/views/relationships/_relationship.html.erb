@@ -1,14 +1,16 @@
 <div class="follow-list" id="follower-<%= follower.id %>">
-  <%= link_to user_path(follower.user.id) do %>
-    <% if follower.user.image.attached? %>
-      <div class="follow-profile-image">
-        <%= image_tag follower.user.image %>
-      </div>
-    <% else %>
-      <div class="follow-default-image">
-        <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
-      </div>
+  <div class="follow-users">
+    <%= link_to user_path(follower.user.id) do %>
+      <% if follower.user.image.attached? %>
+        <div class="follow-profile-image">
+          <%= image_tag follower.user.image %>
+        </div>
+      <% else %>
+        <div class="follow-default-image">
+          <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
+        </div>
+      <% end %>
+      <span class="header-nickname"><%= follower.user.nickname %></span>
     <% end %>
-    <span class="header-nickname"><%= follower.user.nickname %></span>
-  <% end %>
+  </div>
 </div>

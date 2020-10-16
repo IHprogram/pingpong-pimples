@@ -50,18 +50,20 @@
           <% if @followings.length > 0 %>
             <% @followings.each do |follow| %>
               <li class="follow-list">
-                <%= link_to user_path(follow.follow.id) do %>
-                  <% if follow.follow.image.attached? %>
-                    <div class="follow-profile-image">
-                      <%= image_tag follow.follow.image %>
-                    </div>
-                  <% else %>
-                    <div class="follow-default-image">
-                      <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
-                    </div>
+                <div class="follow-users">
+                  <%= link_to user_path(follow.follow.id) do %>
+                    <% if follow.follow.image.attached? %>
+                      <div class="follow-profile-image">
+                        <%= image_tag follow.follow.image %>
+                      </div>
+                    <% else %>
+                      <div class="follow-default-image">
+                        <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
+                      </div>
+                    <% end %>
+                    <span class="header-nickname"><%= follow.follow.nickname %></span>
                   <% end %>
-                  <span class="header-nickname"><%= follow.follow.nickname %></span>
-                <% end %>
+                </div>
               </li>
             <% end %>
           <% end %>
@@ -92,13 +94,13 @@
       <% if user_signed_in? && (current_user.id == @user.id) %>
         <%= link_to edit_user_registration_path(current_user.id), class:"profile-edit-btn" do %>
           <div class="profile-edit-btn-wrapper">
-              ユーザー情報編集
+            <i class="fas fa-user-edit link-btns"></i> ユーザー情報編集
           </div>
         <% end %>
       <% end %>
       <%= link_to "/users/#{@user.id}/likes", class:"like-link-btn" do %>
         <div class="like-link-btn-wrapper">
-          いいね一覧
+          <i class="far fa-thumbs-up link-btns"></i>いいね一覧
         </div>
       <% end %>
     </div>

@@ -1,16 +1,34 @@
 <%= render "shared/header" %>
 
+
 <div class="main">
-
-  <%= render "shared/search_form" %>
-
-  <div class="right-wrapper">
-    <div class="review-lists-title">
-      <h2 class="new-review-title">最新レビュー一覧</h2>
+  <div class="title-contents">
+    <%= image_tag "top-image.jpg", class:"top-img" %>
+    <div class="service-title">
+      <h2>ラバー選び、もう悩まない。</h2>
     </div>
+    <div class="service-explain">
+      <p>Ping Pong Pimplesは、卓球のラバーについてレビューを投稿できるサービスです。<br>あらゆるレビューを参考にし、自分に合った最適なラバーを選びましょう。</p>
+      <% unless user_signed_in? %>
+        <div class="service-guest-login">
+          <p>ポートフォリオ用にゲストログイン機能を実装しております。</p>
+          <%= link_to "ゲストログイン（閲覧用）",users_guest_sign_in_path, method: :post, class: "guest-login" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="review-contents">
+    <%= render "shared/search_form" %>
 
-    <%= render "shared/reviews" %>
+    <div class="right-wrapper">
+      <div class="review-lists-title">
+        <h2 class="new-review-title">最新レビュー一覧</h2>
+      </div>
 
+      <%= render "shared/reviews" %>
+
+    </div>
   </div>
 </div>
 <%= render "shared/footer" %>
