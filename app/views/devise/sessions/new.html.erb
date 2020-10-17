@@ -3,10 +3,10 @@
 <div class="login-main">
   <div class="login-form-wrapper">
     <%= form_with model: @user,url: user_session_path, class: 'login-form', local: true do |f| %>
-      <div class='form-wrap'>
-        <div class='form-header'>
+      <div class='login-form-contents'>
+        <div class='login-form-header'>
           <h1 class='form-header-text'>
-            ログイン
+            - ログイン -
           </h1>
         </div>
 
@@ -24,8 +24,8 @@
           </div>
           <%= f.password_field :password, class:"input-default", id:"password", placeholder:"パスワードを入力してください" %>
         </div>
-        <div class='login-btn'>
-          <%= f.submit "ログイン" ,class:"login-button" %>
+        <div class='login-btn-wrapper'>
+          <%= f.submit "ログイン" ,class:"login-btn" %>
         </div>
       </div>
     <% end %>
