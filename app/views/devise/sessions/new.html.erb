@@ -28,6 +28,21 @@
         <div class='login-btn-wrapper'>
           <%= f.submit "ログイン" ,class:"login-btn" %>
         </div>
+        <%= link_to users_guest_sign_in_path, method: :post, id: "guest-login" do %>
+          <div id="guest-login-btn">
+            ゲストログイン（閲覧用）
+          </div>
+        <% end %>
+        <div class="user-recommend-signup">
+          <p>
+            未登録の方は
+            <span>
+              <%= link_to "こちら", new_user_registration_path %>
+            </span>
+            <br>
+            またはゲストログインをお試しください。
+          </p>
+        </div>
       </div>
     <% end %>
   </div>
