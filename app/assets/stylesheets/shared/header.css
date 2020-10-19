@@ -136,3 +136,40 @@ font-size: 30px;
   object-fit: cover;
   background-color: #ffffff;
 }
+
+@media screen and (max-width: 481px) {
+  .header-logo h1 {
+    font-size: 25px;
+  }
+
+  .open-menu {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .header-logo h1 {
+    font-size: 20px;
+  }
+
+  .menu-wrapper {
+    display: block;
+    height: 28px;
+    width: 28px;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    cursor: pointer;
+  }
+
+  .menu-wrapper>div {
+    height: 1px;
+    width: 100%;
+    background-color: #ffffff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .2s;
+  }
+}
