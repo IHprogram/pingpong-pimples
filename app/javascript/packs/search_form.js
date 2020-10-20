@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   //各項目名（ラバーの種類、メーカー、価格）をクリックすると、各項目の選択肢（ラジオボタン）を開閉できる
     searchLabel[i].addEventListener('click', () => {
-      searchSelectWrapper[i].classList.toggle('open-menu');
+      searchSelectWrapper[i].classList.toggle('open-button');
     });
   //各項目名（ラバーの種類、メーカー、価格）をクリックすると、各項目の選択肢（ラジオボタン）を開閉できる
   };
