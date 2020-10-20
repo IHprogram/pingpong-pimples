@@ -2,7 +2,6 @@
   width: 100%;
   background-image: url("<%= asset_path("back-img.jpg") %>");
   background-size: cover;
-  min-width: 768px;
   padding: 70px 0 50px;
 }
 
@@ -52,13 +51,19 @@
 .review-contents {
   display: flex;
   margin-top: 50px;
+  flex-direction: column;
 }
 
-.right-wrapper {
-  margin: 0 50px 0 25px;
+.main-top {
+  text-align: center;
+  margin: 0 auto 50px;
+  width: 90%;
+}
+
+.main-bottom {
+  margin: 0 auto;
   background-color: #ffffff;
-  min-width: 300px;
-  width: 100%;
+  width: 90%;
   height: 100%;
 }
 
@@ -128,58 +133,6 @@
   color: #ffffff;
   font-size: 12px;
   font-weight: bold;
-}
-
-/* ここからは検索フォーム */
-
-.left-wrapper {
-  text-align: center;
-  margin: 0 25px 0 50px;
-  width: 25vw;
-  height: 100%;
-}
-
-.search-content {
-  background-color: #FFFFFF;
-  width: 100%;
-  height: 70%;
-  min-width: 280px;
-  padding: 20px 0;
-}
-
-.search-title {
-  width: 100%;
-  font-size: 22px;
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
-.search-group {
-  width: 45%;
-  margin:0 auto 20px;
-  text-align: center;
-}
-
-.search-input-wrapper {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.search-input {
-  height: 50px;
-  width: 80%;
-  padding-left: 10px;
-}
-
-.search-select-wrapper {
-  width: 100%;
-  text-align: start;
-}
-
-.search-btn {
-  width: 50px;
-  height: 50px;
-  font-size: 30px;
 }
 
 .notice {
