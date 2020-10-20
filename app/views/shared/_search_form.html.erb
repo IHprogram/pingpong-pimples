@@ -17,7 +17,8 @@
           <div class="search-label">
             <%= form.label :type_id_eq, 'ラバーの種類' %>
           </div>
-          <div class="search-select-wrapper">
+          <div class="search-border"></div>
+          <div class="search-select-wrapper" id="type-select">
             <div class="search-select">
               <%= form.radio_button :type_id_eq, '' %>
               指定なし
@@ -53,7 +54,8 @@
           <div class="search-label">
             <%= form.label :manufacture_id_eq, 'メーカー' %>
           </div>
-          <div class="search-select-wrapper">
+          <div class="search-border"></div>
+          <div class="search-select-wrapper" id="manufacture-select">
             <div class="search-select">
               <%= form.radio_button :manufacture_id_eq, '' %>
               指定なし
@@ -147,7 +149,8 @@
           <div class="search-label">
             <%= form.label :price_lteq, '価格' %>
           </div>
-          <div class="search-select-wrapper">
+          <div class="search-border"></div>
+          <div class="search-select-wrapper" id="price-select">
             <div class="search-select">
               <%= form.radio_button :price_lteq, '' %>
               指定なし
