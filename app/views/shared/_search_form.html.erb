@@ -1,185 +1,189 @@
-  <div class="left-wrapper">
-    <div class="search-content">
-      <div class="search-title">
-        <h3>レビューの絞り込み検索</h3>
-      </div>
-      <div class="search-form">
-        <%= search_form_for @search, url: search_reviews_path, class: "search-form" do |form| %>
-          <div class="search-input-wrapper">
-            <%= form.search_field :name_cont, placeholder: "商品名を入力してください", class: "search-input" %>
-          </div>
-
-          <%# ラバーの種類 %>
-            <div class="search-group">
-              <%= form.label :type_id_eq, 'ラバーの種類' %>
-              <div class="search-select-wrapper">
-                <div class="search-select">
-                  <%= form.radio_button :type_id_eq, '' %>
-                  指定なし
-                </div>
-                <div class="search-select">
-                  <%= form.radio_button :type_id_eq, '2' %>
-                  裏ソフト
-                </div>
-                <div class="search-select">
-                  <%= form.radio_button :type_id_eq, '3' %>
-                  表ソフト
-                </div>
-                <div class="search-select">
-                  <%= form.radio_button :type_id_eq, '4' %>
-                  粒高
-                </div><div class="search-select">
-                  <%= form.radio_button :type_id_eq, '5' %>
-                  アンチ
-                </div><div class="search-select">
-                  <%= form.radio_button :type_id_eq, '6' %>
-                  一枚
-                </div>
-                <div class="search-select">
-                  <%= form.radio_button :type_id_eq, '7' %>
-                  ラージ用
-                </div>
-              </div>
-            </div>
-            
-          <%# /ラバーの種類 %>
-
-          <%# メーカー %>
-          <div class="search-group">
-            <%= form.label :manufacture_id_eq, 'メーカー' %>
-            <div class="search-select-wrapper">
-              <div class="search-select">
-                <%= form.radio_button :manufacture_id_eq, '' %>
-                指定なし
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :manufacture_id_eq, '2' %>
-                バタフライ
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :manufacture_id_eq, '3' %>
-                Nittaku
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :manufacture_id_eq, '4' %>
-                TSP
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :manufacture_id_eq, '5' %>
-                Yasaka
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :manufacture_id_eq, '6' %>
-                VICTAS
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :manufacture_id_eq, '7' %>
-                ミズノ
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :manufacture_id_eq, '8' %>
-                紅双喜
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :manufacture_id_eq, '9' %>
-                XIOM
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :manufacture_id_eq, '10' %>
-                STIGA
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :manufacture_id_eq, '11' %>
-                TIBHAR
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :manufacture_id_eq, '12' %>
-                DONIC
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :manufacture_id_eq, '13' %>
-                Joola
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :manufacture_id_eq, '14' %>
-                Andro
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :manufacture_id_eq, '15' %>
-                JUIC
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :manufacture_id_eq, '16' %>
-                アームストロング
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :manufacture_id_eq, '17' %>
-                銀河
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :manufacture_id_eq, '18' %>
-                ダーカー
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :manufacture_id_eq, '19' %>
-                Dr.ノイバウア
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :manufacture_id_eq, '20' %>
-                アバロックス
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :manufacture_id_eq, '21' %>
-                その他
-              </div>
-            </div>
-          </div>
-          <%# /メーカー %>
-
-          <%# 価格 %>
-          <div class="search-group">
-            <%= form.label :price_lteq, '価格' %>
-            <div class="search-select-wrapper">
-              <div class="search-select">
-                <%= form.radio_button :price_lteq, '' %>
-                指定なし
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :price_lteq, '3000' %>
-                3000円以下
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :price_lteq, '4000' %>
-                4000円以下
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :price_lteq, '5000' %>
-                5000円以下
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :price_lteq, '6000' %>
-                6000円以下
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :price_lteq, '7000' %>
-                7000円以下
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :price_lteq, '8000' %>
-                8000円以下
-              </div>
-              <div class="search-select">
-                <%= form.radio_button :price_gt, '8000' %>
-                8000円以上
-              </div>
-            </div>
-          </div>
-          <%# /価格 %>
-          
-          <%= button_tag type: "submit", class: "search-btn" do %>
-            <i class="fas fa-search"></i>
-          <% end %>
+<div class="search-content">
+  <div class="search-title">
+    <h3>レビュー検索</h3>
+  </div>
+  <div class="search-form">
+    <%= search_form_for @search, url: search_reviews_path, class: "search-form" do |form| %>
+      <div class="search-input-wrapper">
+        <%= form.search_field :name_cont, placeholder: "商品名を入力してください", class: "search-input" %>
+        <%= button_tag type: "submit", class: "search-btn" do %>
+          <i class="fas fa-search"></i>
         <% end %>
       </div>
-    </div>
+
+      <div class="search-group-wrapper">
+        <%# ラバーの種類 %>
+        <div class="search-group">
+          <div class="search-label">
+            <%= form.label :type_id_eq, 'ラバーの種類' %>
+          </div>
+          <div class="search-select-wrapper">
+            <div class="search-select">
+              <%= form.radio_button :type_id_eq, '' %>
+              指定なし
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :type_id_eq, '2' %>
+              裏ソフト
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :type_id_eq, '3' %>
+              表ソフト
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :type_id_eq, '4' %>
+              粒高
+            </div><div class="search-select">
+              <%= form.radio_button :type_id_eq, '5' %>
+              アンチ
+            </div><div class="search-select">
+              <%= form.radio_button :type_id_eq, '6' %>
+              一枚
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :type_id_eq, '7' %>
+              ラージ用
+            </div>
+          </div>
+        </div>
+        <%# /ラバーの種類 %>
+
+        <%# メーカー %>
+        <div class="search-group">
+          <div class="search-label">
+            <%= form.label :manufacture_id_eq, 'メーカー' %>
+          </div>
+          <div class="search-select-wrapper">
+            <div class="search-select">
+              <%= form.radio_button :manufacture_id_eq, '' %>
+              指定なし
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :manufacture_id_eq, '2' %>
+              バタフライ
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :manufacture_id_eq, '3' %>
+              Nittaku
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :manufacture_id_eq, '4' %>
+              TSP
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :manufacture_id_eq, '5' %>
+              Yasaka
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :manufacture_id_eq, '6' %>
+              VICTAS
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :manufacture_id_eq, '7' %>
+              ミズノ
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :manufacture_id_eq, '8' %>
+              紅双喜
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :manufacture_id_eq, '9' %>
+              XIOM
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :manufacture_id_eq, '10' %>
+              STIGA
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :manufacture_id_eq, '11' %>
+              TIBHAR
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :manufacture_id_eq, '12' %>
+              DONIC
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :manufacture_id_eq, '13' %>
+              Joola
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :manufacture_id_eq, '14' %>
+              Andro
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :manufacture_id_eq, '15' %>
+              JUIC
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :manufacture_id_eq, '16' %>
+              アームストロング
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :manufacture_id_eq, '17' %>
+              銀河
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :manufacture_id_eq, '18' %>
+              ダーカー
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :manufacture_id_eq, '19' %>
+              Dr.ノイバウア
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :manufacture_id_eq, '20' %>
+              アバロックス
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :manufacture_id_eq, '21' %>
+              その他
+            </div>
+          </div>
+        </div>
+        <%# /メーカー %>
+
+        <%# 価格 %>
+        <div class="search-group">
+          <div class="search-label">
+            <%= form.label :price_lteq, '価格' %>
+          </div>
+          <div class="search-select-wrapper">
+            <div class="search-select">
+              <%= form.radio_button :price_lteq, '' %>
+              指定なし
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :price_lteq, '3000' %>
+              3000円以下
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :price_lteq, '4000' %>
+              4000円以下
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :price_lteq, '5000' %>
+              5000円以下
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :price_lteq, '6000' %>
+              6000円以下
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :price_lteq, '7000' %>
+              7000円以下
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :price_lteq, '8000' %>
+              8000円以下
+            </div>
+            <div class="search-select">
+              <%= form.radio_button :price_gt, '8000' %>
+              8000円以上
+            </div>
+          </div>
+        </div>
+        <%# /価格 %>
+      </div>
+    <% end %>
   </div>
+</div>
