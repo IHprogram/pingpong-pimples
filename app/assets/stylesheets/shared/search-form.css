@@ -41,6 +41,16 @@
   padding: 15px 0;
   text-align: center;
   border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-border {
+  background-color: #c0c0c0;
+  width: 80%;
+  height: 1px;
+  margin: 0 auto;
 }
 
 .search-select-wrapper {
@@ -49,7 +59,6 @@
   text-align: start;
   margin: 0 auto;
   padding-top: 20px;
-  border-top: 1px solid #c0c0c0;
   overflow-y: hidden;
   transition: .2s;
 }
@@ -59,8 +68,16 @@
 }
 
 .search-select {
-  margin: 5px 0;
+  margin: 5px auto;
   font-size: 16px;
+}
+
+#type-select>.search-select {
+  width: 70%;
+}
+
+#price-select>.search-select {
+  width: 70%;
 }
 
 .search-btn {
