@@ -2,11 +2,13 @@
 
 <div class="result-main">
 
-  <%= render "shared/search_form" %>
+  <div class="main-top">
+    <%= render "shared/search_form" %>
+  </div>
 
-  <div class="right-wrapper">
+  <div class="main-bottom">
     <div class="result-title-wrapper">
-      <h1 class="result-title">検索結果</h1>
+      <h1 class="result-title">- 検索結果 -</h1>
     </div>
     <ul class='review-lists'>
       <% if @results.length != 0 %>
@@ -64,9 +66,11 @@
     </ul>
 
     <div class="top-page-back">
-      <div class="back-btn-wrap">
-        <%=link_to 'トップページにもどる', root_path, class: "back-button" %>
-      </div>
+      <%=link_to  root_path, class: "back-btn" do %>
+        <div class="back-btn-text">
+          トップページにもどる
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
