@@ -137,7 +137,7 @@ font-size: 30px;
   background-color: #ffffff;
 }
 
-@media screen and (max-width: 481px) {
+@media screen and (max-width: 480px) {
   .header-logo h1 {
     font-size: 25px;
   }

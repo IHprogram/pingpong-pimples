@@ -3,7 +3,7 @@
 <div class="main">
   <%= render 'layouts/notifications' %>
   <div class="title-contents">
-    <%= image_tag "top-image.jpg", class:"top-img" %>
+    <div class="top-img"></div>
     <div class="service-title">
       <h2>ラバー選び、もう悩まない。</h2>
     </div>
@@ -19,11 +19,13 @@
   </div>
   
   <div class="review-contents">
-    <%= render "shared/search_form" %>
+    <div class="main-top">
+      <%= render "shared/search_form" %>
+    </div>
 
-    <div class="right-wrapper">
+    <div class="main-bottom">
       <div class="review-lists-title">
-        <h2 class="new-review-title">最新レビュー一覧</h2>
+        <h2 class="new-review-title">- 最新レビュー一覧 -</h2>
       </div>
 
       <%= render "shared/reviews" %>
