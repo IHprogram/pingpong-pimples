@@ -68,16 +68,20 @@
 }
 
 .search-select {
-  margin: 5px auto;
+  margin: 20px auto;
   font-size: 16px;
 }
 
-#type-select>.search-select {
-  width: 70%;
+#type-select {
+  width: 35%;
 }
 
-#price-select>.search-select {
-  width: 70%;
+#manufacture-select {
+  width: 55%;
+}
+
+#price-select {
+  width: 43%;
 }
 
 .search-btn {
@@ -87,86 +91,3 @@
   margin-left: 10px;
 }
 
-@media screen and (max-width: 740px) {
-  #price-select>.search-select {
-    width: 90%;
-  }
-}
-
-@media screen and (max-width: 580px) {
-  .search-select-wrapper {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .search-label {
-    height: 62px;
-  }
-
-  .search-group-wrapper {
-    display: block;
-  }
-  
-  .search-group {
-    width: 80%;
-    margin: 10px auto;
-  }
-
-  .search-select {
-    margin: 5px auto;
-  }
-
-  #type-select {
-    width: 43%;
-  }
-  
-  #manufacture-select {
-    width: 50%;
-  }
-
-  #price-select {
-    width: 43%;
-  }
-}
-
-@media screen and (max-width: 420px) {
-  #type-select {
-    width: 50%;
-  }
-  
-  #manufacture-select {
-    width: 60%;
-  }
-
-  #price-select {
-    width: 50%;
-}
-
-@media screen and (max-width: 365px) {
-  #type-select {
-    width: 55%;
-  }
-  
-  #manufacture-select {
-    width: 60%;
-  }
-
-  #price-select {
-    width: 55%;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  #type-select {
-    width: 67%;
-  }
-  
-  #manufacture-select {
-    width: 77%;
-  }
-
-  #price-select {
-    width: 67%;
-  }
-}
