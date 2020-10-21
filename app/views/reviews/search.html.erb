@@ -66,9 +66,11 @@
     </ul>
 
     <div class="top-page-back">
-      <div class="back-btn-wrap">
-        <%=link_to 'トップページにもどる', root_path, class: "back-button" %>
-      </div>
+      <%=link_to  root_path, class: "back-btn" do %>
+        <div class="back-btn-text">
+          トップページにもどる
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
