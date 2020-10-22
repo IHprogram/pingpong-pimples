@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :exist_review?, only: [:show, :edit, :update, :destroy]
-  before_action :move_to_index, except: [:index, :show]
+  before_action :move_to_index, except: [:index, :show, :search]
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :search_review, only: [:index, :search]
 
