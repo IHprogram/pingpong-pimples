@@ -1,6 +1,26 @@
+#image-list>div {
+  text-align: center;
+}
+
 #image-list>div>img {
-  height: 300px;
-  width: 300px;
+  height: 400px;
+  width: 400px;
   object-fit: contain;
-  margin: 30px;
+  margin: 30px auto;
+}
+
+@media screen and (max-width: 959px) {
+    #image-list>div>img {
+    height: 250px;
+    width: 250px;
+    object-fit: contain;
+  }
+}
+
+@media screen and (max-width: 559px) {
+    #image-list>div>img {
+    height: 180px;
+    width: 180px;
+    object-fit: contain;
+  }
 }
