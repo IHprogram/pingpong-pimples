@@ -24,30 +24,33 @@
   top: 20px;
   left: 20px;
   color: #ffffff;
-  font-size: 5vw;
+  font-size: 50px;
   text-shadow: 1px 0 5px #000000;
+  word-wrap: normal;
 }
 
 .service-explain {
   position: absolute;
   bottom: 20px;
-  left: 20px;
+  left: 0px;
   color: #ffffff;
-  font-size: 2vw;
+  font-size: 20px;
   text-shadow: 1px 0 5px #000000;
   line-height: 1.5em;
+  margin: 0 15px;
 }
 
 .service-guest-login {
   margin-top: 15px;
   color: #ffffff;
-  font-size: 1.5vw;
+  font-size: 16px;
   text-shadow: 1px 0 5px #000000;
   line-height: 1.5em;
   display: flex;
+  word-wrap: normal;
 }
 
-.service-guest-login>a {
+.guest-login {
   margin-left: 10px;
   color: #00ffff;
   text-decoration: none;
@@ -162,6 +165,30 @@
 }
 
 @media screen and (max-width: 959px) {
+  .service-title>h2 {
+    font-size: 40px;
+  }
+
+  .service-explain {
+    font-size: 18px;
+  }
+
+  .service-guest-login {
+    font-size: 14px;
+  }
+
+  .service-explain {
+    font-size: 16px;
+    bottom: 40px;
+  }
+
+  .guest-login {
+    position: absolute;
+    left: 0px;
+    bottom: -30px;
+    margin: 0;
+  }
+
   .main-top {
     width: 500px;
   }
@@ -172,6 +199,10 @@
 }
 
 @media screen and (max-width: 559px) {
+  .service-title>h2 {
+    font-size: 30px;
+  }
+
   .main-top {
     width: 300px;
   }
