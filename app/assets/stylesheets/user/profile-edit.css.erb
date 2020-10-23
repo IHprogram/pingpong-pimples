@@ -4,16 +4,21 @@
   background-size: cover;
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 660px;
+  min-height: calc(100vh - 50px);
 }
 
 .profile-edit-form-wrapper {
-  width: 60%;
-  margin: auto;
+  width: 700px;
+  margin: 0 auto;
 }
 
-.form-wrap {
+.edit-form-header-text {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.form-wrapper {
+  height: 100%;
   margin: 0 auto;
   background-color: #ffffff;
   padding: 40px;
@@ -23,7 +28,68 @@
   margin-top: 10px;
 }
 
+.edit-input-default {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #c0c0c0;
+  background: #fff;
+  font-size: 16px;
+  resize: none;
+}
+
+.edit-form-text {
+  font-size: 20px;
+  font-weight: bold;
+}
+
 #self_introduction {
   margin-top: 10px;
   resize: none;
+}
+
+.profile-edit-btn-wrapper {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.profile-edit-btn {
+  padding: 15px 125px;
+  border: none;
+  border-radius: 30px;
+  color: #ffffff;
+  background-color: #000000;
+}
+
+@media screen and (max-width: 959px) {
+  .profile-edit-form-wrapper {
+    width: 450px;
+  }
+
+  .edit-form-text {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 559px) {
+  .profile-edit-form-wrapper {
+    width: 313px;
+  }
+
+  .edit-form-header-text {
+    font-size: 20px;
+  }
+
+  .edit-form-text {
+    font-size: 12px;
+  }
+
+  .profile-edit-btn {
+    padding: 15px 65px;
+  }
+
+  .input-default {
+    font-size: 12px;
+  }
 }
