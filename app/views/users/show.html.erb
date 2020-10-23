@@ -92,8 +92,8 @@
 
     <div class="link-buttons">
       <% if user_signed_in? && (current_user.id == @user.id) %>
-        <%= link_to edit_user_registration_path(current_user.id), class:"profile-edit-btn" do %>
-          <div class="profile-edit-btn-wrapper">
+        <%= link_to edit_user_registration_path(current_user.id), class:"profile-edit-link" do %>
+          <div class="profile-edit-link-wrapper">
             <i class="fas fa-user-edit link-btns"></i> ユーザー情報編集
           </div>
         <% end %>
