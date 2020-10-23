@@ -3,10 +3,10 @@
 <div class="profile-edit-main">
   <div class="profile-edit-form-wrapper">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class:"profile-edit-form") do |f| %>
-      <div class="form-wrap">
+      <div class="form-wrapper">
         <div class="form-header">
             <h1 class="form-header-text">
-              ユーザー情報編集
+              - ユーザー情報編集 -
             </h1>
         </div>
 
@@ -42,8 +42,8 @@
           <div id="image-list"></div>
         </div>
 
-        <div class='register-btn'>
-          <%= f.submit "編集する" ,class:"register-button" %>
+        <div class='profile-edit-btn-wrapper'>
+          <%= f.submit "編集する" ,class:"profile-edit-btn" %>
         </div>
       </div>
     <% end %>
