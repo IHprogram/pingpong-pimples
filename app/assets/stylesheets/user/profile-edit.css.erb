@@ -18,7 +18,7 @@
 }
 
 .form-wrapper {
-  height: 630px;
+  height: 100%;
   margin: 0 auto;
   background-color: #ffffff;
   padding: 40px;
@@ -60,4 +60,36 @@
   border-radius: 30px;
   color: #ffffff;
   background-color: #000000;
+}
+
+@media screen and (max-width: 959px) {
+  .profile-edit-form-wrapper {
+    width: 450px;
+  }
+
+  .edit-form-text {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 559px) {
+  .profile-edit-form-wrapper {
+    width: 313px;
+  }
+
+  .edit-form-header-text {
+    font-size: 20px;
+  }
+
+  .edit-form-text {
+    font-size: 12px;
+  }
+
+  .profile-edit-btn {
+    padding: 15px 65px;
+  }
+
+  .input-default {
+    font-size: 12px;
+  }
 }
