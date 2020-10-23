@@ -5,7 +5,7 @@
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class:"profile-edit-form") do |f| %>
       <div class="form-wrapper">
         <div class="form-header">
-            <h1 class="form-header-text">
+            <h1 class="edit-form-header-text">
               - ユーザー情報編集 -
             </h1>
         </div>
@@ -14,21 +14,21 @@
 
         <div class="form-group">
           <div class="form-text-wrap">
-            <label class="form-text">ニックネーム(10文字以内)</label>
+            <label class="edit-form-text">ニックネーム(10文字以内)</label>
           </div>
-          <%= f.text_area :nickname, class: "input-default", id: "nickname", placeholder: "ニックネーム【10文字以内】", maxlength: "10",  autofocus: true %>
+          <%= f.text_area :nickname, class: "edit-input-default", id: "nickname", placeholder: "ニックネーム【10文字以内】", rows: "1", maxlength: "10",  autofocus: true %>
         </div>
 
         <div class="form-group">
           <div class="form-text-wrap">
-            <label class="form-text">メールアドレス</label>
+            <label class="edit-form-text">メールアドレス</label>
           </div>
-          <%= f.email_field :email, class: "input-default", id: "email", placeholder: "メールアドレス", autofocus: true %>
+          <%= f.email_field :email, class: "edit-input-default", id: "email", placeholder: "メールアドレス", autofocus: true %>
         </div>
 
         <div class="form-group">
           <div class="form-text-wrap">
-            <label class="form-text">プロフィール画像</label>
+            <label class="edit-form-text">プロフィール画像</label>
           </div>
           <%= f.file_field :image, autofocus: true, id:"preview-image" %>
           <div id="image-list"></div>
@@ -36,9 +36,9 @@
 
         <div class="form-group">
           <div class="form-text-wrap">
-            <label class="form-text">自己紹介（200字以内）</label>
+            <label class="edit-form-text">自己紹介（200字以内）</label>
           </div>
-          <%= f.text_area :self_introduction, id: "self_introduction", placeholder: "自己紹介文を入力してください（200字以内）", rows: "5", maxlength: "200", autofocus: true %>
+          <%= f.text_area :self_introduction, id: "self_introduction", placeholder: "自己紹介文を入力してください（200字以内）", rows: "3", maxlength: "200", autofocus: true %>
           <div id="image-list"></div>
         </div>
 
