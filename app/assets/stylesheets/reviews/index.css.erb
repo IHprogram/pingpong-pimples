@@ -24,30 +24,33 @@
   top: 20px;
   left: 20px;
   color: #ffffff;
-  font-size: 5vw;
+  font-size: 50px;
   text-shadow: 1px 0 5px #000000;
+  word-wrap: normal;
 }
 
 .service-explain {
   position: absolute;
   bottom: 20px;
-  left: 20px;
+  left: 0px;
   color: #ffffff;
-  font-size: 2vw;
+  font-size: 20px;
   text-shadow: 1px 0 5px #000000;
   line-height: 1.5em;
+  margin: 0 15px;
 }
 
 .service-guest-login {
   margin-top: 15px;
   color: #ffffff;
-  font-size: 1.5vw;
+  font-size: 16px;
   text-shadow: 1px 0 5px #000000;
   line-height: 1.5em;
   display: flex;
+  word-wrap: normal;
 }
 
-.service-guest-login>a {
+.guest-login {
   margin-left: 10px;
   color: #00ffff;
   text-decoration: none;
@@ -62,14 +65,14 @@
 .main-top {
   text-align: center;
   margin: 0 auto 50px;
-  width: 960px;
+  width: 700px;
   border: 2px solid #808080;
 }
 
 .main-bottom {
   margin: 0 auto;
   background-color: #ffffff;
-  width: 960px;
+  width: 700px;
   height: 100%;
   padding: 40px 20px;
   background-color: #f5f5f5;
@@ -96,8 +99,8 @@
 
 .list {
   list-style: none;
-  width: 280px;
-  height: 280px;
+  width: 200px;
+  height: 200px;
   margin-bottom: 30px;
 }
 
@@ -116,8 +119,8 @@
 
 .review-img-content>img {
   object-fit: cover;
-  width: 280px;
-  height: 280px;
+  width: 200px;
+  height: 200px;
 }
 
 .top-review-detail {
@@ -161,35 +164,45 @@
   padding: 20px;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 959px) {
+  .service-title>h2 {
+    font-size: 40px;
+  }
+
+  .service-explain {
+    font-size: 18px;
+  }
+
+  .service-guest-login {
+    font-size: 14px;
+  }
+
+  .service-explain {
+    font-size: 16px;
+    bottom: 40px;
+  }
+
+  .guest-login {
+    position: absolute;
+    left: 0px;
+    bottom: -30px;
+    margin: 0;
+  }
+
   .main-top {
-    width: 650px;
+    width: 500px;
   }
 
   .main-bottom {
-    width: 650px;
+    width: 500px;
   }
 }
 
-@media screen and (max-width: 700px) {
-  .main-top {
-    width: 400px;
+@media screen and (max-width: 559px) {
+  .service-title>h2 {
+    font-size: 30px;
   }
 
-  .main-bottom {
-    width: 400px;
-  }
-
-  .review-lists {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-}
-
-@media screen and (max-width: 420px) {
   .main-top {
     width: 300px;
   }
@@ -204,44 +217,5 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-  }
-
-  .list {
-    width: 250px;
-    height: 250px;
-  }
-
-  .review-img-content>img {
-    width: 250px;
-    height: 250px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .main-top {
-    width: 250px;
-  }
-
-  .main-bottom {
-    width: 250px;
-  }
-
-  .list {
-    width: 200px;
-    height: 200px;
-  }
-
-  .review-img-content>img {
-    width: 200px;
-    height: 200px;
-  }
-
-  .top-review-detail {
-    padding: 5px 10px;
-  }
-
-  .top-review-name, .top-review-value {
-    color: #ffffff;
-    font-size: 10px;
   }
 }

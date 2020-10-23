@@ -73,15 +73,15 @@
 }
 
 #type-select {
-  width: 35%;
+  width: 45%;
 }
 
 #manufacture-select {
-  width: 55%;
+  width: 75%;
 }
 
 #price-select {
-  width: 43%;
+  width: 57%;
 }
 
 .search-btn {
@@ -91,67 +91,43 @@
   margin-left: 10px;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 959px) {
+  .search-select {
+    font-size: 14px;
+  }
+
   #type-select {
-    width: 50%;
+    width: 55%;
   }
   
   #manufacture-select {
-    width: 80%;
+    width: 92%;
   }
   
   #price-select {
-    width: 65%;
+    width: 72%;
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 559px) {
   .search-group-wrapper {
     display: block;
   }
-  
+
   .search-group {
     width: 80%;
     margin: 10px auto;
   }
 
   #type-select {
-    width: 30%;
+    width: 35%;
   }
   
   #manufacture-select {
-    width: 50%;
+    width: 59%;
   }
 
   #price-select {
-    width: 37%;
-  }
-}
-
-@media screen and (max-width: 420px) {
-  #type-select {
-    width: 39%;
-  }
-  
-  #manufacture-select {
-    width: 65%;
-  }
-
-  #price-select {
-    width: 50%;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  #type-select {
-    width: 47%;
-  }
-  
-  #manufacture-select {
-    width: 80%;
-  }
-
-  #price-select {
-    width: 60%;
+    width: 45%;
   }
 }

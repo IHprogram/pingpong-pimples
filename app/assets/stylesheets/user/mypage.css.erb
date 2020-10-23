@@ -10,7 +10,7 @@
 
 .mypage-content {
   background-color: #ffffff;
-  width: 70%;
+  width: 700px;
   margin: 0 auto;
   border: 1px solid #000000;
 }
@@ -107,12 +107,13 @@
 }
 
 .review-lists-wrapper {
-  padding: 30px 0;
+  padding: 40px 30px;
 }
 
 .review-lists-title-wrapper {
   width: 100%;
   text-align: center;
+  padding-bottom: 20px;
   margin-bottom: 30px;
 }
 
@@ -247,4 +248,25 @@
 
 .link-btns {
   margin-right: 10px;
+}
+
+@media screen and (max-width: 959px) {
+  .mypage-content {
+    width: 500px;
+  }
+}
+
+@media screen and (max-width: 559px) {
+  .mypage-content {
+    width: 300px;
+  }
+
+  .follow-and-follower {
+    width: 100%;
+  }
+
+  .followings-number-wrapper,.followers-number-wrapper {
+    width: 100px;
+    height: 100px;
+  }
 }
