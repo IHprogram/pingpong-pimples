@@ -26,6 +26,18 @@ ja:
         unconfirmed_email: 未確認メールアドレス
         unlock_token: ロック解除用トークン
         updated_at: 更新日
+      review:
+        image: 画像
+        name: 商品名
+        manufacture_id: メーカー
+        type_id: ラバーの種類
+        spin_id: スピン
+        speed_id: スピード
+        control_id: コントロール
+        hardness_id: 打球感
+        evaluation_id: 総合評価
+        price: 価格
+        content: その他コメント
     models:
       user: ユーザ
   devise:
