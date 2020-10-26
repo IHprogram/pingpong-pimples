@@ -12,7 +12,7 @@
       <% unless user_signed_in? %>
         <div class="service-guest-login">
           <p>ポートフォリオ用にゲストログイン機能を実装しております。</p>
-          <%= link_to "ゲストログイン（閲覧用）",users_guest_sign_in_path, method: :post, class: "guest-login" %>
+          <%= link_to "ゲストログイン（閲覧用）",users_guest_sign_in_path, method: :post, class: "guest-login-btn" %>
         </div>
       <% end %>
     </div>
