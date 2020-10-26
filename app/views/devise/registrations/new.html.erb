@@ -4,44 +4,46 @@
   <div class="login-image-wrapper"></div>
   <div class="registration-form-wrapper">
     <%= form_with model: @user, url: user_registration_path, class: "registration-form", local: true do |f| %>
-      <div class="form-wrap">
-        <div class="form-header">
-            <h1 class="form-header-text">
-              - 会員情報入力 -
-            </h1>
-        </div>
-
-        <%= render 'shared/error_messages', model: f.object %>
-
-        <div class="form-group">
-          <div class="form-text-wrap">
-            <label class="form-text">ニックネーム<br>(10文字以内)</label>
+      <div class="registration-form-contents">
+        <div class="form-wrap">
+          <div class="form-header">
+              <h1 class="form-header-text">
+                - 会員情報入力 -
+              </h1>
           </div>
-          <%= f.text_area :nickname, class: "input-default", id: "nickname", placeholder: "ニックネーム", maxlength: "10" %>
-        </div>
 
-        <div class="form-group">
-          <div class="form-text-wrap">
-            <label class="form-text">メールアドレス</label>
-          </div>
-          <%= f.email_field :email, class: "input-default", id: "email", placeholder: "メールアドレス", autofocus: true %>
-        </div>
+          <%= render 'shared/error_messages', model: f.object %>
 
-        <div class="form-group">
-          <div class='form-text-wrap'>
-            <label class="form-text">パスワード</label>
+          <div class="form-group">
+            <div class="form-text-wrap">
+              <label class="form-text">ニックネーム(10文字以内)</label>
+            </div>
+            <%= f.text_area :nickname, class: "input-default", id: "nickname", placeholder: "ニックネーム", maxlength: "10" %>
           </div>
-          <%= f.password_field :password, class:"input-default", id: "password", placeholder: "パスワード" %>
-          <p class='info-text'>※英字と数字の両方を含めた6文字以上のパスワードを設定してください</p>
-        </div>
-        <div class="form-group">
-          <div class='form-text-wrap'>
-            <label class="form-text">パスワード(再入力)</label>
+
+          <div class="form-group">
+            <div class="form-text-wrap">
+              <label class="form-text">メールアドレス</label>
+            </div>
+            <%= f.email_field :email, class: "input-default", id: "email", placeholder: "メールアドレス", autofocus: true %>
           </div>
-          <%= f.password_field :password_confirmation, class:"input-default", id:"password-confirmation", placeholder:"パスワード(再入力)" %>
-        </div>
-        <div class='register-btn-wrapper'>
-            <%= f.submit "会員登録" ,class:"register-btn" %>
+
+          <div class="form-group">
+            <div class='form-text-wrap'>
+              <label class="form-text">パスワード</label>
+            </div>
+            <%= f.password_field :password, class:"input-default", id: "password", placeholder: "パスワード" %>
+            <p class='info-text'>※英字と数字の両方を含めた6文字以上のパスワードを設定してください</p>
+          </div>
+          <div class="form-group">
+            <div class='form-text-wrap'>
+              <label class="form-text">パスワード(再入力)</label>
+            </div>
+            <%= f.password_field :password_confirmation, class:"input-default", id:"password-confirmation", placeholder:"パスワード(再入力)" %>
+          </div>
+          <div class='register-btn-wrapper'>
+              <%= f.submit "会員登録" ,class:"register-btn" %>
+          </div>
         </div>
       </div>
     <% end %>
