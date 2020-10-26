@@ -1,11 +1,12 @@
-.error-alert {
+.error-alert,.login-flash-message {
   display: flex;
   justify-content: center;
   margin: 25px 0;
 }
 
-.error-message {
+.error-message,.login-notice,.login-alert {
   font-size: 20px;
   list-style: none;
-  color: rgb(173, 9, 9);
+  color: #dc143c;
+  margin: 10px 0;
 }
