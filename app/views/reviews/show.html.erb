@@ -2,22 +2,25 @@
 
 <div class="review-show">
   <div class="review-show-wrapper">
-    <div class="show-user-profile">
-      <%= link_to user_path(@review.user.id), class: "user-nickname" do %>
-        <% if @review.user.image.attached? %>
-          <div class="show-user-image">
-            <%= image_tag @review.user.image %>
+    <div class="show-user-profile-wrapper">
+      <%= link_to user_path(@review.user.id), class: "user-profile-link" do %>
+        <div class="show-user-profile">
+          <% if @review.user.image.attached? %>
+            <div class="show-user-image">
+              <%= image_tag @review.user.image %>
+            </div>
+          <% else %>
+            <div class="show-default-image">
+              <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
+            </div>
+          <% end %>
+          <div class="show-user-nickname">
+            <%= @review.user.nickname %>
           </div>
-        <% else %>
-          <div class="show-default-image">
-            <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
-          </div>
-        <% end %>
-        <div class="show-user-nickname">
-          <%= @review.user.nickname %>
         </div>
       <% end %>
     </div>
+    
     <div class="review-show-image">
         <%= image_tag @review.image, class:"show-img" %>
     </div>
@@ -29,7 +32,7 @@
       <table class="detail-table">
         <tbody>
           <tr>
-            <th class="detail-product">レビューした<br>商品名</th>
+            <th class="detail-product">商品名</th>
             <td class="detail-value"><%= @review.name %></td>
           </tr>
           <tr>
@@ -42,10 +45,10 @@
           </tr>
           <tr>
             <th class="detail-product">打球感</th>
-            <td class="detail-value"><%= @review.hardness.name %><span>度</span></td>
+            <td class="detail-value"><%= @review.hardness.name %></td>
           </tr>
           <tr>
-            <th class="detail-product">商品の価格</th>
+            <th class="detail-product">価格</th>
             <td class="detail-value"><%= @review.price %><span>円</span></td>
           </tr>
         </tbody>
