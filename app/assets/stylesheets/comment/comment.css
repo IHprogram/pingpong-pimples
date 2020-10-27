@@ -18,7 +18,7 @@
 .comment-btn-wrapper {
   width: 100%;
   text-align: end;
-  margin: 10px 0;
+  margin: 10px 0 30px;
 }
 
 .comment-btn {
@@ -114,5 +114,18 @@
   .comment-btn {
     font-size: 14px;
     padding: 10px 20px;
+  }
+
+  .comment-text {
+    font-size: 12px;
+  }
+
+  .comment-user>a {
+    font-size: 14px;
+  }
+
+  .comment-user-image>img,.comment-default-image>img {
+    width: 40px;
+    height: 40px;
   }
 }
