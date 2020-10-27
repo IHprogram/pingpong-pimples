@@ -1,5 +1,5 @@
 .like-btn-content {
-  width: 70%;
+  width: 95%;
   margin: 0 auto;
   display: flex;
   justify-content: flex-end;
@@ -8,6 +8,7 @@
 .like-btn {
   text-decoration: none;
   color: #000000;
+  font-size: 16px;
 }
 
 .like-click {
@@ -16,4 +17,14 @@
 
 .like-count {
   margin-left: 10px;
+}
+
+@media screen and (max-width: 959px) {
+  .like-btn-content {
+    width: 100%;
+  }
+
+  .like-btn {
+    font-size: 14px;
+  }
 }
