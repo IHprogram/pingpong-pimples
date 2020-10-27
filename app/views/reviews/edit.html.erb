@@ -2,7 +2,7 @@
 
 <div class="review-main">
   <div class="review-wrapper">
-    <h2 class="review-title">レビュー内容の編集</h2>
+    <h2 class="review-title">- レビュー内容の編集 -</h2>
     <%= form_with model: @review, local: true do |f| %>
 
       <%= render 'shared/error_messages', model: f.object %>
@@ -10,13 +10,10 @@
       <%# 商品画像 %>
       <div class="img-upload">
         <div class="weight-bold-text">
-          商品画像
+          商品画像（必須）
         </div>
         <div class="click-upload">
-          <p>
-            クリックしてファイルをアップロード
-          </p>
-          <%= f.file_field :image, id:"review-image" %>
+          <%= f.file_field :image, id:"preview-image" %>
         </div>
         <div id="image-list"></div>
       </div>
@@ -83,31 +80,32 @@
         </div>
         <div class="detail-group">
           <div class="weight-bold-text">
-            その他特筆すべきこと（必須）
+            その他コメント（必須）
           </div>
-          <%= f.text_area :content, class:"product-text", id:"product-info", placeholder:"その他特筆すべきこと（必須 1,000文字まで)" ,rows:"7" ,maxlength:"1000" %>
+          <%= f.text_area :content, class:"product-text", id:"product-info", placeholder:"その他コメント（必須 1,000文字まで)" ,rows:"7" ,maxlength:"1000" %>
         </div>
       </div>
       <%# /商品のレビュー %>
 
       <div class="video-upload">
         <div class="weight-bold-text">
-          動画（動画はアップロードしなくても投稿できます）
+          動画（任意）
         </div>
         <div class="click-upload">
-          <p>
-            クリックして動画をアップロード
-          </p>
           <%= f.file_field :video, id:"review-video" %>
         </div>
       </div>
 
       <div class="review-btn-contents">
-        <div class="review-btn-wrap">
-          <%= f.submit "レビューを編集する" ,class: "review-button" %>
+        <div class="review-btn-wrapper">
+          <%= f.submit "レビューを編集する" ,class: "review-send-btn" %>
         </div>
-        <div class="back-btn-wrap">
-          <%=link_to 'もどる', review_path(@review.id), class: "back-button" %>
+        <div class="new-back-btn-wrapper">
+          <%=link_to  root_path, class: "new-back-btn" do %>
+            <div class="back-btn-text">
+              トップページにもどる
+            </div>
+          <% end %>
         </div>
       </div>
     <% end %>
