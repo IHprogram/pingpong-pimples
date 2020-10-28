@@ -17,7 +17,7 @@ class Review < ApplicationRecord
 
   HALF_WIDTH_NUMBER_REGEX = /\A[0-9]+\z/.freeze
 
-  select = "は「--」以外の項目を選択してください"
+  select = 'は「--」以外の項目を選択してください'
 
   with_options presence: true do
     validates :image

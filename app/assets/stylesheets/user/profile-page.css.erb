@@ -13,6 +13,7 @@
   width: 700px;
   margin: 0 auto;
   border: 1px solid #000000;
+  border-radius: 20px 20px 0 0;
 }
 
 .profile-header {
@@ -75,12 +76,13 @@
   height: 100%;
   width: 100%;
   background-color: #000000;
-  padding: 30px;
+  padding: 30px 15px;
   position: relative;
+  border-radius: 20px 20px 0 0;
 }
 
 .image-and-name {
-  width: 150px;
+  width: 100%;
   margin-bottom: 15px;
 }
 
@@ -279,6 +281,10 @@
     padding: 30px 15px;
   }
 
+  .image-and-name {
+    width: 100%;
+  }
+
   .profile-image>img {
     height: 90px;
     width: 90px;
@@ -316,10 +322,6 @@
     position: absolute;
     top: 183px;
     right: 15px;
-  }
-
-  .image-and-name {
-    width: 100px;
   }
 
   .follow-btn,.unfollow-btn {
