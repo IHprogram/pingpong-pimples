@@ -3,34 +3,25 @@
 <div class="mypage-main">
   <div class="mypage-content">
     <div class="profile-wrapper">
-      <div class="image-and-name">
-        <% if @user.image.attached? %>
-          <div class="profile-image">
-            <%= image_tag @user.image %>
+      <div class="profile-header">
+        <div class="image-and-name">
+          <% if @user.image.attached? %>
+            <div class="profile-image">
+              <%= image_tag @user.image %>
+            </div>
+          <% else %>
+            <div class="default-image">
+              <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
+            </div>
+          <% end %>
+          <div class="username-wrapper">
+            <h2 class="user-name"><%= @nickname %></h2>
           </div>
-        <% else %>
-          <div class="default-image">
-            <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
-          </div>
-        <% end %>
-        <div class="username-wrapper">
-          <h2 class="user-name"><%= @nickname %></h2>
         </div>
       </div>
       <div class="follow-btn-wrapper">
         <%= render partial:"relationships/follow_button", locals: {user: @user} %>
       </div>
-      
-      <%# 自己紹介文 %>
-      <% if @user.self_introduction %>
-        <div class="self-introduction-wrapper">
-          <p class="self-introduction">
-            <%= safe_join(@user.self_introduction.split("\n"),tag(:br)) %>
-          </p>
-        </div>
-      <% end %>
-      <%# 自己紹介文 %>
-
       <div class="follow-and-follower">
         <div class="followings-number-wrapper" id="followings-number">
           <span class="follow-number"><%= @followings.length %></span>
@@ -41,6 +32,15 @@
           <p>フォロワー</p>
         </div>
       </div>
+      <%# 自己紹介文 %>
+        <% if @user.self_introduction %>
+          <div class="self-introduction-wrapper">
+            <p class="self-introduction">
+              <%= @user.self_introduction %>
+            </p>
+          </div>
+        <% end %>
+      <%# 自己紹介文 %>
     </div>
 
     <div class="followings-wrapper" id="followings-wrapper">
