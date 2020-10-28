@@ -1,9 +1,10 @@
 <%= render "shared/header" %>
 
 <div class="likes-main">
+  <div class="like-image-wrapper"></div>
   <div class="likes-content">
     <div class="likes-title-wrapper">
-      <h1 class="likes-title">いいねしたレビュー一覧</h1>
+      <h1 class="likes-title">- いいね一覧 -</h1>
     </div>
     <ul class='review-lists'>
       <% if @likes.length == 0 %>
