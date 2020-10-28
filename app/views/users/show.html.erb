@@ -33,7 +33,7 @@
         </div>
       </div>
       <%# 自己紹介文 %>
-        <% if @user.self_introduction %>
+        <% if @user.self_introduction.present? %>
           <div class="self-introduction-wrapper">
             <p class="self-introduction">
               <%= @user.self_introduction %>
