@@ -15,6 +15,12 @@
   border: 1px solid #000000;
 }
 
+.profile-header {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
 <%# ユーザー名 %>
 .username-wrapper {
   text-align: center;
@@ -69,12 +75,13 @@
   height: 100%;
   width: 100%;
   background-color: #000000;
-  padding: 50px 30px 30px;
+  padding: 30px;
   position: relative;
 }
 
 .image-and-name {
-  margin-bottom: 30px;
+  width: 150px;
+  margin-bottom: 15px;
 }
 
 .profile-image {
@@ -84,8 +91,8 @@
 .profile-image>img {
   border-radius: 50%;
   object-fit: cover;
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
 }
 
 .default-image {
@@ -100,10 +107,10 @@
 }
 
 .self-introduction-wrapper {
-  max-width: 50%;
+  max-width: 90%;
   color: #ffffff;
   background-color: #000000;
-  margin: 0 auto;
+  margin: 30px auto 0;
 }
 
 .review-lists-wrapper {
@@ -125,8 +132,9 @@
 <%# フォローボタン %>
 .follow-btn-wrapper {
   position: absolute;
-  bottom: 45px;
-  right: 40px;
+  top: 30px;
+  right: 30px;
+  height: 45px;
 }
 
 .follow-btn {
@@ -152,11 +160,11 @@
 
 .follow-and-follower {
   color:#ffffff;
-  width: 50%;
+  width: 40%;
   height: 90px;
   display: flex;
   justify-content: space-around;
-  margin: 50px auto 0;
+  margin: 0 auto;
 }
 
 .followings-number-wrapper,.followers-number-wrapper {
@@ -254,6 +262,12 @@
   .mypage-content {
     width: 500px;
   }
+
+  .follow-btn-wrapper {
+    position: absolute;
+    top: 30px;
+    right: 15px;
+  }
 }
 
 @media screen and (max-width: 559px) {
@@ -261,12 +275,58 @@
     width: 300px;
   }
 
+  .profile-wrapper {
+    padding: 30px 15px;
+  }
+
+  .profile-image>img {
+    height: 90px;
+    width: 90px;
+  }
+
+  .username-wrapper {
+    margin-top: 15px;
+  }
+
+  .user-name {
+    font-size: 20px;
+  }
+
   .follow-and-follower {
-    width: 100%;
+    width: 53%;
+    height: 60px;
+    margin: 0 0 0 20px;
+  }
+
+  .follow-number {
+    font-size: 20px;
   }
 
   .followings-number-wrapper,.followers-number-wrapper {
+    width: 70px;
+    height: 70px;
+    font-size: 12px;
+  }
+
+  .followings-number-wrapper {
+    margin-right: 12px;
+  }
+
+  .follow-btn-wrapper {
+    position: absolute;
+    top: 183px;
+    right: 15px;
+  }
+
+  .image-and-name {
     width: 100px;
-    height: 100px;
+  }
+
+  .follow-btn,.unfollow-btn {
+    padding: 12px;
+  }
+
+  .self-introduction {
+    font-size: 12px;
   }
 }
