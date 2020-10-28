@@ -1,17 +1,25 @@
 .likes-main {
-  padding: 120px 0 50px;
+  padding: 70px 0 50px;
   background-image: url("<%= asset_path("back-img.jpg") %>");
   background-size: cover;
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 660px;
+  flex-direction: column;
+}
+
+.like-image-wrapper {
+  width: 100%;
+  max-width: 100%;
+  height: 300px;
+  background-image: url("<%= asset_path("like-page.jpg") %>");
+  background-size: cover;
+  background-position: 25% 75%;
 }
 
 .likes-content {
   background-color: #ffffff;
-  width: 70%;
-  margin: 0 auto;
+  width: 700px;
+  margin: 50px auto 0;
   padding: 30px;
   border: 1px solid #000000;
   border-radius: 10px;
@@ -25,4 +33,16 @@
 .likes-title {
   font-size: 30px;
   font-weight: bold;
+}
+
+@media screen and (max-width: 959px) {
+  .likes-content {
+    width: 500px;
+  }
+}
+
+@media screen and (max-width: 559px) {
+  .likes-content {
+    width: 300px;
+  }
 }
