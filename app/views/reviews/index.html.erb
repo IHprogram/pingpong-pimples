@@ -27,9 +27,9 @@
       <div class="review-lists-title">
         <h2 class="new-review-title">- 最新レビュー -</h2>
       </div>
-
-      <%= render "shared/reviews" %>
-      <%= paginate @reviews %>
+      <div id="pagination">
+        <%= render partial: 'index_pagination' %>
+      </div>
     </div>
   </div>
 </div>
