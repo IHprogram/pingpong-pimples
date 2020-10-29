@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
   before_action :search_review, only: [:index, :search]
 
   def index
-    @reviews = Review.all.order('created_at DESC')
+    @reviews = Review.all.order('created_at DESC').page(params[:page]).per(6)
     set_review_column
   end
 
