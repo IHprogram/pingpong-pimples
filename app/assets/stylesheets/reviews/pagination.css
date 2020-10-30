@@ -1,0 +1,22 @@
+#pagination>nav {
+  margin-top: 20px;
+}
+
+#pagination>nav>span>a {
+  text-decoration: none;
+  color :#1e90ff;
+}
+
+.last,.first,.next,.prev,.page {
+  padding: 0 5px;
+  text-align: center;
+}
+
+.first,.next,.page {
+  border-right: 1px solid #696969;
+  font-size: 16px;
+}
+
+.current {
+  color: #ff0000;
+}
