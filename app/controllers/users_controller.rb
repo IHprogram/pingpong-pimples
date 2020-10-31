@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def likes
-    @likes = @user.likes.includes(:review)
+    @likes = @user.likes.includes(:review).page(params[:page]).per(6)
   end
 
   private
