@@ -159,7 +159,7 @@
       <div id="users-comments">
         <% if @comments %>
           <%= render @comments %>
-          <%= link_to_next_page @comments, 'もっと見る' %>
+          <%= link_to_next_page @comments, 'もっと見る',remote: true, id:"more-comments" %>
         <% end %>
       </div>
     </div>
