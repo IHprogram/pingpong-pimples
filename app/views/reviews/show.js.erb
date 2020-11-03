@@ -1,0 +1,3 @@
+document.getElementById("users-comments").insertAdjacentHTML('beforeend','<%= j(render @comments) %>' );
+document.getElementById("more-comments-wrapper").outerHTML = '';
+document.getElementById("users-comments").insertAdjacentHTML('beforeend','<div id="more-comments-wrapper"><%= link_to_next_page @comments, 'もっと見る',remote: true, id:"more-comments" %></div>' );

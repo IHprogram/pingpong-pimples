@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
   before_action :search_review, only: [:index, :search]
 
   def index
-    @reviews = Review.all.order('created_at DESC')
+    @reviews = Review.all.order('created_at DESC').page(params[:page]).per(6)
     set_review_column
   end
 
@@ -24,7 +24,7 @@ class ReviewsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @review.comments.includes(:user).order('created_at DESC')
+    @comments = @review.comments.includes(:user).order('created_at DESC').page(params[:page]).per(10)
     @like_count = Like.where("review_id = #{@review.id}")
     @comments_count = Comment.where("review_id = #{@review.id}").length
   end
@@ -45,7 +45,7 @@ class ReviewsController < ApplicationController
   end
 
   def search
-    @results = @search.result
+    @results = @search.result.page(params[:page]).per(6)
   end
 
   private

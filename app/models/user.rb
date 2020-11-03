@@ -22,6 +22,8 @@ class User < ApplicationRecord
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   validates_format_of :password, with: PASSWORD_REGEX, message: 'は英字と数字の両方を含めて6文字以上のものを設定してください', on: :create
 
+  paginates_per 6
+
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.nickname = 'ゲストユーザー'

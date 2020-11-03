@@ -159,6 +159,9 @@
       <div id="users-comments">
         <% if @comments %>
           <%= render @comments %>
+          <div id="more-comments-wrapper">
+            <%= link_to_next_page @comments, 'もっと見る',remote: true, id:"more-comments" %>
+          </div>
         <% end %>
       </div>
     </div>

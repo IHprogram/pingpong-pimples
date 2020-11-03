@@ -100,6 +100,15 @@
   color: #ffffff;
 }
 
+#more-comments-wrapper {
+  margin-top: 30px;
+}
+
+#more-comments {
+  text-decoration: none;
+  color: #ff8c00;
+}
+
 @media screen and (max-width: 959px) {
   .comments {
     width: 500px;
