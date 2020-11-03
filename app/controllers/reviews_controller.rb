@@ -45,7 +45,7 @@ class ReviewsController < ApplicationController
   end
 
   def search
-    @results = @search.result
+    @results = @search.result.page(params[:page]).per(6)
   end
 
   private
