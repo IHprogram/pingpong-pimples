@@ -41,55 +41,55 @@ RSpec.describe Review, type: :model do
       it 'manufactureは「--」を選択すると投稿できないこと' do
         @review.manufacture_id = 1
         @review.valid?
-        expect(@review.errors.full_messages).to include('Manufacture Select')
+        expect(@review.errors.full_messages).to include('Manufacture は「--」以外の項目を選択してください')
       end
 
       it 'typeは「--」を選択すると投稿できないこと' do
         @review.type_id = 1
         @review.valid?
-        expect(@review.errors.full_messages).to include('Type Select')
+        expect(@review.errors.full_messages).to include('Type は「--」以外の項目を選択してください')
       end
 
       it 'hardnessは「--」を選択すると投稿できないこと' do
         @review.hardness_id = 1
         @review.valid?
-        expect(@review.errors.full_messages).to include('Hardness Select')
+        expect(@review.errors.full_messages).to include('Hardness は「--」以外の項目を選択してください')
       end
 
       it 'spinは「--」を選択すると投稿できないこと' do
         @review.spin_id = 1
         @review.valid?
-        expect(@review.errors.full_messages).to include('Spin Select')
+        expect(@review.errors.full_messages).to include('Spin は「--」以外の項目を選択してください')
       end
 
       it 'speedは「--」を選択すると投稿できないこと' do
         @review.speed_id = 1
         @review.valid?
-        expect(@review.errors.full_messages).to include('Speed Select')
+        expect(@review.errors.full_messages).to include('Speed は「--」以外の項目を選択してください')
       end
 
       it 'controlは「--」を選択すると投稿できないこと' do
         @review.control_id = 1
         @review.valid?
-        expect(@review.errors.full_messages).to include('Control Select')
+        expect(@review.errors.full_messages).to include('Control は「--」以外の項目を選択してください')
       end
 
       it 'evaluationは「--」を選択すると投稿できないこと' do
         @review.evaluation_id = 1
         @review.valid?
-        expect(@review.errors.full_messages).to include('Evaluation Select')
+        expect(@review.errors.full_messages).to include('Evaluation は「--」以外の項目を選択してください')
       end
 
       it 'priceは全角数字では投稿できないこと' do
         @review.price = '１００００'
         @review.valid?
-        expect(@review.errors.full_messages).to include('Price must be greater than 0')
+        expect(@review.errors.full_messages).to include('Price は0より大きい半角数字で入力してください')
       end
 
       it 'priceは0円では投稿できないこと' do
         @review.price = 0
         @review.valid?
-        expect(@review.errors.full_messages).to include('Price must be greater than 0')
+        expect(@review.errors.full_messages).to include('Price は0より大きい半角数字で入力してください')
       end
     end
   end
