@@ -1,0 +1,20 @@
+ja:
+ activerecord:
+   attributes:
+     user:
+        nickname: ニックネーム
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認用）
+     review:
+        image: 画像
+        name: 商品名
+        manufacture: メーカー
+        type: ラバーの種類
+        spin: スピン
+        speed: スピード
+        control: コントロール
+        hardness: 打球感
+        evaluation: 総合評価
+        price: 価格
+        content: その他コメント
