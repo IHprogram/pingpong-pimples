@@ -13,7 +13,7 @@
           商品画像（必須）
         </div>
         <div class="click-upload">
-          <%= f.file_field :image, id:"preview-image" %>
+          <%= f.file_field :image, :accept => 'image/jpg, image/png', id:"preview-image" %>
         </div>
         <div id="image-list"></div>
       </div>
@@ -92,7 +92,7 @@
           動画（任意）
         </div>
         <div class="click-upload">
-          <%= f.file_field :video, id:"review-video" %>
+          <%= f.file_field :video, :accept => 'video/mp4, video/mov', id:"review-video" %>
         </div>
       </div>
 
