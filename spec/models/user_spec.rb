@@ -41,12 +41,6 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Password can't be blank")
       end
 
-      it 'passwordが存在してもpassword_confirmationが空では登録できないこと' do
-        @user.password_confirmation = ''
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
-      end
-
       it 'emailに@が含まれていない場合、保存できないこと' do
         @user.email = 'sampletest.com'
         @user.valid?
@@ -79,6 +73,12 @@ RSpec.describe User, type: :model do
         @user.password_confirmation = '123456'
         @user.valid?
         expect(@user.errors.full_messages).to include('Password は英字と数字の両方を含めて6文字以上のものを設定してください')
+      end
+      
+      it 'passwordが存在してもpassword_confirmationが空では登録できないこと' do
+        @user.password_confirmation = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
     end
   end
