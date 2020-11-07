@@ -32,7 +32,7 @@ RSpec.describe User, type: :model do
       it 'emailに全角が含まれていると登録できないこと' do
         @user.email = 'サンプル@gmail.com'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid")
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
 
       it 'passwordが空では登録できないこと' do
@@ -74,7 +74,7 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Password は英字と数字の両方を含めて6文字以上のものを設定してください')
       end
-      
+
       it 'passwordが存在してもpassword_confirmationが空では登録できないこと' do
         @user.password_confirmation = ''
         @user.valid?
