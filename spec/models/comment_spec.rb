@@ -19,6 +19,5 @@ RSpec.describe Comment, type: :model do
         expect(@comment.errors.full_messages).to include("Content can't be blank")
       end
     end
-
   end
 end
