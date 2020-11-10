@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :user
   has_one_attached :image
 
-  validates :nickname, presence: true, length: { maximum: 10 }
+  validates :nickname, presence: true, length: { maximum: 30 }
   validates :self_introduction, length: { maximum: 200 }
 
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
