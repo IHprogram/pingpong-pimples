@@ -2,7 +2,7 @@
 Ping Pong Pimples
 
 # URL
-http://18.180.35.109/
+http://pppimples.com/
 
 # 概要
 
