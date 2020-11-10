@@ -28,9 +28,6 @@ http://18.180.35.109/
 
 　そこで、私は「ラバーの性能についてわかるサービスがあれば、ラバー選びに関する悩みが減るのではないか」と考え、このサービスを制作しました。
 
-# DEMO
-今後追加予定
-
 # 機能一覧
 
 - ログイン機能
@@ -55,6 +52,7 @@ http://18.180.35.109/
 | nickname             | string  | null: false |
 | email                | string  | null: false |
 | password             | string  | null: false |
+|self_introduction     | text    |             |
 
 ### Association
 
@@ -79,6 +77,7 @@ http://18.180.35.109/
 | content             | text       | null: false                    |
 | likes_count         | integer    | null: false                    |
 | comments_count      | integer    | null: false                    |
+| video               | string     |                                |
 | user                | references | null: false, foreign_key: true |
 
 ### Association
@@ -112,3 +111,15 @@ http://18.180.35.109/
 
 - belongs_to :user
 - belongs_to :review
+
+## relationshipsテーブル
+
+| Column              | Type       | Options                                       |
+| ------------------- | ---------- | --------------------------------------------- |
+| user                | references | null: false, foreign_key: true                |
+| follow              | references | null: false, foreign_key: {to_table: :users}  |
+
+### Association
+
+- belongs_to :user
+- belongs_to :follow
