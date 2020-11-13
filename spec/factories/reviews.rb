@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :review do
-    name { Faker::Lorem.words }
+    name { Faker::Name.name }
     manufacture { Manufacture.all.sample }
     type { Type.all.sample }
     hardness { Hardness.all.sample }
