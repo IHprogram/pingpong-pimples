@@ -38,6 +38,12 @@ RSpec.describe Review, type: :model do
         expect(@review.errors.full_messages).to include("Content can't be blank")
       end
 
+      it 'contentが1000字より多いと投稿できないこと' do
+        @review.content = "a" * 1001
+        @review.valid?
+        expect(@review.errors.full_messages).to include("Content is too long (maximum is 1000 characters)")
+      end
+
       it 'manufactureは「--」を選択すると投稿できないこと' do
         @review.manufacture_id = 1
         @review.valid?

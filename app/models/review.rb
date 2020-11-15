@@ -30,7 +30,7 @@ class Review < ApplicationRecord
     validates :hardness_id,    numericality: { other_than: 1, message: select }
     validates :evaluation_id,  numericality: { other_than: 1, message: select }
     validates :price,          format: { with: HALF_WIDTH_NUMBER_REGEX, message: 'は半角数字で入力してください' }, numericality: { greater_than: 0, message: 'は0より大きい半角数字で入力してください' }
-    validates :content
+    validates :content, length: { maximum: 1000 }
   end
 
   def like_user(user_id)
