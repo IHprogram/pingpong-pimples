@@ -70,13 +70,18 @@ RSpec.configure do |config|
 
   # 以下、DatabaseCleanerの設定
   config.before(:suite) do
+    # DBを綺麗にする手段を指定
     DatabaseCleaner.strategy = :truncation
+    # truncate table文を実行し、レコードを消す
+    DatabaseCleaner.clean_with(:truncation)
   end
 
+  # exampleが始まるごとに実行
   config.before(:each) do
     DatabaseCleaner.start
   end
 
+  # exampleが終わるごとに実行
   config.after(:each) do
     DatabaseCleaner.clean
   end

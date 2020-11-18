@@ -39,9 +39,9 @@ RSpec.describe Review, type: :model do
       end
 
       it 'contentが1000字より多いと投稿できないこと' do
-        @review.content = "a" * 1001
+        @review.content = 'a' * 1001
         @review.valid?
-        expect(@review.errors.full_messages).to include("Content is too long (maximum is 1000 characters)")
+        expect(@review.errors.full_messages).to include('Content is too long (maximum is 1000 characters)')
       end
 
       it 'manufactureは「--」を選択すると投稿できないこと' do
