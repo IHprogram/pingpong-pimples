@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :review do
+    image { Rack::Test::UploadedFile.new('public/images/test.jpg', 'image/jpg') }
     name { Faker::Name.name }
     manufacture_id { 2 }
     type_id { 2 }
