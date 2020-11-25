@@ -93,4 +93,7 @@ RSpec.configure do |config|
   config.after(:all) do
     DatabaseCleaner.clean
   end
+
+  # コントローラースペックで Devise のテストヘルパーを使用する
+  config.include Devise::Test::ControllerHelpers, type: :controller
 end
