@@ -15,10 +15,10 @@ RSpec.describe CommentsController, type: :controller do
 
     it 'コメントを投稿できないこと' do
       comment_params = FactoryBot.attributes_for(:comment, :invalid)
-        sign_in user
-        expect {
-          post :create, format: ["text/html"], params: { review_id: review.id, comment: comment_params }
-        }.to_not change(user.comments, :count)
+      sign_in user
+      expect {
+        post :create, format: ["text/html"], params: { review_id: review.id, comment: comment_params }
+      }.to_not change(user.comments, :count)
     end
 
   end
