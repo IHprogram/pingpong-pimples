@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CommentsController, type: :controller do
-  describe "GET #create" do
+  describe "POST #create" do
     let(:user) { FactoryBot.create(:user) }
     let(:review) {FactoryBot.create(:review, user: user)}
 
