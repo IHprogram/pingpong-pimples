@@ -4,4 +4,10 @@ FactoryBot.define do
     association :user
     association :review
   end
+
+  # コメントが空の場合
+  trait :invalid do
+    content = nil
+    content { content }
+  end
 end
