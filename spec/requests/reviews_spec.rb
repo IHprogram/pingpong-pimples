@@ -1,7 +1,7 @@
 require 'rails_helper'
 RSpec.describe ReviewsController, type: :request do
   describe 'GET #index' do
-    let!(:review) {FactoryBot.create(:review) }
+    let!(:review) { FactoryBot.create(:review) }
 
     it 'indexアクションにリクエストすると正常にレスポンスが返ってくる' do
       get root_path
@@ -12,7 +12,7 @@ RSpec.describe ReviewsController, type: :request do
       get root_path
       expect(response.body).to include review.name
     end
-    
+
     it 'indexアクションにリクエストするとレスポンスに投稿済みのレビューの投稿者名が表示されている' do
       get root_path
       expect(response.body).to include review.user.nickname
@@ -30,9 +30,9 @@ RSpec.describe ReviewsController, type: :request do
   end
 
   describe 'GET #show' do
-    let!(:review){ FactoryBot.create(:review) }
+    let!(:review) { FactoryBot.create(:review) }
 
-    it "showアクションにリクエストすると正常にレスポンスが返ってくる" do 
+    it 'showアクションにリクエストすると正常にレスポンスが返ってくる' do
       get review_path(review)
       expect(response.status).to eq 200
     end
