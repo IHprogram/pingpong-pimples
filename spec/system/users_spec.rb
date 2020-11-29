@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :system do
-  let!(:user) { FactoryBot.create(:user) }
 
+  let!(:user) { FactoryBot.build(:user) }
   scenario "新規登録を行う" do
     # トップページを開く
     visit root_path
@@ -15,7 +15,7 @@ RSpec.describe "Users", type: :system do
     # ニックネームを入力
     fill_in 'nickname', with: user.nickname
     # メールアドレスを入力
-    fill_in 'メールアドレス', with: "wertyuioskdhf@example.com"
+    fill_in 'メールアドレス', with: user.email
     # パスワードを入力
     fill_in 'パスワード', with: user.password
     # 確認用パスワードを入力
