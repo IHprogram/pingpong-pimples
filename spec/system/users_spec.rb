@@ -77,5 +77,26 @@ RSpec.describe "Users", type: :system do
         expect(current_path).to eq root_path
       end
     end
+
+    context "誤った値を入力すれば" do
+      let!(:user) { FactoryBot.create(:user) }
+      scenario "ログインが失敗し、ログイン画面に戻ること" do
+        visit root_path
+        find('div[class="menu-wrapper"]').click
+        # メニューボタンをクリックすると、新規登録ボタンがある
+        expect(page).to have_content('ログイン')
+        find('a[class="login"]').click
+        # ログイン仮面へ移動する
+        visit new_user_session_path
+        # メールアドレスを入力
+        fill_in 'メールアドレス', with: "email"
+        # パスワードを入力
+        fill_in 'パスワード', with: "password123"
+        # ログインボタンをクリック
+        find('input[name="commit"]').click
+        # 新規登録画面にリダイレクトする
+        expect(current_path).to eq new_user_session_path
+      end
+    end
   end
 end
