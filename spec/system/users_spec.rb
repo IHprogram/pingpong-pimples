@@ -51,7 +51,7 @@ RSpec.describe "Users", type: :system do
         # 会員登録ボタンをクリックする
         find('input[name="commit"]').click
         # 新規登録画面にリダイレクトする
-        expect(current_path).not_to eq new_user_registration_path
+        expect(current_path).to eq new_user_registration_path
       end
     end
   end
