@@ -9,7 +9,7 @@ RSpec.describe "Users", type: :system do
         # トップページを開く
         visit root_path
         find('div[class="menu-wrapper"]').click
-        # メニューボタンをクリックすると、新規登録ボタンがある。
+        # メニューボタンをクリックすると、新規登録ボタンがある
         expect(page).to have_content('新規登録')
         find('a[class="sign-up"]').click
         # 新規登録画面へ移動する。
@@ -30,7 +30,28 @@ RSpec.describe "Users", type: :system do
     end
 
     context "誤った値を入力すれば" do
+      let!(:user) { FactoryBot.build(:user) }
       scenario "新規登録が失敗し、新規登録画面に戻ること" do
+        # トップページを開く
+        visit root_path
+        find('div[class="menu-wrapper"]').click
+        # メニューボタンをクリックすると、新規登録ボタンがある
+        expect(page).to have_content('新規登録')
+        find('a[class="sign-up"]').click
+        # 新規登録画面へ移動する。
+        visit new_user_registration_path
+        # ニックネームを入力
+        fill_in 'nickname', with: "nickname"
+        # メールアドレスを入力
+        fill_in 'メールアドレス', with: "email"
+        # パスワードを入力
+        fill_in 'パスワード', with: "password123"
+        # 確認用パスワードを入力
+        fill_in 'パスワード(再入力)', with: "password123"
+        # 会員登録ボタンをクリックする
+        find('input[name="commit"]').click
+        # 新規登録画面にリダイレクトする
+        expect(current_path).not_to eq new_user_registration_path
       end
     end
   end
@@ -44,7 +65,7 @@ RSpec.describe "Users", type: :system do
         # メニューボタンをクリックすると、新規登録ボタンがある
         expect(page).to have_content('ログイン')
         find('a[class="login"]').click
-        # ログイン仮面へ移動する。
+        # ログイン仮面へ移動する
         visit new_user_session_path
         # メールアドレスを入力
         fill_in 'メールアドレス', with: user.email
