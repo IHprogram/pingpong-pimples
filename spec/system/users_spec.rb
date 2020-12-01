@@ -62,7 +62,7 @@ RSpec.describe "Users", type: :system do
       scenario "ログインに成功し、トップページに移動すること" do
         visit root_path
         find('div[class="menu-wrapper"]').click
-        # メニューボタンをクリックすると、新規登録ボタンがある
+        # メニューボタンをクリックすると、ログインボタンがある
         expect(page).to have_content('ログイン')
         find('a[class="login"]').click
         # ログイン仮面へ移動する
@@ -96,6 +96,18 @@ RSpec.describe "Users", type: :system do
         find('input[name="commit"]').click
         # 新規登録画面にリダイレクトする
         expect(current_path).to eq new_user_session_path
+      end
+    end
+
+    context "メニューにあるゲストログインボタンをクリックすれば" do
+      let!(:user) { FactoryBot.create(:user) }
+      scenario "ログインに成功し、トップページに移動すること" do
+        visit root_path
+        find('div[class="menu-wrapper"]').click
+        # メニューボタンをクリックすると、ゲストボタンがある
+        expect(page).to have_content('ゲストログイン（閲覧用）')
+        find('a[class="guest-login"]').click
+        expect(current_path).to eq root_path
       end
     end
   end
