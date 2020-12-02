@@ -108,6 +108,40 @@ RSpec.describe "Users", type: :system do
         expect(page).to have_content('ゲストログイン（閲覧用）')
         find('a[class="guest-login"]').click
         expect(current_path).to eq root_path
+        # トップページ上部に「ログインしました」と表示される
+        expect(page).to have_content('ログインしました')
+      end
+    end
+  end
+
+  describe "ログアウトを行う時" do
+    context "正しい値を入力すれば" do
+      let!(:user) { FactoryBot.create(:user) }
+      scenario "ログアウトに成功し、トップページに移動すること" do
+        visit root_path
+        find('div[class="menu-wrapper"]').click
+        # メニューボタンをクリックすると、ログインボタンがある
+        find('a[class="login"]').click
+        # ログイン仮面へ移動する
+        visit new_user_session_path
+        # メールアドレスを入力
+        fill_in 'メールアドレス', with: user.email
+        # パスワードを入力
+        fill_in 'パスワード', with: user.password
+        # ログインボタンをクリック
+        find('input[name="commit"]').click
+        # ログインに成功すれば、トップページに移動する
+        expect(current_path).to eq root_path
+        # ここまでがログイン
+        # ここからがログアウト
+        find('div[class="menu-wrapper"]').click
+        # メニューボタンをクリックすると、ログアウトボタンがある
+        expect(page).to have_content('ログアウト')
+        find('a[class="logout"]').click
+        # ログアウトボタンをクリックするとログアウトし、トップ画面に戻る
+        expect(current_path).to eq root_path
+        # トップページ上部に「ログアウトしました」と表示される
+        expect(page).to have_content('ログアウトしました')
       end
     end
   end
