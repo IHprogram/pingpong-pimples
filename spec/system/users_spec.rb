@@ -26,6 +26,10 @@ RSpec.describe "Users", type: :system do
         expect{
           find('input[name="commit"]').click
         }.to change{ User.count }.by(1)
+        # 新規登録に成功すれば、トップページに移動する
+        expect(current_path).to eq root_path
+        # トップページ上部に「アカウント登録が完了しました。」と表示される
+        expect(page).to have_content('アカウント登録が完了しました。')
       end
     end
 
@@ -75,6 +79,8 @@ RSpec.describe "Users", type: :system do
         find('input[name="commit"]').click
         # ログインに成功すれば、トップページに移動する
         expect(current_path).to eq root_path
+        # トップページ上部に「ログインしました」と表示される
+        expect(page).to have_content('ログインしました')
       end
     end
 
