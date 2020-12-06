@@ -89,7 +89,7 @@ RSpec.describe "Users", type: :system do
       scenario "ログインが失敗し、ログイン画面に戻ること" do
         visit root_path
         find('div[class="menu-wrapper"]').click
-        # メニューボタンをクリックすると、新規登録ボタンがある
+        # メニューボタンをクリックすると、ログインボタンがある
         expect(page).to have_content('ログイン')
         find('a[class="login"]').click
         # ログイン仮面へ移動する
