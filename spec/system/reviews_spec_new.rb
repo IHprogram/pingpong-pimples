@@ -35,6 +35,16 @@ RSpec.describe "Reviews", type: :system do
       expect(page).to have_content '動画（任意）'
     end
 
+    it "画像のアップロード部分が表示されること" do
+      expect(page).to have_css 'input[type=file]'
+      expect(page).to have_css 'input[accept="image/jpg, image/png"]'
+    end
+
+    it "動画のアップロード部分が表示されること" do
+      expect(page).to have_css 'input[type=file]'
+      expect(page).to have_css 'input[accept="video/mp4"]'
+    end
+
     it "「トップページにもどる」ボタンをクリックすればトップページに移動すること" do
       find('a[class="new-back-btn"]').click
       expect(current_path).to eq root_path
