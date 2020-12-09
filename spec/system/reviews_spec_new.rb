@@ -1,6 +1,41 @@
 require 'rails_helper'
 
-RSpec.describe "Reviews", type: :system do  
+RSpec.describe "Reviews", type: :system do
+  describe "レビュー投稿画面のレイアウト確認" do
+    let!(:review) { FactoryBot.build(:review) }
+    before do
+      # トップページを開く
+      visit root_path
+      # ゲストログインボタンをクリック
+      find('a[class="guest-login-btn"]').click
+      # トップページ上部に「ログインしました」と表示される
+      expect(page).to have_content('ログインしました')
+      # メニューボタンをクリックすると、投稿するボタンがある
+      find('div[class="menu-wrapper"]').click
+      expect(page).to have_content('投稿する')
+      # 新規登録画面へ移動する。
+      visit new_review_path
+    end
+
+    it "「- レビュー内容の入力 -」というタイトルが存在すること" do
+      expect(page).to have_content '- レビュー内容の入力 -'
+    end
+
+    it "入力部分に適切なラベルが表示されること" do
+      expect(page).to have_content '商品画像（必須）'
+      expect(page).to have_content 'メーカー（必須）'
+      expect(page).to have_content 'ラバーの種類（必須）'
+      expect(page).to have_content '打球感（必須）'
+      expect(page).to have_content 'スピン（必須・10点満点中）'
+      expect(page).to have_content 'スピード（必須・10点満点中）'
+      expect(page).to have_content 'コントロール（必須・10点満点中）'
+      expect(page).to have_content '商品の価格（必須・半角数字で入力してください）'
+      expect(page).to have_content '総合評価（必須・10点満点中）'
+      expect(page).to have_content 'その他コメント（必須）'
+      expect(page).to have_content '動画（任意）'
+    end
+  end
+
   describe "レビューの投稿を行う時" do
     let!(:review) { FactoryBot.build(:review) }
     before do
@@ -16,7 +51,7 @@ RSpec.describe "Reviews", type: :system do
       # 新規登録画面へ移動する。
       visit new_review_path
     end
-    
+
     context "正しい値を入力すれば" do
       it "レビューの投稿が成功すること" do
         # 画像を選択
