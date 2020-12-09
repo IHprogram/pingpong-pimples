@@ -77,7 +77,7 @@ RSpec.describe "Reviews", type: :system do
         fill_in 'product-price', with: "0"
         # 総合評価の選択
         select '--', from: 'review[evaluation_id]'
-        # レビューを投稿するボタンをクリックする
+        # レビューを投稿するボタンをクリックする（画像、商品名、その他コメントは空欄）
         find('input[name="commit"]').click
 
         # エラーメッセージが表示される
@@ -92,6 +92,26 @@ RSpec.describe "Reviews", type: :system do
         expect(page).to have_content('総合評価は「--」以外の項目を選択してください')
         expect(page).to have_content('価格は0より大きい半角数字で入力してください')
         expect(page).to have_content('その他コメントを入力してください')
+      end
+
+      scenario "空欄でなくても入力した値が誤っていれば、レビューを投稿できず、エラーメッセージが表示されること" do
+        # トップページを開く
+        visit root_path
+        # ゲストログインボタンをクリック
+        find('a[class="guest-login-btn"]').click
+        # トップページ上部に「ログインしました」と表示される
+        expect(page).to have_content('ログインしました')
+        # メニューボタンをクリックすると、投稿するボタンがある
+        find('div[class="menu-wrapper"]').click
+        expect(page).to have_content('投稿する')
+        # 新規登録画面へ移動する。
+        visit new_review_path
+        # 商品の価格を入力（全角文字）
+        fill_in 'product-price', with: "１０００"
+        # レビューを投稿するボタンをクリックする
+        find('input[name="commit"]').click
+        # レビューは投稿できず、違うエラーメッセージが表示される
+        expect(page).to have_content('価格は0より大きい半角数字で入力してください')
       end
     end
   end
