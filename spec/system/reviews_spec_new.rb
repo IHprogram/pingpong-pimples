@@ -98,6 +98,41 @@ RSpec.describe "Reviews", type: :system do
         # 新規登録に成功すれば、トップページに移動する
         expect(current_path).to eq root_path
       end
+
+      it "任意で動画のアップロードもできること" do
+         # 画像を選択
+         attach_file 'review[image]', "#{Rails.root}/spec/factories/sample.png"
+         # 商品名を入力
+         fill_in 'product-name', with: review.name
+         # メーカーを選択
+         select 'バタフライ', from: 'review[manufacture_id]'
+         # ラバーの種類を選択
+         select '裏ソフトラバー', from: 'review[type_id]'
+         # 打球感を選択
+         select '硬い（ハード）', from: 'review[hardness_id]'
+         # スピンを選択
+         select '10', from: 'review[spin_id]'
+         # スピ-ドを選択
+         select '10', from: 'review[speed_id]'
+         # コントロールを選択
+         select '10', from: 'review[control_id]'
+         # 商品の価格を入力
+         fill_in 'product-price', with: review.price
+         # 総合評価の選択
+         select '10', from: 'review[evaluation_id]'
+         # その他コメントの入力
+         fill_in 'product-info', with: review.content
+
+        #  動画を選択
+        attach_file 'review[video]', "#{Rails.root}/spec/factories/test_movie.mp4"
+
+         # レビューを投稿するボタンをクリックすると、レビューモデルのカウントが1上がる
+         expect{
+           find('input[name="commit"]').click
+         }.to change{ Review.count }.by(1)
+         # 新規登録に成功すれば、トップページに移動する
+         expect(current_path).to eq root_path
+      end
     end
 
     context "誤った値を入力すれば" do
