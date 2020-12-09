@@ -1,21 +1,24 @@
 require 'rails_helper'
 
-RSpec.describe "Reviews", type: :system do
+RSpec.describe "Reviews", type: :system do  
   describe "レビューの投稿を行う時" do
+    let!(:review) { FactoryBot.build(:review) }
+    before do
+      # トップページを開く
+      visit root_path
+      # ゲストログインボタンをクリック
+      find('a[class="guest-login-btn"]').click
+      # トップページ上部に「ログインしました」と表示される
+      expect(page).to have_content('ログインしました')
+      # メニューボタンをクリックすると、投稿するボタンがある
+      find('div[class="menu-wrapper"]').click
+      expect(page).to have_content('投稿する')
+      # 新規登録画面へ移動する。
+      visit new_review_path
+    end
+    
     context "正しい値を入力すれば" do
-      let!(:review) { FactoryBot.build(:review) }
       it "レビューの投稿が成功すること" do
-        # トップページを開く
-        visit root_path
-        # ゲストログインボタンをクリック
-        find('a[class="guest-login-btn"]').click
-        # トップページ上部に「ログインしました」と表示される
-        expect(page).to have_content('ログインしました')
-        # メニューボタンをクリックすると、投稿するボタンがある
-        find('div[class="menu-wrapper"]').click
-        expect(page).to have_content('投稿する')
-        # 新規登録画面へ移動する。
-        visit new_review_path
         # 画像を選択
         attach_file 'review[image]', "#{Rails.root}/spec/factories/sample.png"
         # 商品名を入力
@@ -48,19 +51,7 @@ RSpec.describe "Reviews", type: :system do
     end
 
     context "誤った値を入力すれば" do
-      let!(:review) { FactoryBot.build(:review) }
       it "レビューを投稿できず、エラーメッセージが表示されること" do
-        # トップページを開く
-        visit root_path
-        # ゲストログインボタンをクリック
-        find('a[class="guest-login-btn"]').click
-        # トップページ上部に「ログインしました」と表示される
-        expect(page).to have_content('ログインしました')
-        # メニューボタンをクリックすると、投稿するボタンがある
-        find('div[class="menu-wrapper"]').click
-        expect(page).to have_content('投稿する')
-        # 新規登録画面へ移動する。
-        visit new_review_path
         # メーカーを選択
         select '--', from: 'review[manufacture_id]'
         # ラバーの種類を選択
@@ -95,17 +86,6 @@ RSpec.describe "Reviews", type: :system do
       end
 
       it "空欄でなくても入力した値が誤っていれば、レビューを投稿できず、エラーメッセージが表示されること" do
-        # トップページを開く
-        visit root_path
-        # ゲストログインボタンをクリック
-        find('a[class="guest-login-btn"]').click
-        # トップページ上部に「ログインしました」と表示される
-        expect(page).to have_content('ログインしました')
-        # メニューボタンをクリックすると、投稿するボタンがある
-        find('div[class="menu-wrapper"]').click
-        expect(page).to have_content('投稿する')
-        # 新規登録画面へ移動する。
-        visit new_review_path
         # 商品の価格を入力（全角文字）
         fill_in 'product-price', with: "１０００"
         # レビューを投稿するボタンをクリックする
