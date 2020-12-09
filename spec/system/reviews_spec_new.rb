@@ -34,6 +34,11 @@ RSpec.describe "Reviews", type: :system do
       expect(page).to have_content 'その他コメント（必須）'
       expect(page).to have_content '動画（任意）'
     end
+
+    it "「トップページにもどる」ボタンをクリックすればトップページに移動すること" do
+      find('a[class="new-back-btn"]').click
+      expect(current_path).to eq root_path
+    end
   end
 
   describe "レビューの投稿を行う時" do
