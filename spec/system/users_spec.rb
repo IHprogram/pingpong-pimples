@@ -5,7 +5,7 @@ RSpec.describe "Users", type: :system do
   describe "新規登録を行う時" do
     context "正しい値を入力すれば" do
       let!(:user) { FactoryBot.build(:user) }
-      scenario "新規登録が成功すること" do
+      it "新規登録が成功すること" do
         # トップページを開く
         visit root_path
         find('div[class="menu-wrapper"]').click
@@ -35,7 +35,7 @@ RSpec.describe "Users", type: :system do
 
     context "誤った値を入力すれば" do
       let!(:user) { FactoryBot.build(:user) }
-      scenario "新規登録が失敗し、新規登録画面に戻ること" do
+      it "新規登録が失敗し、新規登録画面に戻ること" do
         # トップページを開く
         visit root_path
         find('div[class="menu-wrapper"]').click
@@ -63,7 +63,7 @@ RSpec.describe "Users", type: :system do
   describe "ログインを行う時" do
     context "正しい値を入力すれば" do
       let!(:user) { FactoryBot.create(:user) }
-      scenario "ログインに成功し、トップページに移動すること" do
+      it "ログインに成功し、トップページに移動すること" do
         visit root_path
         find('div[class="menu-wrapper"]').click
         # メニューボタンをクリックすると、ログインボタンがある
@@ -86,7 +86,7 @@ RSpec.describe "Users", type: :system do
 
     context "誤った値を入力すれば" do
       let!(:user) { FactoryBot.create(:user) }
-      scenario "ログインが失敗し、ログイン画面に戻ること" do
+      it "ログインが失敗し、ログイン画面に戻ること" do
         visit root_path
         find('div[class="menu-wrapper"]').click
         # メニューボタンをクリックすると、ログインボタンがある
@@ -107,7 +107,7 @@ RSpec.describe "Users", type: :system do
 
     context "メニューにあるゲストログインボタンをクリックすれば" do
       let!(:user) { FactoryBot.create(:user) }
-      scenario "ログインに成功し、トップページに移動すること" do
+      it "ログインに成功し、トップページに移動すること" do
         visit root_path
         find('div[class="menu-wrapper"]').click
         # メニューボタンをクリックすると、ゲストボタンがある
@@ -123,7 +123,7 @@ RSpec.describe "Users", type: :system do
   describe "ログアウトを行う時" do
     context "正しい値を入力すれば" do
       let!(:user) { FactoryBot.create(:user) }
-      scenario "ログアウトに成功し、トップページに移動すること" do
+      it "ログアウトに成功し、トップページに移動すること" do
         visit root_path
         find('div[class="menu-wrapper"]').click
         # メニューボタンをクリックすると、ログインボタンがある

@@ -4,7 +4,7 @@ RSpec.describe "Reviews", type: :system do
   describe "レビューの投稿を行う時" do
     context "正しい値を入力すれば" do
       let!(:review) { FactoryBot.build(:review) }
-      scenario "レビューの投稿が成功すること" do
+      it "レビューの投稿が成功すること" do
         # トップページを開く
         visit root_path
         # ゲストログインボタンをクリック
@@ -49,7 +49,7 @@ RSpec.describe "Reviews", type: :system do
 
     context "誤った値を入力すれば" do
       let!(:review) { FactoryBot.build(:review) }
-      scenario "レビューを投稿できず、エラーメッセージが表示されること" do
+      it "レビューを投稿できず、エラーメッセージが表示されること" do
         # トップページを開く
         visit root_path
         # ゲストログインボタンをクリック
@@ -94,7 +94,7 @@ RSpec.describe "Reviews", type: :system do
         expect(page).to have_content('その他コメントを入力してください')
       end
 
-      scenario "空欄でなくても入力した値が誤っていれば、レビューを投稿できず、エラーメッセージが表示されること" do
+      it "空欄でなくても入力した値が誤っていれば、レビューを投稿できず、エラーメッセージが表示されること" do
         # トップページを開く
         visit root_path
         # ゲストログインボタンをクリック
