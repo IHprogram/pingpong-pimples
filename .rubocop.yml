@@ -52,7 +52,15 @@ Metrics/BlockNesting:
 Metrics/ClassLength:
  Enabled: false
 
-# 空メソッドの場合に、1行のスタイルにしない　NG例：def style1; end
+# do .. end から更にメソッドチェーンすると見づらいので
+# auto-correct せず、自分で修正する
+# spec 内は見た目が綺麗になるので許可
+Style/BlockDelimiters:
+  AutoCorrect: false
+  Exclude:
+    - "spec/**/*_spec.rb"
+
+# 空メソッドの場合に、1行のスタイルにしない。NG例：def style1; end
 Style/EmptyMethod:
  EnforcedStyle: expanded
 
