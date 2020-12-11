@@ -1,9 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "Reviews", type: :system do
-
-  describe "レビュー投稿機能" do
-    describe "レビュー投稿画面のレイアウト確認" do
+RSpec.describe 'Reviews', type: :system do
+  describe 'レビュー投稿機能' do
+    describe 'レビュー投稿画面のレイアウト確認' do
       let!(:review) { FactoryBot.build(:review) }
       before do
         # トップページを開く
@@ -19,11 +18,11 @@ RSpec.describe "Reviews", type: :system do
         visit new_review_path
       end
 
-      it "「- レビュー内容の入力 -」というタイトルが存在すること" do
+      it '「- レビュー内容の入力 -」というタイトルが存在すること' do
         expect(page).to have_content '- レビュー内容の入力 -'
       end
 
-      it "入力部分に適切なラベルが表示されること" do
+      it '入力部分に適切なラベルが表示されること' do
         expect(page).to have_content '商品画像（必須）'
         expect(page).to have_content 'メーカー（必須）'
         expect(page).to have_content 'ラバーの種類（必須）'
@@ -37,23 +36,23 @@ RSpec.describe "Reviews", type: :system do
         expect(page).to have_content '動画（任意）'
       end
 
-      it "画像のアップロード部分が表示されること" do
+      it '画像のアップロード部分が表示されること' do
         expect(page).to have_css 'input[type=file]'
         expect(page).to have_css 'input[accept="image/jpg, image/png"]'
       end
 
-      it "動画のアップロード部分が表示されること" do
+      it '動画のアップロード部分が表示されること' do
         expect(page).to have_css 'input[type=file]'
         expect(page).to have_css 'input[accept="video/mp4"]'
       end
 
-      it "「トップページにもどる」ボタンをクリックすればトップページに移動すること" do
+      it '「トップページにもどる」ボタンをクリックすればトップページに移動すること' do
         find('a[class="new-back-btn"]').click
         expect(current_path).to eq root_path
       end
     end
 
-    describe "レビューの投稿を行う時" do
+    describe 'レビューの投稿を行う時' do
       let!(:review) { FactoryBot.build(:review) }
       before do
         # トップページを開く
@@ -69,8 +68,8 @@ RSpec.describe "Reviews", type: :system do
         visit new_review_path
       end
 
-      context "正しい値を入力すれば" do
-        it "レビューの投稿が成功すること" do
+      context '正しい値を入力すれば' do
+        it 'レビューの投稿が成功すること' do
           # 画像を選択
           attach_file 'review[image]', "#{Rails.root}/spec/factories/sample.png"
           # 商品名を入力
@@ -94,14 +93,14 @@ RSpec.describe "Reviews", type: :system do
           # その他コメントの入力
           fill_in 'product-info', with: review.content
           # レビューを投稿するボタンをクリックすると、レビューモデルのカウントが1上がる
-          expect{
+          expect {
             find('input[name="commit"]').click
-          }.to change{ Review.count }.by(1)
+          }.to change { Review.count }.by(1)
           # 新規登録に成功すれば、トップページに移動する
           expect(current_path).to eq root_path
         end
 
-        it "任意で動画のアップロードもできること" do
+        it '任意で動画のアップロードもできること' do
           # 画像を選択
           attach_file 'review[image]', "#{Rails.root}/spec/factories/sample.png"
           # 商品名を入力
@@ -129,16 +128,16 @@ RSpec.describe "Reviews", type: :system do
           attach_file 'review[video]', "#{Rails.root}/spec/factories/test_movie.mp4"
 
           # レビューを投稿するボタンをクリックすると、レビューモデルのカウントが1上がる
-          expect{
+          expect {
             find('input[name="commit"]').click
-          }.to change{ Review.count }.by(1)
+          }.to change { Review.count }.by(1)
           # 新規登録に成功すれば、トップページに移動する
           expect(current_path).to eq root_path
         end
       end
 
-      context "誤った値を入力すれば" do
-        it "レビューを投稿できず、エラーメッセージが表示されること" do
+      context '誤った値を入力すれば' do
+        it 'レビューを投稿できず、エラーメッセージが表示されること' do
           # メーカーを選択
           select '--', from: 'review[manufacture_id]'
           # ラバーの種類を選択
@@ -152,7 +151,7 @@ RSpec.describe "Reviews", type: :system do
           # コントロールを選択
           select '--', from: 'review[control_id]'
           # 商品の価格を入力
-          fill_in 'product-price', with: "0"
+          fill_in 'product-price', with: '0'
           # 総合評価の選択
           select '--', from: 'review[evaluation_id]'
           # レビューを投稿するボタンをクリックする（画像、商品名、その他コメントは空欄）
@@ -172,9 +171,9 @@ RSpec.describe "Reviews", type: :system do
           expect(page).to have_content('その他コメントを入力してください')
         end
 
-        it "空欄でなくても入力した値が誤っていれば、レビューを投稿できず、エラーメッセージが表示されること" do
+        it '空欄でなくても入力した値が誤っていれば、レビューを投稿できず、エラーメッセージが表示されること' do
           # 商品の価格を入力（全角文字）
-          fill_in 'product-price', with: "１０００"
+          fill_in 'product-price', with: '１０００'
           # レビューを投稿するボタンをクリックする
           find('input[name="commit"]').click
           # レビューは投稿できず、違うエラーメッセージが表示される
@@ -184,10 +183,9 @@ RSpec.describe "Reviews", type: :system do
     end
   end
 
-
-  describe "レビュー詳細表示機能" do
-    describe "レビュー詳細画面のレイアウト確認" do
-      context "ユーザーがプロフィール画像を設定しているとき" do
+  describe 'レビュー詳細表示機能' do
+    describe 'レビュー詳細画面のレイアウト確認' do
+      context 'ユーザーがプロフィール画像を設定しているとき' do
         let!(:user) { FactoryBot.create(:user, :profile_image) }
         let!(:review) { FactoryBot.create(:review, user: user) }
         before do
@@ -200,28 +198,28 @@ RSpec.describe "Reviews", type: :system do
           # レビューの詳細画面へ移動する。
           visit review_path(review)
         end
-        
-        it "投稿者のニックネームが表示されていること" do
+
+        it '投稿者のニックネームが表示されていること' do
           expect(page).to have_content user.nickname
         end
-        
-        it "投稿者の画像が表示されていること" do
+
+        it '投稿者の画像が表示されていること' do
           expect(page).to have_css("img[src*='user.jpg']")
         end
 
-        it "「商品情報」という文字列が表示されていること" do
-          expect(page).to have_content "商品情報"
+        it '「商品情報」という文字列が表示されていること' do
+          expect(page).to have_content '商品情報'
         end
 
-        it "「評価」という文字列が表示されていること" do
-          expect(page).to have_content "評価"
+        it '「評価」という文字列が表示されていること' do
+          expect(page).to have_content '評価'
         end
 
-        it "「その他コメント」という文字列が表示されていること" do
-          expect(page).to have_content "その他コメント"
+        it '「その他コメント」という文字列が表示されていること' do
+          expect(page).to have_content 'その他コメント'
         end
 
-        it "投稿したレビューの内容が表示されていること" do
+        it '投稿したレビューの内容が表示されていること' do
           # レビューの画像が表示されていることを確認
           expect(page).to have_css("img[src*='test.jpg']")
           # 商品名が表示されていることを確認
@@ -246,24 +244,24 @@ RSpec.describe "Reviews", type: :system do
           expect(page).to have_content review.content
         end
 
-        it "いいねボタンが存在すること" do
+        it 'いいねボタンが存在すること' do
           expect(page).to have_css("a[class='like-btn']")
         end
 
-        it "コメント入力フォームがあること" do
+        it 'コメント入力フォームがあること' do
           expect(page).to have_css("textarea[id='comment_content']")
         end
 
-        it "コメント送信ボタンがあること" do
+        it 'コメント送信ボタンがあること' do
           expect(page).to have_css("input[name='commit']")
         end
 
-        it "「件のコメント」という文字列が表示されていること" do
-          expect(page).to have_content "件のコメント"
+        it '「件のコメント」という文字列が表示されていること' do
+          expect(page).to have_content '件のコメント'
         end
       end
 
-      context "ユーザーがプロフィール画像を設定していないとき" do
+      context 'ユーザーがプロフィール画像を設定していないとき' do
         let!(:user) { FactoryBot.create(:user) }
         let!(:review) { FactoryBot.create(:review, user: user) }
         before do
@@ -276,7 +274,7 @@ RSpec.describe "Reviews", type: :system do
           # レビューの詳細画面へ移動する。
           visit review_path(review)
         end
-        it "投稿者のプロフィール画像部分には、デフォルト画像が表示されていること" do
+        it '投稿者のプロフィール画像部分には、デフォルト画像が表示されていること' do
           expect(page).to have_css("img[src*='/assets/user-dd619b5c5319830c5177ac444d512fc6313406b6e3b8be3c4d1774044b1e8f8f.png']")
         end
       end
