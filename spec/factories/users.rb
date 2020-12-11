@@ -5,5 +5,9 @@ FactoryBot.define do
     password = 'a12345'
     password { password }
     password_confirmation { password }
+    # ユーザーのプロフィール画像
+    image { Rack::Test::UploadedFile.new('public/images/user.jpg', 'image/jpg') }
+    # ユーザーの自己紹介文
+    self_introduction { Faker::Lorem.characters(number: 200) }
   end
 end
