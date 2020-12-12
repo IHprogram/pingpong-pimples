@@ -207,6 +207,11 @@ RSpec.describe 'Reviews', type: :system do
           expect(page).to have_css("img[src*='user.jpg']")
         end
 
+        it "投稿者のニックネームや画像をクリックすると、投稿者のプロフィール画面へ遷移すること" do
+          find('a[class="user-profile-link"]').click
+          expect(current_path).to eq user_path(user)
+        end
+
         it '「商品情報」という文字列が表示されていること' do
           expect(page).to have_content '商品情報'
         end
