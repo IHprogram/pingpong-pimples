@@ -207,7 +207,7 @@ RSpec.describe 'Reviews', type: :system do
           expect(page).to have_css("img[src*='user.jpg']")
         end
 
-        it "投稿者のニックネームや画像をクリックすると、投稿者のプロフィール画面へ遷移すること" do
+        it '投稿者のニックネームや画像をクリックすると、投稿者のプロフィール画面へ遷移すること' do
           find('a[class="user-profile-link"]').click
           expect(current_path).to eq user_path(user)
         end
@@ -279,13 +279,13 @@ RSpec.describe 'Reviews', type: :system do
           # レビューの詳細画面へ移動する。
           visit review_path(review)
         end
-        
+
         it '投稿者のプロフィール画像部分には、デフォルト画像が表示されていること' do
           expect(page).to have_css("img[src*='/assets/user-dd619b5c5319830c5177ac444d512fc6313406b6e3b8be3c4d1774044b1e8f8f.png']")
         end
       end
 
-      context "ユーザーがログインしている時" do
+      context 'ユーザーがログインしている時' do
         let!(:user) { FactoryBot.create(:user) }
         let!(:review) { FactoryBot.create(:review, user: user) }
         before do
@@ -297,16 +297,16 @@ RSpec.describe 'Reviews', type: :system do
           visit review_path(review)
         end
 
-        it "レビュー編集ボタンが表示されていること" do
+        it 'レビュー編集ボタンが表示されていること' do
           expect(page).to have_css("a[class='edit-btn']")
         end
-        
-        it "レビュー削除ボタンが表示されていること" do
+
+        it 'レビュー削除ボタンが表示されていること' do
           expect(page).to have_css("a[class='delete-btn']")
         end
       end
 
-      context "ユーザーがログインしていない時（ログアウト状態の時）" do
+      context 'ユーザーがログインしていない時（ログアウト状態の時）' do
         let!(:user) { FactoryBot.create(:user) }
         let!(:review) { FactoryBot.create(:review, user: user) }
         before do
@@ -315,17 +315,17 @@ RSpec.describe 'Reviews', type: :system do
           # レビューの詳細画面へ移動する。
           visit review_path(review)
         end
-        
-        it "レビュー編集ボタンが表示されていないこと" do
+
+        it 'レビュー編集ボタンが表示されていないこと' do
           expect(page).not_to have_css("a[class='edit-btn']")
         end
-        
-        it "レビュー削除ボタンが表示されていないこと" do
+
+        it 'レビュー削除ボタンが表示されていないこと' do
           expect(page).not_to have_css("a[class='delete-btn']")
         end
       end
 
-      context "レビューの投稿者ではない他ユーザーがレビュー詳細画面に移動した時" do
+      context 'レビューの投稿者ではない他ユーザーがレビュー詳細画面に移動した時' do
         let!(:user) { FactoryBot.create(:user) }
         let!(:review) { FactoryBot.create(:review, user: user) }
         let!(:other_user) { FactoryBot.create(:user) }
@@ -337,12 +337,12 @@ RSpec.describe 'Reviews', type: :system do
           # レビューの詳細画面へ移動する。
           visit review_path(review)
         end
-        
-        it "レビュー編集ボタンが表示されていないこと" do
+
+        it 'レビュー編集ボタンが表示されていないこと' do
           expect(page).not_to have_css("a[class='edit-btn']")
         end
-        
-        it "レビュー削除ボタンが表示されていないこと" do
+
+        it 'レビュー削除ボタンが表示されていないこと' do
           expect(page).not_to have_css("a[class='delete-btn']")
         end
       end
