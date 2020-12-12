@@ -274,6 +274,7 @@ RSpec.describe 'Reviews', type: :system do
           # レビューの詳細画面へ移動する。
           visit review_path(review)
         end
+        
         it '投稿者のプロフィール画像部分には、デフォルト画像が表示されていること' do
           expect(page).to have_css("img[src*='/assets/user-dd619b5c5319830c5177ac444d512fc6313406b6e3b8be3c4d1774044b1e8f8f.png']")
         end
@@ -290,9 +291,11 @@ RSpec.describe 'Reviews', type: :system do
           # レビューの詳細画面へ移動する。
           visit review_path(review)
         end
+
         it "レビュー編集ボタンが表示されていること" do
           expect(page).to have_css("a[class='edit-btn']")
         end
+        
         it "レビュー削除ボタンが表示されていること" do
           expect(page).to have_css("a[class='delete-btn']")
         end
@@ -307,9 +310,11 @@ RSpec.describe 'Reviews', type: :system do
           # レビューの詳細画面へ移動する。
           visit review_path(review)
         end
+        
         it "レビュー編集ボタンが表示されていないこと" do
           expect(page).not_to have_css("a[class='edit-btn']")
         end
+        
         it "レビュー削除ボタンが表示されていないこと" do
           expect(page).not_to have_css("a[class='delete-btn']")
         end
@@ -327,9 +332,11 @@ RSpec.describe 'Reviews', type: :system do
           # レビューの詳細画面へ移動する。
           visit review_path(review)
         end
+        
         it "レビュー編集ボタンが表示されていないこと" do
           expect(page).not_to have_css("a[class='edit-btn']")
         end
+        
         it "レビュー削除ボタンが表示されていないこと" do
           expect(page).not_to have_css("a[class='delete-btn']")
         end
