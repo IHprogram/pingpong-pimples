@@ -1,11 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe "Users", type: :system do
-
-  describe "新規登録を行う時" do
-    context "正しい値を入力すれば" do
+RSpec.describe 'Users', type: :system do
+  describe '新規登録を行う時' do
+    context '正しい値を入力すれば' do
       let!(:user) { FactoryBot.build(:user) }
-      it "新規登録が成功すること" do
+      it '新規登録が成功すること' do
         # トップページを開く
         visit root_path
         find('div[class="menu-wrapper"]').click
@@ -23,9 +22,9 @@ RSpec.describe "Users", type: :system do
         # 確認用パスワードを入力
         fill_in 'パスワード(再入力)', with: user.password_confirmation
         # 会員登録ボタンをクリックすると、ユーザーモデルのカウントが1上がる
-        expect{
+        expect {
           find('input[name="commit"]').click
-        }.to change{ User.count }.by(1)
+        }.to change { User.count }.by(1)
         # 新規登録に成功すれば、トップページに移動する
         expect(current_path).to eq root_path
         # トップページ上部に「アカウント登録が完了しました。」と表示される
@@ -33,9 +32,9 @@ RSpec.describe "Users", type: :system do
       end
     end
 
-    context "誤った値を入力すれば" do
+    context '誤った値を入力すれば' do
       let!(:user) { FactoryBot.build(:user) }
-      it "新規登録が失敗し、新規登録画面に戻ること" do
+      it '新規登録が失敗し、新規登録画面に戻ること' do
         # トップページを開く
         visit root_path
         find('div[class="menu-wrapper"]').click
@@ -45,13 +44,13 @@ RSpec.describe "Users", type: :system do
         # 新規登録画面へ移動する。
         visit new_user_registration_path
         # ニックネームを入力
-        fill_in 'nickname', with: "nickname"
+        fill_in 'nickname', with: 'nickname'
         # メールアドレスを入力
-        fill_in 'メールアドレス', with: "email"
+        fill_in 'メールアドレス', with: 'email'
         # パスワードを入力
-        fill_in 'パスワード', with: "password123"
+        fill_in 'パスワード', with: 'password123'
         # 確認用パスワードを入力
-        fill_in 'パスワード(再入力)', with: "password123"
+        fill_in 'パスワード(再入力)', with: 'password123'
         # 会員登録ボタンをクリックする
         find('input[name="commit"]').click
         # 新規登録画面にリダイレクトする
@@ -60,10 +59,10 @@ RSpec.describe "Users", type: :system do
     end
   end
 
-  describe "ログインを行う時" do
-    context "正しい値を入力すれば" do
+  describe 'ログインを行う時' do
+    context '正しい値を入力すれば' do
       let!(:user) { FactoryBot.create(:user) }
-      it "ログインに成功し、トップページに移動すること" do
+      it 'ログインに成功し、トップページに移動すること' do
         visit root_path
         find('div[class="menu-wrapper"]').click
         # メニューボタンをクリックすると、ログインボタンがある
@@ -84,9 +83,9 @@ RSpec.describe "Users", type: :system do
       end
     end
 
-    context "誤った値を入力すれば" do
+    context '誤った値を入力すれば' do
       let!(:user) { FactoryBot.create(:user) }
-      it "ログインが失敗し、ログイン画面に戻ること" do
+      it 'ログインが失敗し、ログイン画面に戻ること' do
         visit root_path
         find('div[class="menu-wrapper"]').click
         # メニューボタンをクリックすると、ログインボタンがある
@@ -95,9 +94,9 @@ RSpec.describe "Users", type: :system do
         # ログイン仮面へ移動する
         visit new_user_session_path
         # メールアドレスを入力
-        fill_in 'メールアドレス', with: "email"
+        fill_in 'メールアドレス', with: 'email'
         # パスワードを入力
-        fill_in 'パスワード', with: "password123"
+        fill_in 'パスワード', with: 'password123'
         # ログインボタンをクリック
         find('input[name="commit"]').click
         # 新規登録画面にリダイレクトする
@@ -105,9 +104,9 @@ RSpec.describe "Users", type: :system do
       end
     end
 
-    context "メニューにあるゲストログインボタンをクリックすれば" do
+    context 'メニューにあるゲストログインボタンをクリックすれば' do
       let!(:user) { FactoryBot.create(:user) }
-      it "ログインに成功し、トップページに移動すること" do
+      it 'ログインに成功し、トップページに移動すること' do
         visit root_path
         find('div[class="menu-wrapper"]').click
         # メニューボタンをクリックすると、ゲストボタンがある
@@ -120,10 +119,10 @@ RSpec.describe "Users", type: :system do
     end
   end
 
-  describe "ログアウトを行う時" do
-    context "正しい値を入力すれば" do
+  describe 'ログアウトを行う時' do
+    context '正しい値を入力すれば' do
       let!(:user) { FactoryBot.create(:user) }
-      it "ログアウトに成功し、トップページに移動すること" do
+      it 'ログアウトに成功し、トップページに移動すること' do
         visit root_path
         find('div[class="menu-wrapper"]').click
         # メニューボタンをクリックすると、ログインボタンがある
