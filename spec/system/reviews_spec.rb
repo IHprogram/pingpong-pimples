@@ -1,6 +1,45 @@
 require 'rails_helper'
 
 RSpec.describe 'Reviews', type: :system do
+
+  describe 'トップ画面のレイアウト確認' do
+    let!(:review) { FactoryBot.build(:review) }
+    before do
+      # トップページを開く
+      visit root_path
+      # ゲストログインボタンをクリック
+      find('a[class="guest-login-btn"]').click
+      # トップページ上部に「ログインしました」と表示される
+      expect(page).to have_content('ログインしました')
+    end
+
+    describe "ヘッダーのレイアウト確認" do
+      it "ヘッダーにロゴがあること" do
+        expect(page).to have_content('Ping Pong Pimples')
+      end
+
+      it "ヘッダーにメニューバーがあること" do
+        expect(page).to have_css 'div[id=menu-btn]'
+      end
+
+      it "メニューバーをクリックすると、メニューバーに「active」というクラス名が追加されること" do
+        find('div[id=menu-btn]').click
+        # クラス名は「.」をつけて記述する
+        expect(page).to have_css '.active'
+      end
+
+      it "トップページにキャッチコピーが表示されている" do
+        expect(page).to have_content('ラバー選び、もう悩まない。')
+      end
+
+      it "トップページに説明文が表示されている" do
+        expect(page).to have_content('Ping Pong Pimplesは、卓球のラバーについてレビューを投稿できるサービスです。')
+        expect(page).to have_content('あらゆるレビューを参考にし、自分に合った最適なラバーを選びましょう。')
+      end
+    end
+  end
+
+
   describe 'レビュー投稿機能' do
     describe 'レビュー投稿画面のレイアウト確認' do
       let!(:review) { FactoryBot.build(:review) }
@@ -47,7 +86,7 @@ RSpec.describe 'Reviews', type: :system do
       end
 
       it '「トップページにもどる」ボタンをクリックすればトップページに移動すること' do
-        find('a[class="new-back-btn"]').click
+        click_on 'トップページにもどる'
         expect(current_path).to eq root_path
       end
     end
