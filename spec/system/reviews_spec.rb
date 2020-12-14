@@ -27,14 +27,20 @@ RSpec.describe 'Reviews', type: :system do
         # クラス名は「.」をつけて記述する
         expect(page).to have_css '.active'
       end
+    end
 
+    describe "トップページのレイアウト確認" do
       it "トップページにキャッチコピーが表示されている" do
         expect(page).to have_content('ラバー選び、もう悩まない。')
       end
-
+      
       it "トップページに説明文が表示されている" do
         expect(page).to have_content('Ping Pong Pimplesは、卓球のラバーについてレビューを投稿できるサービスです。')
         expect(page).to have_content('あらゆるレビューを参考にし、自分に合った最適なラバーを選びましょう。')
+      end
+
+      it "最新レビュー一覧が表示されていること" do
+        expect(page).to have_content('- 最新レビュー -')
       end
     end
   end
