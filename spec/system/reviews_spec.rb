@@ -39,6 +39,10 @@ RSpec.describe 'Reviews', type: :system do
         expect(page).to have_content('あらゆるレビューを参考にし、自分に合った最適なラバーを選びましょう。')
       end
 
+      it "検索フォームが表示されていること" do
+        expect(page).to have_content('- レビュー検索 -')
+      end
+
       it "最新レビュー一覧が表示されていること" do
         expect(page).to have_content('- 最新レビュー -')
       end
