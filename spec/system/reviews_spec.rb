@@ -73,8 +73,57 @@ RSpec.describe 'Reviews', type: :system do
       expect(page).to have_css 'input[id=q_name_cont]'
     end
 
-    it '検索ボタンがあること' do
+    it '検索フォーム内に検索ボタンがあること' do
       expect(page).to have_css '.search-btn'
+    end
+
+    it '検索フォーム内に「ラバーの種類」という文字列と、ラバーの種類に関するラジオボタンがあること' do
+      expect(page).to have_content('ラバーの種類')
+      find('label[for=q_type_id_eq]').click
+      expect(page).to have_css 'input[id=q_type_id_eq_]'
+      expect(page).to have_css 'input[id=q_type_id_eq_2]'
+      expect(page).to have_css 'input[id=q_type_id_eq_3]'
+      expect(page).to have_css 'input[id=q_type_id_eq_4]'
+      expect(page).to have_css 'input[id=q_type_id_eq_5]'
+      expect(page).to have_css 'input[id=q_type_id_eq_6]'
+      expect(page).to have_css 'input[id=q_type_id_eq_7]'
+    end
+
+    it '検索フォーム内に「メーカー」という文字列と、メーカーに関するラジオボタンがあること' do
+      expect(page).to have_content('メーカー')
+      find('label[for=q_manufacture_id_eq]').click
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_2]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_3]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_4]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_5]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_6]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_7]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_8]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_9]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_11]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_12]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_13]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_14]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_15]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_16]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_17]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_18]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_19]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_20]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_21]'
+    end
+
+    it '検索フォーム内に「価格」という文字列と、価格に関するラジオボタンがあること' do
+      expect(page).to have_content('価格')
+      find('label[for=q_price_lteq]').click
+      expect(page).to have_css 'input[id=q_price_lteq_3000]'
+      expect(page).to have_css 'input[id=q_price_lteq_4000]'
+      expect(page).to have_css 'input[id=q_price_lteq_5000]'
+      expect(page).to have_css 'input[id=q_price_lteq_6000]'
+      expect(page).to have_css 'input[id=q_price_lteq_7000]'
+      expect(page).to have_css 'input[id=q_price_lteq_8000]'
+      expect(page).to have_css 'input[id=q_price_gt_8000]'
     end
   end
 
