@@ -64,7 +64,7 @@ RSpec.describe 'Reviews', type: :system do
     end
   end
 
-  describe '検索機能の確認' do
+  describe 'レビュー検索機能の確認' do
     before do
       # トップページを開く
       visit root_path
