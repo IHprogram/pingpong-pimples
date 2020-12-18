@@ -64,6 +64,16 @@ RSpec.describe 'Reviews', type: :system do
     end
   end
 
+  describe '検索機能の確認' do
+    before do
+      # トップページを開く
+      visit root_path
+    end
+    it '検索フォーム内に入力フォームがあること' do
+      expect(page).to have_css 'input[id=q_name_cont]'
+    end
+  end
+
   describe 'トップ画面における最新レビュー一覧表示機能' do
     let!(:review) { FactoryBot.create(:review) }
     before do
