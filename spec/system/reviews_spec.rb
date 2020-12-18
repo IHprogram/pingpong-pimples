@@ -49,6 +49,26 @@ RSpec.describe 'Reviews', type: :system do
     end
   end
 
+  describe 'トップ画面における最新レビュー一覧表示機能' do
+    let!(:review) { FactoryBot.create(:review) }
+    before do
+      # トップページを開く
+      visit root_path
+      # ゲストログインボタンをクリック
+      find('a[class="guest-login-btn"]').click
+      # トップページ上部に「ログインしました」と表示される
+      expect(page).to have_content('ログインしました')
+    end
+
+    it 'トップページに、レビューの商品名、ユーザー名、メーカー名、総合評価点数が表示されていること' do
+      expect(page).to have_css("img[src*='test.jpg']")
+      expect(page).to have_content review.name
+      expect(page).to have_content review.user.nickname
+      expect(page).to have_content review.manufacture.name
+      expect(page).to have_content review.evaluation.name
+    end
+  end
+
 
   describe 'レビュー投稿機能' do
     describe 'レビュー投稿画面のレイアウト確認' do
