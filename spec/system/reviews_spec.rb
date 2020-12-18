@@ -1,6 +1,153 @@
 require 'rails_helper'
 
 RSpec.describe 'Reviews', type: :system do
+
+  describe 'トップ画面のレイアウト確認' do
+    let!(:review) { FactoryBot.build(:review) }
+    before do
+      # トップページを開く
+      visit root_path
+      # ゲストログインボタンをクリック
+      find('a[class="guest-login-btn"]').click
+      # トップページ上部に「ログインしました」と表示される
+      expect(page).to have_content('ログインしました')
+    end
+
+    describe "ヘッダーのレイアウト確認" do
+      it "ヘッダーにロゴがあること" do
+        expect(page).to have_content('Ping Pong Pimples')
+      end
+
+      it "ヘッダーにメニューバーがあること" do
+        expect(page).to have_css 'div[id=menu-btn]'
+      end
+
+      it "メニューバーをクリックすると、メニューバーに「active」というクラス名が追加されること" do
+        find('div[id=menu-btn]').click
+        # クラス名は「.」をつけて記述する
+        expect(page).to have_css '.active'
+      end
+    end
+
+    describe "トップページのレイアウト確認" do
+      before do
+        # トップページを開く
+        visit root_path
+      end
+
+      it "トップページにキャッチコピーが表示されている" do
+        expect(page).to have_content('ラバー選び、もう悩まない。')
+      end
+      
+      it "トップページに説明文が表示されている" do
+        expect(page).to have_content('Ping Pong Pimplesは、卓球のラバーについてレビューを投稿できるサービスです。')
+        expect(page).to have_content('あらゆるレビューを参考にし、自分に合った最適なラバーを選びましょう。')
+      end
+
+      it "検索フォームが表示されていること" do
+        expect(page).to have_content('- レビュー検索 -')
+      end
+
+      it "最新レビュー一覧が表示されていること" do
+        expect(page).to have_content('- 最新レビュー -')
+      end
+    end
+
+    describe "フッターのレイアウト確認" do
+      before do
+        # トップページを開く
+        visit root_path
+      end
+      it 'フッターにコピーライトが表示されていること' do
+        expect(page).to have_content('©︎ 2020 Hiroyasu Iida')
+      end
+    end
+  end
+
+  describe 'レビュー検索機能の確認' do
+    before do
+      # トップページを開く
+      visit root_path
+    end
+    it '検索フォーム内に入力フォームがあること' do
+      expect(page).to have_css 'input[id=q_name_cont]'
+    end
+
+    it '検索フォーム内に検索ボタンがあること' do
+      expect(page).to have_css '.search-btn'
+    end
+
+    it '検索フォーム内に「ラバーの種類」という文字列と、ラバーの種類に関するラジオボタンがあること' do
+      expect(page).to have_content('ラバーの種類')
+      find('label[for=q_type_id_eq]').click
+      expect(page).to have_css 'input[id=q_type_id_eq_]'
+      expect(page).to have_css 'input[id=q_type_id_eq_2]'
+      expect(page).to have_css 'input[id=q_type_id_eq_3]'
+      expect(page).to have_css 'input[id=q_type_id_eq_4]'
+      expect(page).to have_css 'input[id=q_type_id_eq_5]'
+      expect(page).to have_css 'input[id=q_type_id_eq_6]'
+      expect(page).to have_css 'input[id=q_type_id_eq_7]'
+    end
+
+    it '検索フォーム内に「メーカー」という文字列と、メーカーに関するラジオボタンがあること' do
+      expect(page).to have_content('メーカー')
+      find('label[for=q_manufacture_id_eq]').click
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_2]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_3]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_4]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_5]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_6]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_7]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_8]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_9]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_11]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_12]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_13]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_14]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_15]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_16]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_17]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_18]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_19]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_20]'
+      expect(page).to have_css 'input[id=q_manufacture_id_eq_21]'
+    end
+
+    it '検索フォーム内に「価格」という文字列と、価格に関するラジオボタンがあること' do
+      expect(page).to have_content('価格')
+      find('label[for=q_price_lteq]').click
+      expect(page).to have_css 'input[id=q_price_lteq_3000]'
+      expect(page).to have_css 'input[id=q_price_lteq_4000]'
+      expect(page).to have_css 'input[id=q_price_lteq_5000]'
+      expect(page).to have_css 'input[id=q_price_lteq_6000]'
+      expect(page).to have_css 'input[id=q_price_lteq_7000]'
+      expect(page).to have_css 'input[id=q_price_lteq_8000]'
+      expect(page).to have_css 'input[id=q_price_gt_8000]'
+    end
+  end
+
+  describe 'トップ画面における最新レビュー一覧表示機能' do
+    let!(:review) { FactoryBot.create(:review) }
+    before do
+      # トップページを開く
+      visit root_path
+      # ゲストログインボタンをクリック
+      find('a[class="guest-login-btn"]').click
+      # トップページ上部に「ログインしました」と表示される
+      expect(page).to have_content('ログインしました')
+    end
+
+    it 'トップページに、レビューの商品名、ユーザー名、メーカー名、総合評価点数が表示されていること' do
+      expect(page).to have_css("img[src*='test.jpg']")
+      expect(page).to have_content review.name
+      expect(page).to have_content review.user.nickname
+      expect(page).to have_content review.manufacture.name
+      expect(page).to have_content review.evaluation.name
+    end
+  end
+
+
   describe 'レビュー投稿機能' do
     describe 'レビュー投稿画面のレイアウト確認' do
       let!(:review) { FactoryBot.build(:review) }
@@ -47,7 +194,7 @@ RSpec.describe 'Reviews', type: :system do
       end
 
       it '「トップページにもどる」ボタンをクリックすればトップページに移動すること' do
-        find('a[class="new-back-btn"]').click
+        click_on 'トップページにもどる'
         expect(current_path).to eq root_path
       end
     end
@@ -207,7 +354,7 @@ RSpec.describe 'Reviews', type: :system do
           expect(page).to have_css("img[src*='user.jpg']")
         end
 
-        it "投稿者のニックネームや画像をクリックすると、投稿者のプロフィール画面へ遷移すること" do
+        it '投稿者のニックネームや画像をクリックすると、投稿者のプロフィール画面へ遷移すること' do
           find('a[class="user-profile-link"]').click
           expect(current_path).to eq user_path(user)
         end
@@ -279,13 +426,13 @@ RSpec.describe 'Reviews', type: :system do
           # レビューの詳細画面へ移動する。
           visit review_path(review)
         end
-        
+
         it '投稿者のプロフィール画像部分には、デフォルト画像が表示されていること' do
           expect(page).to have_css("img[src*='/assets/user-dd619b5c5319830c5177ac444d512fc6313406b6e3b8be3c4d1774044b1e8f8f.png']")
         end
       end
 
-      context "ユーザーがログインしている時" do
+      context 'ユーザーがログインしている時' do
         let!(:user) { FactoryBot.create(:user) }
         let!(:review) { FactoryBot.create(:review, user: user) }
         before do
@@ -297,16 +444,16 @@ RSpec.describe 'Reviews', type: :system do
           visit review_path(review)
         end
 
-        it "レビュー編集ボタンが表示されていること" do
+        it 'レビュー編集ボタンが表示されていること' do
           expect(page).to have_css("a[class='edit-btn']")
         end
-        
-        it "レビュー削除ボタンが表示されていること" do
+
+        it 'レビュー削除ボタンが表示されていること' do
           expect(page).to have_css("a[class='delete-btn']")
         end
       end
 
-      context "ユーザーがログインしていない時（ログアウト状態の時）" do
+      context 'ユーザーがログインしていない時（ログアウト状態の時）' do
         let!(:user) { FactoryBot.create(:user) }
         let!(:review) { FactoryBot.create(:review, user: user) }
         before do
@@ -315,17 +462,17 @@ RSpec.describe 'Reviews', type: :system do
           # レビューの詳細画面へ移動する。
           visit review_path(review)
         end
-        
-        it "レビュー編集ボタンが表示されていないこと" do
+
+        it 'レビュー編集ボタンが表示されていないこと' do
           expect(page).not_to have_css("a[class='edit-btn']")
         end
-        
-        it "レビュー削除ボタンが表示されていないこと" do
+
+        it 'レビュー削除ボタンが表示されていないこと' do
           expect(page).not_to have_css("a[class='delete-btn']")
         end
       end
 
-      context "レビューの投稿者ではない他ユーザーがレビュー詳細画面に移動した時" do
+      context 'レビューの投稿者ではない他ユーザーがレビュー詳細画面に移動した時' do
         let!(:user) { FactoryBot.create(:user) }
         let!(:review) { FactoryBot.create(:review, user: user) }
         let!(:other_user) { FactoryBot.create(:user) }
@@ -337,12 +484,12 @@ RSpec.describe 'Reviews', type: :system do
           # レビューの詳細画面へ移動する。
           visit review_path(review)
         end
-        
-        it "レビュー編集ボタンが表示されていないこと" do
+
+        it 'レビュー編集ボタンが表示されていないこと' do
           expect(page).not_to have_css("a[class='edit-btn']")
         end
-        
-        it "レビュー削除ボタンが表示されていないこと" do
+
+        it 'レビュー削除ボタンが表示されていないこと' do
           expect(page).not_to have_css("a[class='delete-btn']")
         end
       end
