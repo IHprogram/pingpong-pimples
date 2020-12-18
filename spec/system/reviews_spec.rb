@@ -72,6 +72,10 @@ RSpec.describe 'Reviews', type: :system do
     it '検索フォーム内に入力フォームがあること' do
       expect(page).to have_css 'input[id=q_name_cont]'
     end
+
+    it '検索ボタンがあること' do
+      expect(page).to have_css '.search-btn'
+    end
   end
 
   describe 'トップ画面における最新レビュー一覧表示機能' do
