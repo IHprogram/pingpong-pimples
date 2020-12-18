@@ -30,6 +30,11 @@ RSpec.describe 'Reviews', type: :system do
     end
 
     describe "トップページのレイアウト確認" do
+      before do
+        # トップページを開く
+        visit root_path
+      end
+
       it "トップページにキャッチコピーが表示されている" do
         expect(page).to have_content('ラバー選び、もう悩まない。')
       end
@@ -49,7 +54,11 @@ RSpec.describe 'Reviews', type: :system do
     end
 
     describe "フッターのレイアウト確認" do
-      it "フッターにコピーライトが表示されていること" do
+      before do
+        # トップページを開く
+        visit root_path
+      end
+      it 'フッターにコピーライトが表示されていること' do
         expect(page).to have_content('©︎ 2020 Hiroyasu Iida')
       end
     end
