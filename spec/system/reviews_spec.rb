@@ -47,6 +47,12 @@ RSpec.describe 'Reviews', type: :system do
         expect(page).to have_content('- 最新レビュー -')
       end
     end
+
+    describe "フッターのレイアウト確認" do
+      it "フッターにコピーライトが表示されていること" do
+        expect(page).to have_content('©︎ 2020 Hiroyasu Iida')
+      end
+    end
   end
 
   describe 'トップ画面における最新レビュー一覧表示機能' do
