@@ -90,7 +90,6 @@ gem 'rails-i18n'
 
 gem 'kaminari'
 
-gem 'sqlite3'
 gem 'uglifier', '>= 1.3.0'
 gem 'paperclip'
 gem 'geocoder'
