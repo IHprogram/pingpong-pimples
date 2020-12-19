@@ -109,6 +109,16 @@
   color: #ff8c00;
 }
 
+.close-btn {
+  pointer-events : none;
+  background-color:#808080;
+}
+
+.open-btn {
+  pointer-events : auto;
+  background-color: #000000;
+}
+
 @media screen and (max-width: 959px) {
   .comments {
     width: 500px;
