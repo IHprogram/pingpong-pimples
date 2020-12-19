@@ -20,9 +20,12 @@ RSpec.describe 'Comments', type: :system do
         # まず、コメントの件数は0であること
         expect(page).to have_content '0'
         expect(page).to have_content '件のコメント'
+        # 入力フォームにコメントを入力
         fill_in 'comment_content', with: comment.content
         expect {
+          # コメント送信ボタンをクリック
           find('input[id="comment-button"]').click
+          # コメント送信ボタンが、「open-btn」というクラス名を持っている
           expect(page).to have_css '.open-btn'
           # ajaxが完了するまで待つ
           wait_for_ajax do
@@ -57,15 +60,19 @@ RSpec.describe 'Comments', type: :system do
     end
 
     it 'コメントを削除できること' do
+      # 入力フォームにコメントを入力
       fill_in 'comment_content', with: comment.content
+      # コメント送信ボタンをクリック
       find('input[id="comment-button"]').click
-      # コメントの件数は1件の状態から始まっていること
+      # コメントの件数は1件の状態
       expect(page).to have_content '1'
       expect(page).to have_content '件のコメント'
+      # コメント削除ボタンをクリック
       find('a[class="comment-delete-btn"]').click
       expect {
+        # モーダルが表示される
         expect(page.accept_confirm).to eq 'コメントを完全に削除してもよろしいですか？'
-        # コメントの件数が1件減って0件と表示されていること
+        # コメントの件数が1件減って0件と表示されている
         expect(page).to have_content '0'
         expect(page).to have_content '件のコメント'
       }.to change { Comment.count }.by(-1)
