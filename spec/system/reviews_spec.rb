@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Reviews', type: :system do
-
   describe 'トップ画面のレイアウト確認' do
     let!(:review) { FactoryBot.build(:review) }
     before do
@@ -13,47 +12,47 @@ RSpec.describe 'Reviews', type: :system do
       expect(page).to have_content('ログインしました')
     end
 
-    describe "ヘッダーのレイアウト確認" do
-      it "ヘッダーにロゴがあること" do
+    describe 'ヘッダーのレイアウト確認' do
+      it 'ヘッダーにロゴがあること' do
         expect(page).to have_content('Ping Pong Pimples')
       end
 
-      it "ヘッダーにメニューバーがあること" do
+      it 'ヘッダーにメニューバーがあること' do
         expect(page).to have_css 'div[id=menu-btn]'
       end
 
-      it "メニューバーをクリックすると、メニューバーに「active」というクラス名が追加されること" do
+      it 'メニューバーをクリックすると、メニューバーに「active」というクラス名が追加されること' do
         find('div[id=menu-btn]').click
         # クラス名は「.」をつけて記述する
         expect(page).to have_css '.active'
       end
     end
 
-    describe "トップページのレイアウト確認" do
+    describe 'トップページのレイアウト確認' do
       before do
         # トップページを開く
         visit root_path
       end
 
-      it "トップページにキャッチコピーが表示されている" do
+      it 'トップページにキャッチコピーが表示されている' do
         expect(page).to have_content('ラバー選び、もう悩まない。')
       end
-      
-      it "トップページに説明文が表示されている" do
+
+      it 'トップページに説明文が表示されている' do
         expect(page).to have_content('Ping Pong Pimplesは、卓球のラバーについてレビューを投稿できるサービスです。')
         expect(page).to have_content('あらゆるレビューを参考にし、自分に合った最適なラバーを選びましょう。')
       end
 
-      it "検索フォームが表示されていること" do
+      it '検索フォームが表示されていること' do
         expect(page).to have_content('- レビュー検索 -')
       end
 
-      it "最新レビュー一覧が表示されていること" do
+      it '最新レビュー一覧が表示されていること' do
         expect(page).to have_content('- 最新レビュー -')
       end
     end
 
-    describe "フッターのレイアウト確認" do
+    describe 'フッターのレイアウト確認' do
       before do
         # トップページを開く
         visit root_path
@@ -146,7 +145,6 @@ RSpec.describe 'Reviews', type: :system do
       expect(page).to have_content review.evaluation.name
     end
   end
-
 
   describe 'レビュー投稿機能' do
     describe 'レビュー投稿画面のレイアウト確認' do
