@@ -20,11 +20,18 @@ RSpec.describe "Comments", type: :system do
         fill_in 'comment_content', with: comment.content
         expect {
           find('input[id="comment-button"]').click
+          expect(page).to have_css '.open-btn'
           # ajaxが完了するまで待つ
           wait_for_ajax do
             expect(page).to have_content comment.content
           end
         }.to change { Comment.count }.by(1)
+      end
+    end
+
+    context 'コメント入力フォームが空欄のままで、コメント送信ボタンをクリックすれば' do
+      it 'コメントを投稿できないこと（コメント送信ボタンがクリックできないようになっている）' do
+        expect(page).to have_css '.close-btn'
       end
     end
   end
