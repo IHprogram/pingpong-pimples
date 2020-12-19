@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Comments", type: :system do
-  describe "コメント投稿機能" do
+RSpec.describe 'Comments', type: :system do
+  describe 'コメント投稿機能' do
     let!(:review) { FactoryBot.create(:review) }
     let!(:comment) { FactoryBot.build(:comment, review: review) }
     before do
@@ -18,8 +18,8 @@ RSpec.describe "Comments", type: :system do
     context 'ユーザーがコメント入力フォームに正常な値を入力すれば' do
       it 'コメントを投稿できること' do
         # まず、コメントの件数は0であること
-        expect(page).to have_content "0"
-        expect(page).to have_content "件のコメント"
+        expect(page).to have_content '0'
+        expect(page).to have_content '件のコメント'
         fill_in 'comment_content', with: comment.content
         expect {
           find('input[id="comment-button"]').click
@@ -30,8 +30,8 @@ RSpec.describe "Comments", type: :system do
           end
         }.to change { Comment.count }.by(1)
         # コメントの件数が1増えた状態で表示されていること
-        expect(page).to have_content "1"
-        expect(page).to have_content "件のコメント"
+        expect(page).to have_content '1'
+        expect(page).to have_content '件のコメント'
       end
     end
 
@@ -42,7 +42,7 @@ RSpec.describe "Comments", type: :system do
     end
   end
 
-  describe "コメント削除機能" do
+  describe 'コメント削除機能' do
     let!(:review) { FactoryBot.create(:review) }
     let!(:comment) { FactoryBot.build(:comment, review: review) }
     before do
@@ -60,15 +60,15 @@ RSpec.describe "Comments", type: :system do
       fill_in 'comment_content', with: comment.content
       find('input[id="comment-button"]').click
       # コメントの件数は1件の状態から始まっていること
-      expect(page).to have_content "1"
-      expect(page).to have_content "件のコメント"
+      expect(page).to have_content '1'
+      expect(page).to have_content '件のコメント'
       find('a[class="comment-delete-btn"]').click
       expect {
-        expect(page.accept_confirm).to eq "コメントを完全に削除してもよろしいですか？"
+        expect(page.accept_confirm).to eq 'コメントを完全に削除してもよろしいですか？'
         # コメントの件数が1件減って0件と表示されていること
-        expect(page).to have_content "0"
-        expect(page).to have_content "件のコメント"
-      }.to change{ Comment.count }.by(-1)
+        expect(page).to have_content '0'
+        expect(page).to have_content '件のコメント'
+      }.to change { Comment.count }.by(-1)
     end
   end
 end
