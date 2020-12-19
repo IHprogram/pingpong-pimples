@@ -19,7 +19,7 @@ RSpec.describe "Comments", type: :system do
       it 'コメントを投稿できること' do
         fill_in 'comment_content', with: comment.content
         expect {
-          find('input[class="comment-btn"]').click
+          find('input[id="comment-button"]').click
           # ajaxが完了するまで待つ
           wait_for_ajax do
             expect(page).to have_content comment.content
