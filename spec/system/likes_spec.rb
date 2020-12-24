@@ -26,11 +26,8 @@ RSpec.describe "Likes", type: :system do
         expect {
           # いいねボタンをクリック
           find('a[class="like-btn"]').click
-          # ajaxが完了するまで待つ
-          wait_for_ajax do
-            # いいねボタンの表示が、「いいねしました！」に変化
-            expect(page).to have_content('いいねしました！')
-          end
+          # いいねボタンをクリックした後は、いいねされた数が1増えた状態で表示されること
+          expect(page).to have_content('いいねしました！ 1')
         }.to change { Like.count }.by(1)
       end
     end
