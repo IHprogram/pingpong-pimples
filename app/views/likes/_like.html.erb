@@ -1,9 +1,11 @@
 <% if user_signed_in? %>
+<%# ユーザーがログインしていなければ、こちらを表示 %>
   <% if Like.find_by(user_id: current_user.id, review_id: @review.id) %>
+  <%# ユーザーがすでにレビューをいいねしていれば、いいねを解除するボタンを表示 %>
     <div class="like-btn-content">
       <p class="like-btn-text">
         <%= link_to likes_destroy_path(review_id: @review), method: :delete, class:"like-btn", remote: true do %>
-          <i class="fas fa-thumbs-up like-click"></i> いいね！
+          <i class="fas fa-thumbs-up like-click"></i> いいねしました！
           <span class="like-count">
             <%= @review.likes_count %>
           </span>
@@ -11,6 +13,7 @@
       </p>
     </div>
   <% else %>
+  <%# ユーザーがレビューをいいねしていなければ、いいねできるボタンを表示 %>
     <div class="like-btn-content">
       <p class="like-btn-text">
         <%= link_to likes_create_path(review_id: @review), method: :post, class:"like-btn", remote: true do %>
@@ -23,6 +26,7 @@
     </div>
   <% end %>
 <% else %>
+<%# ユーザーがログインしていない状態でいいねボタンをクリックすると、ログイン画面へ移動する %>
   <div class="like-btn-content">
       <p class="like-btn-text">
         <%= link_to new_user_session_path,class:"like-btn" do %>
