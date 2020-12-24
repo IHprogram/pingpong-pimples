@@ -26,9 +26,23 @@ RSpec.describe "Likes", type: :system do
         expect {
           # いいねボタンをクリック
           find('a[class="like-btn"]').click
-          # いいねボタンをクリックした後は、いいねされた数が1増えた状態で表示されること
+          # いいねボタンをクリックした後は、いいねされた数が1つ増えた状態で表示される
           expect(page).to have_content('いいねしました！ 1')
         }.to change { Like.count }.by(1)
+      end
+
+      it 'ユーザーが「いいねしました！」ボタンをクリックすれば、いいねを解除できること' do
+        # いいねボタンをクリック
+        find('a[class="like-btn"]').click
+        # いいねボタンをクリックした後は、いいねされた数が1つ増えた状態で表示される
+        expect(page).to have_content('いいねしました！ 1')
+        expect {
+          # 「いいねしました！」ボタンをクリック
+          find('a[class="like-btn"]').click
+          # 「いいねしました」 ボタンをクリックした後は、いいねされた数が1つ減った状態で表示される
+          expect(page).to have_content('いいね！ 0')
+        }.to change { Like.count }.by(-1)
+
       end
     end
 
