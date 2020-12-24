@@ -19,6 +19,20 @@ RSpec.describe "Likes", type: :system do
       it 'レビューの詳細画面に「いいね！」ボタンが表示されていること' do
         expect(page).to have_content('いいね！')
       end
+
+      it 'ユーザーが「いいね！」ボタンをクリックすれば、いいねできること' do
+        # いいねボタンの表示は「いいね！」の状態
+        expect(page).to have_content('いいね！')
+        expect {
+          # いいねボタンをクリック
+          find('a[class="like-btn"]').click
+          # ajaxが完了するまで待つ
+          wait_for_ajax do
+            # いいねボタンの表示が、「いいねしました！」に変化
+            expect(page).to have_content('いいねしました！')
+          end
+        }.to change { Like.count }.by(1)
+      end
     end
 
     context 'ユーザーがログインしていない時' do
