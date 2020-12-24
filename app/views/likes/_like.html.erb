@@ -5,10 +5,7 @@
     <div class="like-btn-content">
       <p class="like-btn-text">
         <%= link_to likes_destroy_path(review_id: @review), method: :delete, class:"like-btn", remote: true do %>
-          <i class="fas fa-thumbs-up like-click"></i> いいねしました！
-          <span class="like-count">
-            <%= @review.likes_count %>
-          </span>
+          <i class="fas fa-thumbs-up like-click"></i> いいねしました！ <%= @review.likes_count %>
         <% end %>
       </p>
     </div>
@@ -17,10 +14,7 @@
     <div class="like-btn-content">
       <p class="like-btn-text">
         <%= link_to likes_create_path(review_id: @review), method: :post, class:"like-btn", remote: true do %>
-          <i class="far fa-thumbs-up like-notclick"></i> いいね！
-          <span class="like-count">
-            <%= @review.likes_count %>
-          </span>
+          <i class="far fa-thumbs-up like-notclick"></i> いいね！ <%= @review.likes_count %>
         <% end %>
       </p>
     </div>
@@ -30,10 +24,7 @@
   <div class="like-btn-content">
       <p class="like-btn-text">
         <%= link_to new_user_session_path,class:"like-btn" do %>
-          <i class="far fa-thumbs-up like-notclick"></i> いいね！
-          <span class="like-count">
-            <%= @review.likes_count %>
-          </span>
+          <i class="far fa-thumbs-up like-notclick"></i> いいね！ <%= @review.likes_count %>
         <% end %>
       </p>
   </div>
