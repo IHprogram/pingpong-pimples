@@ -497,7 +497,7 @@ RSpec.describe 'Reviews', type: :system do
   describe 'レビュー編集機能' do
     let!(:user) { FactoryBot.create(:user) }
     let!(:review) { FactoryBot.create(:review, user: user) }
-    
+
     context '投稿者本人がログインしている時' do
       before do
         # トップページを開く
