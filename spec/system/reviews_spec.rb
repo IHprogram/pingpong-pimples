@@ -498,7 +498,7 @@ RSpec.describe 'Reviews', type: :system do
     let!(:user) { FactoryBot.create(:user) }
     let!(:review) { FactoryBot.create(:review, user: user) }
     
-    context 'ユーザーがログインしている時' do
+    context '投稿者本人がログインしている時' do
       before do
         # トップページを開く
         visit root_path
@@ -525,12 +525,66 @@ RSpec.describe 'Reviews', type: :system do
         visit root_path
         # 投稿したレビューの詳細画面に行く
         click_on 'テナジー（編集テスト）'
+        find('a[class="edit-btn"]').click
       end
 
       it '「編集する」ボタンをクリックすれば、レビュー編集画面に移動できること' do
-        find('a[class="edit-btn"]').click
         expect(page).to have_content '- レビュー内容の編集 -'
       end
+
+      it '全ての項目において、レビューの編集を行うことができること' do
+        # 画像を選択
+        attach_file 'review[image]', "#{Rails.root}/spec/factories/sample2.jpg"
+        # 商品名を入力
+        fill_in 'product-name', with: review.name
+        # メーカーを選択
+        select 'TSP', from: 'review[manufacture_id]'
+        # ラバーの種類を選択
+        select 'ラージ用ラバー', from: 'review[type_id]'
+        # 打球感を選択
+        select 'やや硬い（セミハード）', from: 'review[hardness_id]'
+        # スピンを選択
+        select '8', from: 'review[spin_id]'
+        # スピ-ドを選択
+        select '7', from: 'review[speed_id]'
+        # コントロールを選択
+        select '6', from: 'review[control_id]'
+        # 商品の価格を入力
+        fill_in 'product-price', with: review.price
+        # 総合評価の選択
+        select '5', from: 'review[evaluation_id]'
+        # その他コメントの入力
+        fill_in 'product-info', with: review.content
+        #  動画を選択
+        attach_file 'review[video]', "#{Rails.root}/spec/factories/test_movie.mp4"
+        # 「レビューを編集する」ボタンをクリック
+        find('input[name="commit"]').click
+
+        # 編集内容が反映されていること
+        # レビューの画像が表示されていること
+        expect(page).to have_css("img[src*='sample2.jpg']")
+        # 商品名が表示されていることを確認
+        expect(page).to have_content review.name
+        # メーカー名が表示されていることを確認
+        expect(page).to have_content 'TSP'
+        # ラバーの種類が表示されていることを確認
+        expect(page).to have_content 'ラージ用ラバー'
+        # 打球感が表示されていることを確認
+        expect(page).to have_content 'やや硬い（セミハード）'
+        # 価格が表示されていることを確認
+        expect(page).to have_content review.price
+        # スピン性能に関する点数が表示されていることを確認
+        expect(page).to have_content '8'
+        # スピード性能に関する点数が表示されていることを確認
+        expect(page).to have_content '7'
+        # コントロール性能に関する点数が表示されていることを確認
+        expect(page).to have_content '6'
+        # 総合評価点数が表示されていることを確認
+        expect(page).to have_content '5'
+        # その他コメントが表示されていることを確認
+        expect(page).to have_content review.content
+      end
+
     end
   end
 
