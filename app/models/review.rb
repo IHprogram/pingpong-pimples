@@ -29,7 +29,8 @@ class Review < ApplicationRecord
     validates :control_id,     numericality: { other_than: 1, message: select }
     validates :hardness_id,    numericality: { other_than: 1, message: select }
     validates :evaluation_id,  numericality: { other_than: 1, message: select }
-    validates :price,          format: { with: HALF_WIDTH_NUMBER_REGEX, message: 'は半角数字で入力してください' }, numericality: { greater_than: 0, message: 'は0より大きい半角数字で入力してください' }
+    validates :price,          format: { with: HALF_WIDTH_NUMBER_REGEX, message: 'は半角数字で入力してください' },
+                               numericality: { greater_than: 0, message: 'は0より大きい半角数字で入力してください' }
     validates :content, length: { maximum: 1000, message: 'は1000文字以内で入力してください' }
   end
 
