@@ -104,5 +104,11 @@ RSpec.describe "Likes", type: :system do
     it 'いいね一覧画面に「- いいね一覧 -」と言うタイトルが表示されていること' do
       expect(page).to have_content('- いいね一覧 -')
     end
+
+    context 'ユーザーがレビューを1つもいいねしていなければ' do
+      it '「いいねしたレビューはありません」と表示されること' do
+        expect(page).to have_content('いいねしたレビューはありません')
+      end
+    end
   end
 end
