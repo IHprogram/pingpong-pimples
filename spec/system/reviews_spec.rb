@@ -624,6 +624,26 @@ RSpec.describe 'Reviews', type: :system do
         end
       end
     end
+
+    context '投稿者以外のユーザーがログインしている時' do
+      let!(:user) { FactoryBot.create(:user) }
+      let!(:review) { FactoryBot.create(:review, user: user) }
+  
+      before do
+        # トップページを開く
+        visit root_path
+        # ゲストログインボタンをクリック
+        find('a[class="guest-login-btn"]').click
+        # トップページ上部に「ログインしました」と表示される
+        expect(page).to have_content('ログインしました')
+        # レビューの詳細画面へ移動する。
+        visit review_path(review)
+      end
+
+      it '編集ボタンは表示されていないこと' do
+        expect(page).not_to have_content('編集する')
+      end
+    end
   end
 
   describe 'レビュー削除機能' do
@@ -679,7 +699,7 @@ RSpec.describe 'Reviews', type: :system do
       end
     end
 
-    context '投稿者本人以外がログインしている時' do
+    context '投稿者以外のユーザーがログインしている時' do
       let!(:user) { FactoryBot.create(:user) }
       let!(:review) { FactoryBot.create(:review, user: user) }
   
@@ -694,7 +714,7 @@ RSpec.describe 'Reviews', type: :system do
         visit review_path(review)
       end
 
-      it '削除完了ボタンは表示されていないこと' do
+      it '削除するボタンは表示されていないこと' do
         expect(page).not_to have_content('削除する')
       end
     end
