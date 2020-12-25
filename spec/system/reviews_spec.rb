@@ -670,6 +670,16 @@ RSpec.describe 'Reviews', type: :system do
           expect(page).to have_css '.back-button'
         }.to change { Review.count }.by(-1)
       end
+
+      it '削除完了画面で「トップページに戻るボタン」をクリックすれば、トップページに移動できること' do
+        find('a[class="delete-btn"]').click
+        # モーダルが表示される
+        expect(page.accept_confirm).to eq 'レビューを完全に削除してもよろしいですか？'
+        # 「トップページに戻る」ボタンをクリック
+        find('a[class="back-button"]').click
+        # トップページに移動している
+        expect(current_path).to eq root_path
+      end
     end
   end
 end
