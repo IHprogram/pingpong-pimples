@@ -493,4 +493,45 @@ RSpec.describe 'Reviews', type: :system do
       end
     end
   end
+
+  describe 'レビュー編集機能' do
+    let!(:user) { FactoryBot.create(:user) }
+    let!(:review) { FactoryBot.create(:review, user: user) }
+    
+    context 'ユーザーがログインしている時' do
+      before do
+        # トップページを開く
+        visit root_path
+        # ゲストログインボタンをクリック
+        find('a[class="guest-login-btn"]').click
+        # トップページ上部に「ログインしました」と表示される
+        expect(page).to have_content('ログインしました')
+        # 新規登録画面へ移動する。
+        visit new_review_path
+        # レビューを投稿する
+        attach_file 'review[image]', "#{Rails.root}/spec/factories/sample.png"
+        fill_in 'product-name', with: 'テナジー（編集テスト）'
+        select 'バタフライ', from: 'review[manufacture_id]'
+        select '裏ソフトラバー', from: 'review[type_id]'
+        select '硬い（ハード）', from: 'review[hardness_id]'
+        select '10', from: 'review[spin_id]'
+        select '10', from: 'review[speed_id]'
+        select '10', from: 'review[control_id]'
+        fill_in 'product-price', with: '8000'
+        select '10', from: 'review[evaluation_id]'
+        fill_in 'product-info', with: '素晴らしいラバーです。'
+        find('input[name="commit"]').click
+        # トップページに戻る
+        visit root_path
+        # 投稿したレビューの詳細画面に行く
+        click_on 'テナジー（編集テスト）'
+      end
+
+      it '「編集する」ボタンをクリックすれば、レビュー編集画面に移動できること' do
+        find('a[class="edit-btn"]').click
+        expect(page).to have_content '- レビュー内容の編集 -'
+      end
+    end
+  end
+
 end
