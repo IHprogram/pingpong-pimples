@@ -108,5 +108,16 @@ RSpec.describe "Relationships", type: :system do
       expect(page).to have_css("img[src*='user.jpg']")
       expect(page).to have_content follow.user.nickname
     end
+
+    it '「フォロワー」という要素をクリックすると、そのユーザーをフォローしているユーザー一覧が表示されること' do
+      find('div[class="followings-number-wrapper"]').click
+      # 表示されたユーザー名、画像をクリックし、そのユーザーのプロフィールページへ移動
+      find('div[class="follow-users"]').click
+      # 「フォロワー」をクリック
+      find('div[class="followings-number-wrapper"]').click
+      # フォロワーのニックネームとプロフィール画像が表示されている
+      expect(page).to have_css("img[src*='user.jpg']")
+      expect(page).to have_content follow.user.nickname
+    end
   end
 end
