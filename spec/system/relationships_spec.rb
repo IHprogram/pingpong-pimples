@@ -26,17 +26,23 @@ RSpec.describe "Relationships", type: :system do
       end
 
       it "フォローボタンをクリックすれば、ユーザーをフォローできること" do
+        # フォロワー数が「0」の状態
+        expect(page).to have_content '0'
         expect {
           # フォローボタンをクリックすると、そのユーザーをフォローできる
           find('input[class="follow-btn"]').click
           # フォロー解除ボタンがある（「.unfollow-btn」というクラス名がある）
           expect(page).to have_css '.unfollow-btn'
         }.to change { Relationship.count }.by(1)
+        # フォロワー数が「1」に増えている
+        expect(page).to have_content '1'
       end
 
       it 'フォロー解除ボタンをクリックすれば、フォローを解除できること' do
         # まずは一度ユーザーをフォローする
         find('input[class="follow-btn"]').click
+        # フォロワー数は「1」の状態
+        expect(page).to have_content '1'
         # フォロー解除ボタンをクリック
         find('input[class="unfollow-btn"]').click
         expect {
@@ -45,6 +51,8 @@ RSpec.describe "Relationships", type: :system do
           # フォローボタンに変わる
           expect(page).to have_css '.follow-btn'
         }.to change { Relationship.count }.by(-1)
+        # フォロワー数が「0」に減っている
+        expect(page).to have_content '0'
       end
     end
   end
