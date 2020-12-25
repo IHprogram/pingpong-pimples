@@ -62,4 +62,29 @@ RSpec.describe "Likes", type: :system do
       end
     end
   end
+
+  describe 'いいねしたレビュー一覧表示機能' do
+    let!(:user) { FactoryBot.create(:user) }
+    let!(:review) { FactoryBot.create(:review, user: user) }
+
+    context 'ユーザーがレビューをいいねしていれば' do
+      it 'いいねされたレビューが表示されること' do
+        # トップページを開く
+        visit root_path
+        # レビューの詳細画面へ移動する
+        visit review_path(review)
+        # いいねボタンをクリック
+        find('a[class="like-btn"]').click
+        # いいね一覧画面へ移動
+        find('div[class="menu-wrapper"]').click
+        find('a[class="like-link-btn"]').click
+        # いいねしたレビューが表示されている
+        expect(page).to have_css("img[src*='test.jpg']")
+        expect(page).to have_content review.name
+        expect(page).to have_content review.user.nickname
+        expect(page).to have_content review.manufacture.name
+        expect(page).to have_content review.evaluation.name
+      end
+    end
+  end
 end
