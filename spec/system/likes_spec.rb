@@ -86,5 +86,23 @@ RSpec.describe "Likes", type: :system do
         expect(page).to have_content review.evaluation.name
       end
     end
+
+    before do
+      # トップページを開く
+      visit root_path
+      # ゲストログインボタンをクリック
+      find('a[class="guest-login-btn"]').click
+      # トップページ上部に「ログインしました」と表示される
+      expect(page).to have_content('ログインしました')
+      # メニューボタンをクリックすると、いいね一覧画面へ移動できるボタンがある
+      find('div[class="menu-wrapper"]').click
+      expect(page).to have_content('いいね一覧')
+      # いいね一覧画面へ移動する
+      find('a[class="like-link-btn"]').click
+    end
+
+    it 'いいね一覧画面に「- いいね一覧 -」と言うタイトルが表示されていること' do
+      expect(page).to have_content('- いいね一覧 -')
+    end
   end
 end
