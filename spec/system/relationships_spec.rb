@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe "Relationships", type: :system do
+RSpec.describe 'Relationships', type: :system do
   describe 'フォロー機能' do
     context 'ユーザーがログインしていれば' do
       let!(:user) { FactoryBot.create(:user) }
       let!(:review) { FactoryBot.create(:review, user: user) }
-      
+
       before do
         # トップページを開く
         visit root_path
@@ -18,14 +18,14 @@ RSpec.describe "Relationships", type: :system do
         # 投稿者のプロフィールページへ移動
         find('a[class="user-profile-link"]').click
       end
-      
-      it "プロフィールページにフォローボタンが存在すること" do
+
+      it 'プロフィールページにフォローボタンが存在すること' do
         # フォローボタンが存在すること
         expect(page).to have_css '.follow-btn'
         expect(page).to have_content 'フォロー'
       end
 
-      it "フォローボタンをクリックすれば、ユーザーをフォローできること" do
+      it 'フォローボタンをクリックすれば、ユーザーをフォローできること' do
         # フォロワー数が「0」の状態
         expect(page).to have_content '0'
         expect {
