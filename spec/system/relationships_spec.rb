@@ -55,5 +55,31 @@ RSpec.describe "Relationships", type: :system do
         expect(page).to have_content '0'
       end
     end
+
+    context 'ユーザーがログインしていなければ' do
+      let!(:user) { FactoryBot.create(:user) }
+      let!(:review) { FactoryBot.create(:review, user: user) }
+
+      before do
+        # トップページを開く
+        visit root_path
+        # レビューの詳細画面へ移動する
+        visit review_path(review)
+        # 投稿者のプロフィールページへ移動
+        find('a[class="user-profile-link"]').click
+      end
+
+      it 'フォローボタンは表示されないこと' do
+        expect(page).not_to have_css '.follow-btn'
+      end
+
+      it 'フォロー解除ボタンは表示されないこと' do
+        expect(page).not_to have_css '.unfollow-btn'
+      end
+    end
+  end
+
+  describe 'フォロー、フォロワー一覧表示機能' do
+
   end
 end
