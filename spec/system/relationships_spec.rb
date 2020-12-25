@@ -80,6 +80,33 @@ RSpec.describe "Relationships", type: :system do
   end
 
   describe 'フォロー、フォロワー一覧表示機能' do
+    let!(:user) { FactoryBot.create(:user, :profile_image) }
+    let!(:review) { FactoryBot.create(:review, user: user) }
+    let!(:follow) { FactoryBot.create(:relationship, user: user) }
 
+    before do
+      # トップページを開く
+      visit root_path
+      # ゲストログインボタンをクリック
+      find('a[class="guest-login-btn"]').click
+      # トップページ上部に「ログインしました」と表示される
+      expect(page).to have_content('ログインしました')
+      # レビューの詳細画面へ移動する
+      visit review_path(review)
+      # 投稿者のプロフィールページへ移動
+      find('a[class="user-profile-link"]').click
+      # フォローボタンをクリック
+      find('input[class="follow-btn"]').click
+      # 現在ログイン中のユーザーのプロフィール画面へ移動
+      find('div[class="menu-wrapper"]').click
+      find('a[class="user-nickname"]').click
+    end
+
+    it '「フォロー」という要素（フォローボタンではない）をクリックすると、そのユーザーがフォローしているユーザー一覧が表示されること' do
+      find('div[class="followings-number-wrapper"]').click
+      # フォローしたユーザーのニックネームとプロフィール画像が表示されている
+      expect(page).to have_css("img[src*='user.jpg']")
+      expect(page).to have_content follow.user.nickname
+    end
   end
 end
