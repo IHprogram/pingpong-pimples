@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Likes", type: :system do
+RSpec.describe 'Likes', type: :system do
   describe 'いいね機能' do
     context 'ユーザーがログインしている時' do
       let!(:user) { FactoryBot.create(:user) }
@@ -15,7 +15,7 @@ RSpec.describe "Likes", type: :system do
         # レビューの詳細画面へ移動する
         visit review_path(review)
       end
-      
+
       it 'レビューの詳細画面に「いいね！」ボタンが表示されていること' do
         expect(page).to have_content('いいね！')
       end
@@ -42,7 +42,6 @@ RSpec.describe "Likes", type: :system do
           # 「いいねしました」 ボタンをクリックした後は、いいねされた数が1つ減った状態で表示される
           expect(page).to have_content('いいね！ 0')
         }.to change { Like.count }.by(-1)
-
       end
     end
 
