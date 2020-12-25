@@ -627,9 +627,6 @@ RSpec.describe 'Reviews', type: :system do
   end
 
   describe 'レビュー削除機能' do
-    let!(:user) { FactoryBot.create(:user) }
-    let!(:review) { FactoryBot.create(:review, user: user) }
-
     context '投稿者本人がログインしている時' do
       before do
         # トップページを開く
@@ -679,6 +676,26 @@ RSpec.describe 'Reviews', type: :system do
         find('a[class="back-button"]').click
         # トップページに移動している
         expect(current_path).to eq root_path
+      end
+    end
+
+    context '投稿者本人以外がログインしている時' do
+      let!(:user) { FactoryBot.create(:user) }
+      let!(:review) { FactoryBot.create(:review, user: user) }
+  
+      before do
+        # トップページを開く
+        visit root_path
+        # ゲストログインボタンをクリック
+        find('a[class="guest-login-btn"]').click
+        # トップページ上部に「ログインしました」と表示される
+        expect(page).to have_content('ログインしました')
+        # レビューの詳細画面へ移動する。
+        visit review_path(review)
+      end
+
+      it '削除完了ボタンは表示されていないこと' do
+        expect(page).not_to have_content('削除する')
       end
     end
   end
