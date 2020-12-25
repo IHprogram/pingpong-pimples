@@ -585,7 +585,44 @@ RSpec.describe 'Reviews', type: :system do
         expect(page).to have_content review.content
       end
 
+      context '誤った値を入力すれば' do
+        it 'レビューを投稿できず、エラーメッセージが表示されること' do
+          # 商品名が空欄
+          fill_in 'product-name', with: ''
+          # メーカーを選択
+          select '--', from: 'review[manufacture_id]'
+          # ラバーの種類を選択
+          select '--', from: 'review[type_id]'
+          # 打球感を選択
+          select '--', from: 'review[hardness_id]'
+          # スピンを選択
+          select '--', from: 'review[spin_id]'
+          # スピ-ドを選択
+          select '--', from: 'review[speed_id]'
+          # コントロールを選択
+          select '--', from: 'review[control_id]'
+          # 商品の価格を入力
+          fill_in 'product-price', with: '0'
+          # 総合評価の選択
+          select '--', from: 'review[evaluation_id]'
+          # その他コメントが空欄
+          fill_in 'product-info', with: ''
+          # レビューを投稿するボタンをクリックする（画像、商品名、その他コメントは空欄）
+          find('input[name="commit"]').click
+
+          # エラーメッセージが表示される
+          expect(page).to have_content('商品名を入力してください')
+          expect(page).to have_content('メーカーは「--」以外の項目を選択してください')
+          expect(page).to have_content('ラバーの種類は「--」以外の項目を選択してください')
+          expect(page).to have_content('スピンは「--」以外の項目を選択してください')
+          expect(page).to have_content('スピードは「--」以外の項目を選択してください')
+          expect(page).to have_content('コントロールは「--」以外の項目を選択してください')
+          expect(page).to have_content('打球感は「--」以外の項目を選択してください')
+          expect(page).to have_content('総合評価は「--」以外の項目を選択してください')
+          expect(page).to have_content('価格は0より大きい半角数字で入力してください')
+          expect(page).to have_content('その他コメントを入力してください')
+        end
+      end
     end
   end
-
 end
