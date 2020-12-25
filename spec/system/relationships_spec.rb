@@ -33,6 +33,19 @@ RSpec.describe "Relationships", type: :system do
           expect(page).to have_css '.unfollow-btn'
         }.to change { Relationship.count }.by(1)
       end
+
+      it 'フォロー解除ボタンをクリックすれば、フォローを解除できること' do
+        # まずは一度ユーザーをフォローする
+        find('input[class="follow-btn"]').click
+        # フォロー解除ボタンをクリック
+        find('input[class="unfollow-btn"]').click
+        expect {
+          # モーダルが表示される
+          expect(page.accept_confirm).to eq 'フォローを解除してもよろしいですか？'
+          # フォローボタンに変わる
+          expect(page).to have_css '.follow-btn'
+        }.to change { Relationship.count }.by(-1)
+      end
     end
   end
 end
