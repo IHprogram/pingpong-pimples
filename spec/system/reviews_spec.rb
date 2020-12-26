@@ -628,7 +628,7 @@ RSpec.describe 'Reviews', type: :system do
     context '投稿者以外のユーザーがログインしている時' do
       let!(:user) { FactoryBot.create(:user) }
       let!(:review) { FactoryBot.create(:review, user: user) }
-  
+
       before do
         # トップページを開く
         visit root_path
@@ -702,7 +702,7 @@ RSpec.describe 'Reviews', type: :system do
     context '投稿者以外のユーザーがログインしている時' do
       let!(:user) { FactoryBot.create(:user) }
       let!(:review) { FactoryBot.create(:review, user: user) }
-  
+
       before do
         # トップページを開く
         visit root_path
