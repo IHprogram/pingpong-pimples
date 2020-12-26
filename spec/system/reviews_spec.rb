@@ -624,5 +624,99 @@ RSpec.describe 'Reviews', type: :system do
         end
       end
     end
+
+    context '投稿者以外のユーザーがログインしている時' do
+      let!(:user) { FactoryBot.create(:user) }
+      let!(:review) { FactoryBot.create(:review, user: user) }
+
+      before do
+        # トップページを開く
+        visit root_path
+        # ゲストログインボタンをクリック
+        find('a[class="guest-login-btn"]').click
+        # トップページ上部に「ログインしました」と表示される
+        expect(page).to have_content('ログインしました')
+        # レビューの詳細画面へ移動する。
+        visit review_path(review)
+      end
+
+      it '編集ボタンは表示されていないこと' do
+        expect(page).not_to have_content('編集する')
+      end
+    end
+  end
+
+  describe 'レビュー削除機能' do
+    context '投稿者本人がログインしている時' do
+      before do
+        # トップページを開く
+        visit root_path
+        # ゲストログインボタンをクリック
+        find('a[class="guest-login-btn"]').click
+        # トップページ上部に「ログインしました」と表示される
+        expect(page).to have_content('ログインしました')
+        # 新規登録画面へ移動する。
+        visit new_review_path
+        # レビューを投稿する
+        attach_file 'review[image]', "#{Rails.root}/spec/factories/sample.png"
+        fill_in 'product-name', with: 'テナジー（削除テスト）'
+        select 'バタフライ', from: 'review[manufacture_id]'
+        select '裏ソフトラバー', from: 'review[type_id]'
+        select '硬い（ハード）', from: 'review[hardness_id]'
+        select '10', from: 'review[spin_id]'
+        select '10', from: 'review[speed_id]'
+        select '10', from: 'review[control_id]'
+        fill_in 'product-price', with: '8000'
+        select '10', from: 'review[evaluation_id]'
+        fill_in 'product-info', with: '素晴らしいラバーです。'
+        find('input[name="commit"]').click
+        # トップページに戻る
+        visit root_path
+        # 投稿したレビューの詳細画面に行く
+        click_on 'テナジー（削除テスト）'
+      end
+
+      it '「削除する」ボタンをクリックすれば、レビューを削除できること' do
+        find('a[class="delete-btn"]').click
+        expect {
+          # モーダルが表示される
+          expect(page.accept_confirm).to eq 'レビューを完全に削除してもよろしいですか？'
+          # 削除完了画面に移動し、「削除が完了しました」という文字列が表示されている
+          expect(page).to have_content('削除が完了しました')
+          # トップページに戻るボタンが表示されている
+          expect(page).to have_css '.back-button'
+        }.to change { Review.count }.by(-1)
+      end
+
+      it '削除完了画面で「トップページに戻るボタン」をクリックすれば、トップページに移動できること' do
+        find('a[class="delete-btn"]').click
+        # モーダルが表示される
+        expect(page.accept_confirm).to eq 'レビューを完全に削除してもよろしいですか？'
+        # 「トップページに戻る」ボタンをクリック
+        find('a[class="back-button"]').click
+        # トップページに移動している
+        expect(current_path).to eq root_path
+      end
+    end
+
+    context '投稿者以外のユーザーがログインしている時' do
+      let!(:user) { FactoryBot.create(:user) }
+      let!(:review) { FactoryBot.create(:review, user: user) }
+
+      before do
+        # トップページを開く
+        visit root_path
+        # ゲストログインボタンをクリック
+        find('a[class="guest-login-btn"]').click
+        # トップページ上部に「ログインしました」と表示される
+        expect(page).to have_content('ログインしました')
+        # レビューの詳細画面へ移動する。
+        visit review_path(review)
+      end
+
+      it '削除するボタンは表示されていないこと' do
+        expect(page).not_to have_content('削除する')
+      end
+    end
   end
 end
