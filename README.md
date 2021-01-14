@@ -4,6 +4,7 @@ Ping Pong Pimples
 # URL
 現在、サイトにアクセスできない状況になっております。
 解決にあたっていますので、しばらくお待ちください。
+
 http://pppimples.com/
 
 # 概要
