@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(version: 2020_11_14_162702) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "comments_count"
-    t.string "video"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
