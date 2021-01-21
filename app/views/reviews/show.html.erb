@@ -20,7 +20,56 @@
         </div>
       <% end %>
     </div>
-    
+
+    <div class="radar-chart">
+      <canvas id="radarChart" width="400" height="400">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+
+        <script>
+          let ctx = document.getElementById("radarChart");
+          let reviewChart = new Chart(ctx, {
+            // レーダーチャートを利用
+            type:'radar',
+            data: {
+              labels: ["総合評価", "スピード", "スピン", "コントロール"],
+              datasets: [{
+                  data: [9, 7, 8, 7],
+                  backgroundColor: 'RGBA(225,95,150, 0.5)',
+                  borderColor: 'RGBA(225,95,150, 1)',
+                  borderWidth: 1,
+                  pointBackgroundColor: 'RGB(46,106,177)'
+              }]
+            },
+
+            options: {
+              // グラフに表示される凡例を削除
+              legend:{
+                display: false
+              },
+              scale:{
+                  ticks:{
+                      suggestedMin: 0,
+                      suggestedMax: 10,
+                      stepSize: 1,
+                      callback: function(value, index, values){
+                          return  value +  '点'
+                      }
+                  }
+              }
+            }
+          });
+        </script>
+      </canvas>
+
+      <%= form_with model: @review, local: true do |f| %>
+        <%= f.hidden_field :control, :value => @review.control.name, id:"contolValue" %>
+        <%= f.hidden_field :spin, :value => @review.spin.name, id:"spinValue" %>
+        <%= f.hidden_field :speed, :value => @review.speed.name, id:"speedValue" %>
+        <%= f.hidden_field :evaluation, :value => @review.evaluation.name, id:"evaluationValue" %>
+      <% end %>
+    </div>
+
     <div class="review-show-image">
         <%= image_tag @review.image, class:"show-img" %>
     </div>
