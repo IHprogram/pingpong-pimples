@@ -2,9 +2,7 @@ if (document.URL.match( /reviews/ )) {
   document.addEventListener('DOMContentLoaded', function(){
     const commentForm = document.getElementById('comment_content');
     const commentBtn = document.getElementById('comment-button');
-    
-    console.log(commentForm);
-    
+  
     commentForm.addEventListener('change', function() {
       let commentContent = commentForm.value;
       if (commentContent == "" ) {
