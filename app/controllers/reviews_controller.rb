@@ -27,6 +27,12 @@ class ReviewsController < ApplicationController
     @comments = @review.comments.includes(:user).order('created_at DESC').page(params[:page]).per(10)
     @like_count = Like.where("review_id = #{@review.id}")
     @comments_count = Comment.where("review_id = #{@review.id}").length
+    # @reviewに入っている総合評価、スピード、スピン、コントロールの点数のデータをJavaScriptで使えるようにし、レーダーチャートに活用
+    gon.data = []
+    gon.data << @review.evaluation.name
+    gon.data << @review.speed.name
+    gon.data << @review.spin.name
+    gon.data << @review.control.name
   end
 
   def edit
