@@ -89,3 +89,6 @@ gem "aws-sdk-s3", require: false
 gem 'rails-i18n'
 
 gem 'kaminari'
+
+#  ↓ Railsで定義した変数をJavaScriptでも使えるようにする。
+gem 'gon'
