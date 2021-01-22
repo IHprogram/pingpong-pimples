@@ -90,7 +90,5 @@ gem 'rails-i18n'
 
 gem 'kaminari'
 
-gem 'chartkick'
-
 #  ↓ Railsで定義した変数をJavaScriptでも使えるようにする。
 gem 'gon'
