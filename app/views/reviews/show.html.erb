@@ -22,7 +22,7 @@
     </div>
 
     <div class="radar-chart">
-      <canvas id="radarChart" width="400" height="400">
+      <canvas id="radarChart" width="10" height="10">
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 
@@ -34,7 +34,8 @@
             data: {
               labels: ["総合評価", "スピード", "スピン", "コントロール"],
               datasets: [{
-                  data: [9, 7, 8, 7],
+                  // gon.dataには、総合評価、スピード、スピン、コントロールの点数が入っている
+                  data: gon.data,
                   backgroundColor: 'RGBA(225,95,150, 0.5)',
                   borderColor: 'RGBA(225,95,150, 1)',
                   borderWidth: 1,
