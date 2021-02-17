@@ -65,5 +65,23 @@
       <% end %>
     </ul>
   </nav>
-  
+
+<% if user_signed_in? %>
+  <%= link_to new_review_path do %>
+    <div class="review-button">
+      <span class="review-button-text">
+        投稿
+      </span>
+    </div>
+  <% end %>
+<% else %>
+  <%= link_to new_user_session_path do %>
+    <div class="review-button">
+      <span class="review-button-text">
+        投稿
+      </span>
+    </div>
+  <% end %>
+<% end %>
+
 </header>
