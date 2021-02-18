@@ -66,22 +66,38 @@
     </ul>
   </nav>
 
-<% if user_signed_in? %>
-  <%= link_to new_review_path do %>
-    <div class="review-button">
-      <span class="review-button-text">
-        投稿
-      </span>
-    </div>
+<div class="header-right">
+  <% if current_user.image.attached? %>
+    <%= link_to user_path(current_user.id), class: "user-nickname" do %>
+      <div class="header-profile-image">
+        <%= image_tag current_user.image %>
+      </div>
+    <% end %>
+  <% else %>
+    <%= link_to user_path(current_user.id), class: "user-nickname" do %>
+      <div class="header-default-image">
+        <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
+      </div>
+    <% end %>
   <% end %>
-<% else %>
-  <%= link_to new_user_session_path do %>
-    <div class="review-button">
-      <span class="review-button-text">
-        投稿
-      </span>
-    </div>
+
+  <% if user_signed_in? %>
+    <%= link_to new_review_path do %>
+      <div class="review-button">
+        <span class="review-button-text">
+          投稿
+        </span>
+      </div>
+    <% end %>
+  <% else %>
+    <%= link_to new_user_session_path do %>
+      <div class="review-button">
+        <span class="review-button-text">
+          投稿
+        </span>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>
 
 </header>
