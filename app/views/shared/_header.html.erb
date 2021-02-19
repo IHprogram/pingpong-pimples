@@ -67,17 +67,19 @@
   </nav>
 
 <div class="header-right">
-  <% if current_user.image.attached? %>
-    <%= link_to user_path(current_user.id), class: "user-nickname" do %>
-      <div class="header-profile-image">
-        <%= image_tag current_user.image %>
-      </div>
-    <% end %>
-  <% else %>
-    <%= link_to user_path(current_user.id), class: "user-nickname" do %>
-      <div class="header-default-image">
-        <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
-      </div>
+  <% if user_signed_in? %>
+    <% if current_user.image.attached? %>
+      <%= link_to user_path(current_user.id), class: "user-nickname" do %>
+        <div class="header-profile-image">
+          <%= image_tag current_user.image %>
+        </div>
+      <% end %>
+    <% else %>
+      <%= link_to user_path(current_user.id), class: "user-nickname" do %>
+        <div class="header-default-image">
+          <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 
