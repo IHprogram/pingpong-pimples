@@ -3,7 +3,34 @@
     <%= link_to root_path, class: "header-logo" do %>
       <h1>Ping Pong Pimples <i class="fas fa-table-tennis"></i></h1>
     <% end %>
+
+    <div class="header-right">
+      <% if user_signed_in? %>
+        <% if current_user.image.attached? %>
+          <%= link_to user_path(current_user.id), class: "user-nickname header-profile-page-link" do %>
+            <div class="header-profile-image">
+              <%= image_tag current_user.image %>
+            </div>
+          <% end %>
+        <% else %>
+          <%= link_to user_path(current_user.id), class: "user-nickname header-profile-page-link" do %>
+            <div class="header-default-image">
+              <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
+            </div>
+          <% end %>
+        <% end %>
+        
+        <%= link_to new_review_path do %>
+          <div class="review-button">
+            <span class="review-button-text">
+              投稿
+            </span>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
+
   <div class="menu-wrapper" id="menu-btn">
     <div></div>
     <div></div>
@@ -65,33 +92,4 @@
       <% end %>
     </ul>
   </nav>
-
-<div class="header-right">
-  <% if user_signed_in? %>
-    <% if current_user.image.attached? %>
-      <%= link_to user_path(current_user.id), class: "user-nickname" do %>
-        <div class="header-profile-image">
-          <%= image_tag current_user.image %>
-        </div>
-      <% end %>
-    <% else %>
-      <%= link_to user_path(current_user.id), class: "user-nickname" do %>
-        <div class="header-default-image">
-          <%= image_tag "user.png", alt:"プロフィール画像が設定されていない時に表示" %>
-        </div>
-      <% end %>
-    <% end %>
-  <% end %>
-
-  <% if user_signed_in? %>
-    <%= link_to new_review_path do %>
-      <div class="review-button">
-        <span class="review-button-text">
-          投稿
-        </span>
-      </div>
-    <% end %>
-  <% end %>
-</div>
-
 </header>
