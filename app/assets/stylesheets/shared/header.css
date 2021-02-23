@@ -9,7 +9,7 @@
   z-index: 1;
 }
 
-.header-logo-wrapper {
+.header-container {
   width: 100%;
   text-align: center;
   margin: 0 auto;
@@ -137,6 +137,22 @@ font-size: 30px;
   background-color: #ffffff;
 }
 
+.header-right {
+  width: auto;
+  height: 70px;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-profile-page-link {
+  margin-right: 20px;
+}
+
 @media screen and (max-width: 959px) {
   .header-logo h1 {
     font-size: 25px;
@@ -171,5 +187,9 @@ font-size: 30px;
     left: 50%;
     transform: translate(-50%, -50%);
     transition: .2s;
+  }
+
+  .header-right {
+    display: none;
   }
 }
